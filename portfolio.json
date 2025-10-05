@@ -1,202 +1,222 @@
 {
-  "name": "Your Name",
-  "label": "Optional Label",
-  "image_path": "img/default-image.png",
+  "name": "Klayver Paz",
+  "label": "AI Specialist / Data Scientist",
+  "image_path": "portfolio_media/profile.jpg",
   "contact": {
-    "email": "FirstLast@Sample.com",
-    "phone": "123-456-7890",
-    "location": "City, State, Country"
+    "email": "klayverpaz@gmail.com",
+    "phone": "+55 85 99692-9159 / +1 (917) 310-8558",
+    "location": "Fortaleza, Brazil 🇧🇷 & New York, USA 🇺🇸"
   },
-  "summary": "A short summary of who you are, your background, experience, and interests to give visitors a quick introduction to you.",
-  "base_url": "127.0.0.1:5500",
+  "summary": "Data Scientist and Software Developer bridging research precision with industry execution and pragmatism, driven to innovate through curiosity and a creative lens.",
+  "base_url": "https://klayverpaz.github.io/",
   "social_links": [
     {
-      "label": "Personal Website",
-      "url": "https://sample.com",
-      "svg_path": "img/globe.svg"
-    },
-    {
-      "label": "First Social",
-      "url": "https://sample.com",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/klayverpaz/",
       "svg_path": "img/linkedin.svg"
     },
     {
-      "label": "Second Social",
-      "url": "https://sample.com",
+      "label": "Github",
+      "url": "https://github.com/klayverpaz",
       "svg_path": "img/github.svg"
+    },
+    {
+      "label": "Instagran",
+      "url": "https://www.instagram.com/klayverpaz",
+      "svg_path": "img/instagram.svg"
     }
   ],
   "work_experience": [
     {
-      "company": "Latest Job",
-      "position": "Position One",
-      "url": "https://sample.com",
-      "start_date": "01/01/2020",
+      "company": "Vida Center - New York University Tandon School of Engineering",
+      "position": "Research Scientist, Data Science",
+      "url": "https://vida.engineering.nyu.edu/",
+      "start_date": "September 2025",
       "end_date": "Present",
-      "summary": "Short summary about present job and what the position entails",
+      "summary": "Contributing to the UrbanMapper project, an analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.",
       "highlights": [
-        "First Duty of Current Job",
-        "Second Duty of Current Job",
-        "Third Duty of Current Job"
+        "Conducted exploratory data analysis and built Bayesian models to address urban Big Data challenges.",
+        "Applied geospatial and statistical tools such as GeoPandas, Rasterio, and advanced Bayesian modeling techniques to perform dasymetric mapping.",
+        "Collaborated with interdisciplinary teams to enhance data-driven decision-making in urban analytics research contexts."
       ]
     },
     {
-      "company": "Previous Job",
-      "position": "Position Two",
-      "url": "https://sample.com",
-      "start_date": "01/01/2010",
-      "end_date": "01/01/2020",
-      "summary": "Short summary about previous job and what that position entailed",
+      "company": "Atlântico",
+      "position": "Data Scientist",
+      "url": "https://www.atlantico.com.br/",
+      "start_date": "November 2024",
+      "end_date": "August 2025",
+      "summary": "Developed NLP and anomaly detection models for large-scale datasets in industrial and operational environments.",
       "highlights": [
-        "First Duty of Previous Job",
-        "Second Duty of Previous Job",
-        "Third Duty of Previous Job"
+        "Developed and optimized Natural Language Processing solutions, including sentiment analysis and entity recognition leveraging OLLAMA, RAG, and GPT models.",
+        "Designed and implemented anomaly detection models and defect forecasting algorithms for industrial time series data.",
+        "Built and maintained APIs and web services using C# .NET and Python within Azure Cloud microservices architecture.",
+        "Created interactive dashboards to support data-driven decision-making."
+      ]
+    },
+    {
+      "company": "Agilean",
+      "position": "Data Scientist and Software Developer",
+      "url": "https://www.agilean.com.br/",
+      "start_date": "October 2020",
+      "end_date": "November 2024",
+      "summary": "Developed predictive analytics and data integration systems for the construction and industrial sectors.",
+      "highlights": [
+        "Forecasted waste and delays using machine learning and data mining techniques in Python.",
+        "Designed and deployed ETL processes using Azure Data Factory and Microsoft Integration Services.",
+        "Created reports and dashboards using Power BI, Tableau, and Telerik Reporting.",
+        "Developed APIs and microservices with C# ASP.NET MVC and Python in Azure Cloud."
+      ]
+    },
+    {
+      "company": "Chief Scientist Program",
+      "position": "Research Scientist, Data Science",
+      "url": "https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura",
+      "start_date": "September 2023",
+      "end_date": "September 2025",
+      "summary": "Developed computer vision solutions for roadway defect localization and segmentation to improve infrastructure management.",
+      "highlights": [
+        "Developed computer vision models using TensorFlow, Keras, and YOLO frameworks.",
+        "Designed and implemented scalable data pipelines for storage, preprocessing, and modeling.",
+        "Collaborated with civil engineering and AI experts to enhance road defect detection accuracy."
+      ]
+    },
+    {
+      "company": "Chief Scientist Program",
+      "position": "Junior Data Science Researcher",
+      "url": "https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura",
+      "start_date": "January 2020",
+      "end_date": "October 2020",
+      "summary": "Developed and tested deep learning models for computer vision applications in Brazilian highway infrastructure.",
+      "highlights": [
+        "Implemented three deep neural network models using Keras to identify highway defects.",
+        "Analyzed model performance metrics to guide iterative improvements.",
+        "Processed and mined unstructured data to improve model training and robustness."
       ]
     }
   ],
   "projects": [
     {
-      "title": "My First Project",
-      "summary": "Short summary about my first project",
-      "url": "https://sample.com",
+      "title": "Midr - Computer Vision for Roads Distress Detection",
+      "summary": "YOLO-based object detection algorithm for highway maintenance",
+      "url": "https://www.instagram.com/reel/C6wSjDZo3jv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "highlights": [
-        "First Highlight of Project One",
-        "Second Highlight of Project One",
-        "Third Highlight of Project One"
+        "The software was patented and is currently the standard system for highway construction inspection used by the Court of Accounts of the State of Ceará, Brazil."
       ],
       "images": [
         {
-          "img_path": "https://picsum.photos/600/338?random=1",
-          "caption": "Image Caption 1"
+          "img_path": "portfolio_media/midr.png",
+          "caption": "Project Logo"
         },
         {
-          "img_path": "https://picsum.photos/600/338?random=2",
-          "caption": "Image Caption 2"
+          "img_path": "portfolio_media/patch.png",
+          "caption": "Distress Detection"
         },
         {
-          "img_path": "https://picsum.photos/600/338?random=3",
-          "caption": "Image Caption 3"
+          "img_path": "portfolio_media/midr_team.png",
+          "caption": "Team"
         }
       ]
     },
     {
-      "title": "My Second Project",
-      "summary": "Short summary about my second project",
-      "url": "https://sample.com",
+      "title": "Nutrir - Computer vision for verification of meals for vulnerable populations.",
+      "summary": "Computer vision system for meals verification and analytics.",
+      "url": "",
       "highlights": [
-        "First Highlight of Project Two",
-        "Second Highlight of Project Two",
-        "Third Highlight of Project Two"
+        "This project fostered the adoption of this technology by the Municipality of Fortaleza, Brazil."
       ],
       "images": [
         {
-          "img_path": "https://picsum.photos/600/338?random=4",
-          "caption": "Image Caption 4"
+          "img_path": "portfolio_media/nutrir.png",
+          "caption": "Project Logo"
         },
         {
-          "img_path": "https://picsum.photos/600/338?random=5",
-          "caption": "Image Caption 5"
+          "img_path": "portfolio_media/Quentinha.png",
+          "caption": "Meal Sample"
         },
         {
-          "img_path": "https://picsum.photos/600/338?random=6",
-          "caption": "Image Caption 6"
+          "img_path": "portfolio_media/nutrir_sample.jpeg",
+          "caption": "Output Sample"
         }
       ]
     }
   ],
-  "volunteer_experience": [
-    {
-      "organization": "Latest Organization",
-      "position": "Position One",
-      "url": "https://sample.com",
-      "start_date": "01/01/2020",
-      "end_date": "Present",
-      "summary": "Short summary about present volunteer work",
-      "highlights": [
-        "First Duty of Current Organization",
-        "Second Duty of Current Organization",
-        "Third Duty of Current Organization"
-      ]
-    },
-    {
-      "organization": "Previous Organization",
-      "position": "Position Two",
-      "url": "https://sample.com",
-      "start_date": "01/01/2010",
-      "end_date": "01/01/2020",
-      "summary": "Short summary about previous volunteer work",
-      "highlights": [
-        "First Duty of Previous Organization",
-        "Second Duty of Previous Organization",
-        "Third Duty of Previous Organization"
-      ]
-    }
-  ],
+  "volunteer_experience": [],
   "education": [
     {
-      "institution": "Institution One",
-      "location": "Institution One Location",
-      "url": "https://sample.com",
+      "institution": "Vida Center - New York University Tandon School of Engineering",
+      "location": "New York, NY, USA",
+      "url": "https://engineering.nyu.edu/",
       "degrees": [
-        "Master of Science in Computer Science",
-        "Minor in Mathematics"
+        "Research Scientist (Urban Science and Data Science Research)",
+        "Vida Lab - Visualization and Data Analytics Research Center"
       ],
-      "honors": ["Outstanding Student Award", "Dean's List"],
-      "gpa_cumulative": "3.5",
-      "gpa_major": "4.0",
-      "graduation_date": "01/01/2005"
+      "honors": [],
+      "gpa_cumulative": "",
+      "gpa_major": "",
+      "graduation_date": ""
     },
     {
-      "institution": "Institution Two",
-      "location": "Institution Two Location",
-      "url": "https://sample.com",
-      "degrees": ["Bachelor of Science in Physics"],
-      "honors": ["Scholarship Recipient"],
-      "gpa_cumulative": "3.2",
-      "gpa_major": "3.9",
-      "graduation_date": "01/01/2000"
+      "institution": "Universidade Federal do Ceará - UFC",
+      "location": "Fortaleza, CE, Brazil",
+      "url": "https://www.ufc.br/",
+      "degrees": [
+        "Research Scientist (Data Science)",
+        "Bachelor’s in Civil Engineering"
+      ],
+      "honors": [],
+      "gpa_cumulative": "",
+      "gpa_major": "",
+      "graduation_date": "2022"
     }
   ],
   "skills": [
     {
-      "name": "My First Skill",
+      "name": "Python for Data Science (Pandas, geopandas, numpy, pytorch, Sklearn etc...)",
       "proficiency": 100,
-      "proficiency_label": "Proficiency Level"
+      "proficiency_label": "Expert"
     },
     {
-      "name": "My Second Skill",
+      "name": "Azure Cloud, API Development (Python and .NET C#)",
+      "proficiency": 85,
+      "proficiency_label": "Advanced"
+    },
+    {
+      "name": "Data Engineering on cloud (Microsoft Fabric and Databricks)",
+      "proficiency": 90,
+      "proficiency_label": "Advanced"
+    },
+    {
+      "name": "SQL, Database Design, Data Modeling",
+      "proficiency": 90,
+      "proficiency_label": "Advanced"
+    },
+    {
+      "name": "GPTs (Ollama, Azure Ai foundry, RAG etc...)",
       "proficiency": 80,
-      "proficiency_label": "Proficiency Level"
+      "proficiency_label": "Proficient"
+    },
+    {
+      "name": "Data Visualization (Power BI, Tableau, Matplotlib)",
+      "proficiency": 80,
+      "proficiency_label": "Proficient"
     }
   ],
   "interests": [
     {
-      "name": "My First Hobby",
-      "summary": "Short summary about my first Hobby",
-      "images": [
-        {
-          "img_path": "https://picsum.photos/600/338?random=7",
-          "caption": "Image Caption 7"
-        },
-        {
-          "img_path": "https://picsum.photos/600/338?random=8",
-          "caption": "Image Caption 8"
-        }
-      ]
+      "name": "Economics",
+      "summary": "Exploring the intersection of data, incentives, and decision-making in complex systems.",
+      "images": []
     },
     {
-      "name": "My Second Hobby",
-      "summary": "Short summary about my second hobby",
-      "images": [
-        {
-          "img_path": "https://picsum.photos/600/338?random=9",
-          "caption": "Image Caption 9"
-        },
-        {
-          "img_path": "https://picsum.photos/600/338?random=10",
-          "caption": "Image Caption 10"
-        }
-      ]
+      "name": "Game Theory",
+      "summary": "Studying strategic interaction models and their applications in economics, AI, and human behavior.",
+      "images": []
+    },
+    {
+      "name": "Kickboxing",
+      "summary": "Practitioner and competitor with Blue Belt rank (5th of 7 belts).",
+      "images": []
     }
   ],
   "languages": [
@@ -205,20 +225,10 @@
       "fluency": "Native speaker"
     },
     {
-      "language": "American Sign Language",
-      "fluency": "Professional Working Proficiency"
+      "language": "Portuguese",
+      "fluency": "Native speaker"
     }
   ],
   "references": [
-    {
-      "name": "Person One",
-      "relation": "Previous Boss",
-      "reference": "Some nice things that Person One said about you, your work ethic, and how you provided value to their team."
-    },
-    {
-      "name": "Person Two",
-      "relation": "Previous Coworker",
-      "reference": "More kind things that Person Two said about you, what it was like working with you, and things you've accomplished."
-    }
   ]
 }

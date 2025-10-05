@@ -219,7 +219,7 @@
         <aside>
           {% if education %}
             <section>
-              <h2 class="section-heading">Education</h2>
+              <h2 class="section-heading">Research & Education</h2>
               {% for edu in education %}
                 <section>
                   <h3>
@@ -231,7 +231,7 @@
                   </h3>
                   {% if edu.location %}<p class="section-label">{{ edu.location }}</p>{% endif %}
                   {% if edu.degrees %}
-                    <h4>Degrees</h4>
+                    <h4>Experience</h4>
                     <ul>
                       {% for deg in edu.degrees %}<li>{{ deg }}</li>{% endfor %}
                     </ul>
