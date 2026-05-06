@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#dc2626"/>
+  <text x="640" y="360" fill="#ffffff" font-family="Montserrat, sans-serif" font-size="64" font-weight="700" text-anchor="middle" dominant-baseline="middle">MIDR</text>
+  <text x="640" y="430" fill="#fecaca" font-family="Nunito, sans-serif" font-size="28" text-anchor="middle" dominant-baseline="middle">YOLO Ensemble · Patented</text>
+</svg>
