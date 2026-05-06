@@ -101,6 +101,7 @@
               </ul>
             {% endif %}
             {% if summary %}<p class="header-summary">{{ summary }}</p>{% endif %}
+            <p class="header-cv-link"><a class="cv-button" href="Klayver_Paz_Resume.pdf" download>Download CV (PDF)</a></p>
           </div>
         </div>
       </div>
@@ -113,58 +114,32 @@
             <section>
               <h2 class="section-heading">Work Experience</h2>
               {% for job in work_experience %}
-                <section>
-                  <h3>
-                    {% if job.url %}
-                      {{ job.position }} at <a href="{{ job.url }}">{{ job.company }}</a>
-                    {% else %}
-                      {{ job.position }} at {{ job.company }}
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      {{ job.position }}
+                      {% if job.url %}
+                        <span class="work-entry-company">· <a href="{{ job.url }}">{{ job.company }}</a></span>
+                      {% else %}
+                        <span class="work-entry-company">· {{ job.company }}</span>
+                      {% endif %}
+                    </h3>
+                    {% if job.start_date and job.end_date %}
+                      <span class="work-entry-date">{{ job.start_date }} — {{ job.end_date }}</span>
                     {% endif %}
-                  </h3>
-                  {% if job.start_date and job.end_date %}
-                    <p class="section-label">{{ job.start_date }} - {{ job.end_date }}</p>
+                  </div>
+                  {% if job.summary %}<p class="work-entry-summary">{{ job.summary }}</p>{% endif %}
+                  {% if job.stack %}
+                    <ul class="stack-chips work-entry-stack">
+                      {% for tech in job.stack %}<li class="stack-chip">{{ tech }}</li>{% endfor %}
+                    </ul>
                   {% endif %}
-                  {% if job.summary %}<p>{{ job.summary }}</p>{% endif %}
                   {% if job.highlights %}
-                    <ul>
-                      {% for highlight in job.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                </section>
-              {% endfor %}
-            </section>
-          {% endif %}
-
-          {% if projects %}
-            <section>
-              <h2 class="section-heading">Projects</h2>
-              {% for project in projects %}
-                <section>
-                  <h3>
-                    {% if project.url %}
-                      <a href="{{ project.url }}">{{ project.title }}</a>
-                    {% else %}
-                      {{ project.title }}
-                    {% endif %}
-                  </h3>
-                  {% if project.summary %}<p>{{ project.summary }}</p>{% endif %}
-                  {% if project.highlights %}
-                    <ul>
-                      {% for highlight in project.highlights %}<li>{{ highlight }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                  {% if project.images %}
-                    <div class="gallery main-gallery">
-                      {% for img in project.images %}
-                        <figure>
-                          <img width="600"
-                               height="338"
-                               src="{{ img.img_path }}"
-                               alt="{{ img.caption }}">
-                          <figcaption>{{ img.caption }}</figcaption>
-                        </figure>
+                    <ul class="work-entry-highlights">
+                      {% for highlight in job.highlights %}
+                        <li><strong>{{ highlight.lead }}</strong> {{ highlight.body }}</li>
                       {% endfor %}
-                    </div>
+                    </ul>
                   {% endif %}
                 </section>
               {% endfor %}
@@ -217,62 +192,52 @@
 
         <!-- Sidebar Section -->
         <aside>
-          {% if education %}
+          {% if skills %}
             <section>
-              <h2 class="section-heading">Research & Education</h2>
-              {% for edu in education %}
-                <section>
-                  <h3>
-                    {% if edu.url %}
-                      <a href="{{ edu.url }}">{{ edu.institution }}</a>
-                    {% else %}
-                      {{ edu.institution }}
-                    {% endif %}
-                  </h3>
-                  {% if edu.location %}<p class="section-label">{{ edu.location }}</p>{% endif %}
-                  {% if edu.degrees %}
-                    <h4>Experience</h4>
-                    <ul>
-                      {% for deg in edu.degrees %}<li>{{ deg }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                  {% if edu.honors %}
-                    <h4>Honors</h4>
-                    <ul>
-                      {% for hon in edu.honors %}<li>{{ hon }}</li>{% endfor %}
-                    </ul>
-                  {% endif %}
-                  {% if edu.gpa_major or edu.gpa_cumulative or edu.graduation_date %}
-                    <p>
-                      {% if edu.gpa_major %}<span class="block">GPA in Major: {{ edu.gpa_major }}</span>{% endif %}
-                      {% if edu.gpa_cumulative %}<span class="block">Cumulative GPA: {{ edu.gpa_cumulative }}</span>{% endif %}
-                      {% if edu.graduation_date %}<span class="block">Graduation Date: {{ edu.graduation_date }}</span>{% endif %}
-                    </p>
-                  {% endif %}
+              <h2 class="section-heading">Skills</h2>
+              {% for block in skills %}
+                <section class="skill-category">
+                  <h3>{{ block.category }}</h3>
+                  <ul class="stack-chips">
+                    {% for item in block['items'] %}
+                      <li class="stack-chip">{{ item }}</li>
+                    {% endfor %}
+                  </ul>
                 </section>
               {% endfor %}
             </section>
           {% endif %}
 
-          {% if skills %}
+          {% if education %}
             <section>
-              <h2 class="section-heading">Skills</h2>
-              <ul class="unstyled-list">
-                {% for skill in skills %}
-                  <li>
-                    <h3>{{ skill.name }}</h3>
-                    <div class="skill-bar">
-                      <div class="skill-bar-fill w-{{ skill.proficiency }}"
-                           role="meter"
-                           aria-valuenow="{{ skill.proficiency }}"
-                           aria-valuemin="0"
-                           aria-valuemax="100">
-                        <span class="skill-bar-label">{{ skill.proficiency_label }}</span>
-                      </div>
-                    </div>
-                  </li>
-                {% endfor %}
-              </ul>
+              <h2 class="section-heading">Education</h2>
+              {% for entry in education %}
+                <section class="education-entry">
+                  {% if entry.url %}
+                    <h3><a href="{{ entry.url }}">{{ entry.institution }}</a></h3>
+                  {% else %}
+                    <h3>{{ entry.institution }}</h3>
+                  {% endif %}
+                  {% if entry.kind == 'degree' %}
+                    {% if entry.degree_title %}
+                      <p>{{ entry.degree_title }}{% if entry.graduation_date %} · {{ entry.graduation_date }}{% endif %}</p>
+                    {% endif %}
+                    {% if entry.notes %}<p>{{ entry.notes }}</p>{% endif %}
+                    {% if entry.coursework %}
+                      <p>
+                        <strong>{{ entry.coursework_label or 'Selected coursework' }}:</strong>
+                        {{ entry.coursework | join(' · ') }}
+                      </p>
+                    {% endif %}
+                  {% else %}
+                    {% if entry.role_title %}<p>{{ entry.role_title }}</p>{% endif %}
+                    {% if entry.start_date and entry.end_date %}
+                      <p class="section-label">{{ entry.start_date }} – {{ entry.end_date }}</p>
+                    {% endif %}
+                    {% if entry.notes %}<p>{{ entry.notes }}</p>{% endif %}
+                  {% endif %}
+                </section>
+              {% endfor %}
             </section>
           {% endif %}
 
@@ -315,6 +280,36 @@
             </section>
           {% endif %}
         </aside>
+
+        {% if projects %}
+          <section class="projects-full">
+            <h2 class="section-heading">Featured Projects</h2>
+            <ul class="project-grid">
+              {% for project in projects %}
+                <li class="project-card">
+                  <a class="project-card-link"
+                     href="projects/{{ project.slug }}.html">
+                    {% if project.cover_image %}
+                      <img class="project-card-cover"
+                           src="{{ project.cover_image }}"
+                           alt=""
+                           onerror="this.remove()">
+                    {% endif %}
+                    <h3 class="project-card-title">{{ project.title }}</h3>
+                    <p class="project-card-status">{{ project.status }}</p>
+                    <p class="project-card-tagline">{{ project.tagline }}</p>
+                    <ul class="stack-chips project-card-stack">
+                      {% for tech in project.stack[:4] %}
+                        <li class="stack-chip">{{ tech }}</li>
+                      {% endfor %}
+                    </ul>
+                    <span class="project-card-cta">Read more →</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
       </div>
     </div>
 
@@ -323,7 +318,5 @@
         <p>© {{ current_year }} {{ name }}. All rights reserved.</p>
       </div>
     </footer>
-
-    <script src="js/app.js"></script>
   </body>
 </html>

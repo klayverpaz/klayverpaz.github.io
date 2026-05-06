@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ project.title }} — {{ name }}</title>
+    <meta name="description" content="{{ project.tagline }}">
+    <meta name="author" content="{{ name }}">
+
+    <meta property="og:title" content="{{ project.title }} — {{ name }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ base_url }}/projects/{{ project.slug }}.html">
+    <meta property="og:image" content="{{ base_url }}/{{ project.cover_image }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/modern_normalize.css" />
+    <link rel="stylesheet" href="../css/html5bp.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/projects.css">
+
+    <meta name="theme-color" content="#fafafa">
+  </head>
+
+  <body>
+    <header class="page-header project-header">
+      <div class="container">
+        <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
+        <h1>{{ project.title }}</h1>
+        <p class="status-tag">{{ project.status }}</p>
+        <p class="tagline">{{ project.tagline }}</p>
+      </div>
+    </header>
+
+    <main class="page-content project-detail">
+      <div class="container">
+
+        <section class="project-section">
+          <h2>Problem</h2>
+          <p>{{ project.sections.problem }}</p>
+        </section>
+
+        <section class="project-section">
+          <h2>Architecture</h2>
+          {% if project.sections.architecture_diagram %}
+            <figure class="architecture-figure">
+              <img src="../{{ project.sections.architecture_diagram }}"
+                   alt="{{ project.title }} architecture diagram"
+                   onerror="this.parentElement.remove()">
+            </figure>
+          {% endif %}
+          <p>{{ project.sections.architecture }}</p>
+        </section>
+
+        <section class="project-section">
+          <h2>Tech Stack</h2>
+          <ul class="stack-chips">
+            {% for tech in project.stack %}
+              <li class="stack-chip">{{ tech }}</li>
+            {% endfor %}
+          </ul>
+          {% if project.sections.tech_stack %}
+            <p>{{ project.sections.tech_stack }}</p>
+          {% endif %}
+        </section>
+
+        <section class="project-section">
+          <h2>Engineering Highlights</h2>
+          <ul>
+            {% for item in project.sections.engineering_highlights %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Outcomes</h2>
+          <ul>
+            {% for item in project.sections.outcomes %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        {% if project.sections.demo %}
+          <section class="project-section">
+            <h2>Demo</h2>
+            {% if project.sections.demo.endswith('.mp4') or project.sections.demo.endswith('.webm') %}
+              <video controls width="800">
+                <source src="../{{ project.sections.demo }}">
+              </video>
+            {% else %}
+              <p><a href="{{ project.sections.demo }}" rel="noopener noreferrer">Watch demo →</a></p>
+            {% endif %}
+          </section>
+        {% endif %}
+
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <p>© {{ current_year }} {{ name }}. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

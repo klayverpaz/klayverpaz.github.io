@@ -1,0 +1,222 @@
+% =============================================================
+% Klayver Paz — Resume (LaTeX source)
+% Compile on Overleaf with pdfLaTeX. Output: Klayver_Paz_Resume.pdf
+% Single-file, self-contained. No external bib or assets required.
+% =============================================================
+\documentclass[10pt,a4paper]{article}
+
+% Encoding & fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% Layout
+\usepackage[a4paper,margin=0.7in,top=0.55in,bottom=0.55in]{geometry}
+\usepackage{parskip}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+
+% Hyperlinks & icons
+\usepackage{hyperref}
+\usepackage{fontawesome}
+
+% -------------------------------------------------------------
+% Colors
+% -------------------------------------------------------------
+\definecolor{accent}{HTML}{5B21B6}   % deep violet — matches site
+\definecolor{muted}{HTML}{4B5563}
+\definecolor{rule}{HTML}{9CA3AF}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent,
+  pdftitle={Klayver Paz — Resume},
+  pdfauthor={Klayver Paz},
+  pdfsubject={AI Engineer / Agent Engineer},
+}
+
+% -------------------------------------------------------------
+% Section formatting (custom — avoids titlesec kernel incompatibility)
+% -------------------------------------------------------------
+\renewcommand{\section}[1]{%
+  \par\vspace{10pt}%
+  {\large\bfseries\color{accent}\MakeUppercase{#1}}\par%
+  \vspace{2pt}%
+  \noindent{\color{rule}\rule{\linewidth}{0.6pt}}\par%
+  \vspace{2pt}%
+}
+
+% -------------------------------------------------------------
+% Tighter lists
+% -------------------------------------------------------------
+\setlist[itemize]{
+  leftmargin=1.1em,
+  topsep=2pt,
+  parsep=0pt,
+  itemsep=2pt,
+  label=\color{accent}{\small\textbullet}
+}
+
+% -------------------------------------------------------------
+% Helpers
+% -------------------------------------------------------------
+% Job header: \job{role}{company}{dates}
+\newcommand{\job}[3]{%
+  \par\vspace{4pt}%
+  \noindent\begin{tabularx}{\linewidth}{@{}X r@{}}%
+    \textbf{#1} \, {\color{muted}\textit{#2}} & {\small\color{muted}#3} \\
+  \end{tabularx}%
+  \vspace{1pt}%
+}
+
+% Project header: \project{title}{status}
+\newcommand{\project}[2]{%
+  \par\vspace{3pt}%
+  \noindent\textbf{#1} \, {\small\color{muted}\textit{#2}}\par%
+}
+
+% Skill row: \skillrow{label}{items}
+\newcommand{\skillrow}[2]{%
+  \noindent\textbf{#1:} #2\par\vspace{2pt}%
+}
+
+% Suppress page numbers
+\pagenumbering{gobble}
+
+% =============================================================
+\begin{document}
+
+% -------------------------------------------------------------
+% Header
+% -------------------------------------------------------------
+\begin{center}
+  {\Huge\bfseries Klayver Paz}\par
+  \vspace{2pt}
+  {\large\color{muted} AI Engineer / Agent Engineer}\par
+  \vspace{6pt}
+  {\small
+    \faEnvelope\,\href{mailto:klayverpaz@gmail.com}{klayverpaz@gmail.com}
+    \quad\faPhone\,+55 85 99692-9159 \,/\, +1 (917) 310-8558
+    \quad\faMapMarker\,Fortaleza, Brazil \& New York, USA \\[2pt]
+    \faLinkedin\,\href{https://www.linkedin.com/in/klayverpaz/}{linkedin.com/in/klayverpaz}
+    \quad\faGithub\,\href{https://github.com/klayverpaz}{github.com/klayverpaz}
+    \quad\faGlobe\,\href{https://klayverpaz.github.io/}{Portfolio}
+  }
+\end{center}
+
+\vspace{2pt}
+\noindent
+Full-stack AI Engineer specializing in production agent systems. Build end-to-end AI products --- LangGraph multi-agent orchestration, FastAPI backends, React frontends. Research roots in computer vision and geospatial ML at NYU. Open to international roles (US, EU; on-site or remote).
+
+% -------------------------------------------------------------
+% Experience
+% -------------------------------------------------------------
+\section{Experience}
+
+\job{AI Engineer / Agent Engineer}{Arke Analytica}{Jan 2026 -- Present}
+\textit{\small Building production AI products for B2B platforms. Independent practice.}
+\begin{itemize}
+  \item \textbf{Cycle-time reduction ($\sim$99\%).} Reduced a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes by building a production multi-agent system on LangGraph: intent classification, deterministic workflow subgraphs, human-in-the-loop confirmation gates for state-changing operations.
+  \item \textbf{Lateral query pattern.} Designed an interrupt-and-resume mechanism enabling users to pause in-flight workflows, ask side questions, then resume from the exact same node.
+  \item \textbf{Session persistence \& security.} Implemented Redis checkpoints (TTL-bounded) and bearer-token pass-through auth where the agent never stores credentials. Deployed on AWS (ECS, MemoryDB).
+  \item \textbf{Full-stack delivery.} Shipped FastAPI + async SQLAlchemy + Postgres backend with a LangGraph AI module (Anthropic / OpenAI provider abstraction, SSE streaming) and React 19 + TypeScript + Tailwind frontend.
+\end{itemize}
+\textit{\small Stack: LangGraph, LangSmith, Pinecone, Redis, FastAPI, React 19, TypeScript, Tailwind, AWS, PostgreSQL, Anthropic / OpenAI.}
+
+\job{Research Scientist (Data Science)}{Vida Center --- NYU Tandon School of Engineering}{Sep 2025 -- Dec 2025}
+\textit{\small Contributed to the UrbanMapper project --- analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.}
+\begin{itemize}
+  \item \textbf{CRIF library.} Built CRIF (Calibrated Raster Interpolation), a Python library for unified geospatial rasterization and dasymetric mapping --- formal mathematical derivation, custom Jupyter widgets, Docker packaging.
+  \item \textbf{Bayesian + geospatial.} Applied Bayesian modeling and geospatial methods (GeoPandas, Rasterio) to urban Big Data: point-to-raster aggregation, polygon rasterization with overlap handling, hotspot discovery via raster fusion.
+  \item \textbf{Cross-discipline work.} Collaborated with urban science, data visualization, and applied math teams to enhance data-driven decision-making in research contexts.
+\end{itemize}
+\textit{\small Stack: Python, GeoPandas, Rasterio, PyTorch, Bayesian modeling, Jupyter widgets, Docker.}
+
+\job{Data Scientist}{Atl\^antico}{Nov 2024 -- Aug 2025}
+\textit{\small NLP and anomaly-detection systems for industrial datasets.}
+\begin{itemize}
+  \item \textbf{NLP pipelines.} Shipped sentiment analysis and entity recognition using RAG patterns over Ollama and GPT models --- early production work with LLMs before the agent stack matured.
+  \item \textbf{Anomaly detection.} Built defect-forecasting models for industrial time-series data.
+  \item \textbf{APIs \& microservices.} Delivered Python and .NET services on Azure.
+\end{itemize}
+\textit{\small Stack: Python, Ollama, GPT, RAG, Azure, .NET.}
+
+\job{Data Scientist \& Software Developer}{Agilean}{Oct 2020 -- Nov 2024}
+\textit{\small Predictive analytics and data-integration systems for the construction and industrial sectors.}
+\begin{itemize}
+  \item \textbf{Predictive ML.} Forecasted construction-site waste and schedule delay using ML and data-mining over operational data.
+  \item \textbf{ETL pipelines.} Designed and deployed integrations on Azure Data Factory.
+  \item \textbf{APIs \& microservices.} Built C\# ASP.NET MVC and Python services on Azure Cloud.
+\end{itemize}
+\textit{\small Stack: Python, ML, Azure, ETL, C\# / .NET.}
+
+\job{Researcher}{Chief Scientist Program (FUNCAP, Cear\'a State Government)}{Jan 2020 -- Sep 2025}
+\textit{\small Computer vision research applied to highway infrastructure management.}
+\begin{itemize}
+  \item \textbf{MIDR ensemble.} Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Cear\'a (TCE-CE).
+  \item \textbf{Data pipelines.} Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets.
+  \item \textbf{Iterative refinement.} Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations.
+\end{itemize}
+\textit{\small Stack: PyTorch, YOLO, Ultralytics, OpenCV, Python.}
+
+% -------------------------------------------------------------
+% Featured Projects
+% -------------------------------------------------------------
+\section{Featured Projects}
+
+\project{Multi-Agent Operations Assistant}{Production --- Confidential (under NDA)}
+Conversational AI that automates complex operational workflows for an enterprise B2B SaaS platform. \textit{\small LangGraph, LangSmith, Pinecone, Redis.}
+
+\project{Etherpay --- Full-Stack AI SaaS}{Pre-launch --- Pilot ready}
+Vertical SaaS for martial-arts gym operations; financial-management module with embedded AI assistant. \textit{\small FastAPI, SQLAlchemy 2.0 async, PostgreSQL, Alembic.}
+
+\project{Personal Finance Skill}{In development --- Anthropic Skill}
+Anthropic Skill that processes Brazilian bank statements with a stage-based state machine. \textit{\small Anthropic Skills protocol, Python, SQLite, PDF parsing.}
+
+\project{CRIF --- Calibrated Raster Interpolation}{Open research}
+Geospatial Python library for unified rasterization and dasymetric mapping. Built at NYU Vida Center. \textit{\small Python, GeoPandas, Rasterio, Jupyter widgets.}
+
+\project{MIDR --- Pavement Defect Detection}{Production --- Patented}
+YOLO-ensemble defect-detection system adopted by the Court of Accounts of Cear\'a (TCE-CE). \textit{\small PyTorch, YOLO, Ultralytics, OpenCV.}
+
+\project{Nutrir --- Meal Verification CV}{Production --- Adopted}
+Computer-vision pipeline for meal verification adopted by the Municipality of Fortaleza. \textit{\small Python, computer vision, PyTorch, image segmentation.}
+
+% -------------------------------------------------------------
+% Skills
+% -------------------------------------------------------------
+\section{Skills}
+
+\skillrow{Core (Agent / LLM Engineering)}{LangGraph, LangSmith, LangChain, Anthropic Skills protocol, multi-agent orchestration, HITL workflows, RAG, Pinecone, OpenAI / Anthropic SDKs, MCP}
+\skillrow{Backend Engineering}{Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2.0 async, Alembic, PostgreSQL / SQL Server, Redis, DDD + CQRS, Value Objects, vertical slicing}
+\skillrow{Frontend Engineering}{TypeScript, React 19, Vite, Tailwind v4, TanStack Query v5, React Router v7, Radix UI, react-hook-form + zod, Vitest, MSW}
+\skillrow{DevOps \& Quality}{Docker, CI/CD (Bitbucket Pipelines, GitHub Actions), pytest, ruff, mypy, type-checked Python, AWS (ECS, MemoryDB)}
+\skillrow{Computer Vision \& Geospatial ML}{PyTorch, YOLO (ensemble + custom fusion), OpenCV, scikit-learn, Bayesian modeling, GeoPandas, Rasterio, pandas / NumPy}
+\skillrow{Past stack (still serviceable)}{C\# / .NET, Azure, Power BI, Microsoft Fabric, Databricks}
+
+% -------------------------------------------------------------
+% Education
+% -------------------------------------------------------------
+\section{Education}
+
+\job{B.S. Civil Engineering (Computer Science research track)}{Universidade Federal do Cear\'a (UFC)}{2022}
+Concurrent research training in Data Science via the Chief Scientist Program (FUNCAP, Cear\'a State Government).\\
+\textit{\small Selected coursework (CS track):} Machine Learning, Data Mining, Digital Image Processing, Numerical Methods, Programming Fundamentals, Linear Algebra, Probability \& Statistics, Optimization.
+
+\job{Research Scientist (Data Science)}{NYU Tandon School of Engineering --- Vida Center}{Sep 2025 -- Dec 2025}
+Urban analytics and geospatial ML research affiliation (UrbanMapper / CRIF).
+
+% -------------------------------------------------------------
+% Languages
+% -------------------------------------------------------------
+\section{Languages}
+
+\noindent\textbf{English} --- Full professional proficiency \quad\textbar\quad
+\textbf{Portuguese} --- Native speaker
+
+\end{document}

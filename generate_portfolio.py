@@ -1,40 +1,86 @@
+"""Generate index.html, project detail pages, and Klayver_Paz_Resume.pdf
+from portfolio.json + resume.tex. Single source of truth: portfolio.json.
+
+The PDF is compiled locally with Tectonic (https://tectonic-typesetting.github.io/).
+Install with `brew install tectonic`. Tectonic is hermetic and fetches
+LaTeX packages on demand; no system-wide TeX Live install is required.
+"""
+
 import json
+import shutil
+import subprocess
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
-# Load JSON data
-with Path("portfolio.json").open(encoding="utf-8") as f:
-    data = json.load(f)
+REPO_ROOT = Path(__file__).resolve().parent
+PDF_NAME = "Klayver_Paz_Resume.pdf"
 
-# Add any extra context if needed
-data["current_year"] = datetime.now(tz=UTC).year
 
-if "social_links" in data:
-    for link in data["social_links"]:
-        if link.get("svg_path"):
-            with Path(link["svg_path"]).open(encoding="utf-8") as svg_file:
-                link["svg_data"] = svg_file.read()
+def load_portfolio() -> dict:
+    with (REPO_ROOT / "portfolio.json").open(encoding="utf-8") as f:
+        data = json.load(f)
+    data["current_year"] = datetime.now(tz=UTC).year
+    if "social_links" in data:
+        for link in data["social_links"]:
+            svg_path = link.get("svg_path")
+            if svg_path:
+                with (REPO_ROOT / svg_path).open(encoding="utf-8") as svg_file:
+                    link["svg_data"] = svg_file.read()
+    return data
 
-# Set up Jinja environment
-env = Environment(loader=FileSystemLoader("."), autoescape=True)
-index_template = env.get_template("index_template.html")
-resume_template = env.get_template("resume_template.html")
 
-# Render the template with the data
-html_output = index_template.render(**data)
-resume_output = resume_template.render(**data)
+def render_index(env, data) -> None:
+    template = env.get_template("index_template.html")
+    (REPO_ROOT / "index.html").write_text(
+        template.render(**data), encoding="utf-8"
+    )
 
-# This is equivalent to...
-# html_output = index_template.render(name=data["name"], label=data["label"]...)
-# resume_output = resume_template.render(name=data["name"], label=data["label"]...)
 
-# Write the output to an HTML file
-with Path("index.html").open("w", encoding="utf-8") as f:
-    f.write(html_output)
+def render_projects(env, data) -> int:
+    template = env.get_template("project_template.html")
+    projects_dir = REPO_ROOT / "projects"
+    projects_dir.mkdir(exist_ok=True)
+    count = 0
+    for project in data.get("projects", []):
+        slug = project["slug"]
+        (projects_dir / f"{slug}.html").write_text(
+            template.render(project=project, **data),
+            encoding="utf-8",
+        )
+        count += 1
+    return count
 
-with Path("resume.html").open("w", encoding="utf-8") as f:
-    f.write(resume_output)
 
-print("HTML file generated successfully!")
+def render_resume_pdf() -> None:
+    """Compile resume.tex with Tectonic and emit Klayver_Paz_Resume.pdf."""
+    if shutil.which("tectonic") is None:
+        sys.exit(
+            "tectonic not found on PATH. Install with `brew install tectonic` "
+            "(or skip PDF render by running the individual HTML render funcs)."
+        )
+    tex = REPO_ROOT / "resume.tex"
+    subprocess.run(
+        ["tectonic", "--chatter", "minimal",
+         "--outdir", str(REPO_ROOT), str(tex)],
+        check=True,
+    )
+    (REPO_ROOT / "resume.pdf").replace(REPO_ROOT / PDF_NAME)
+
+
+def main() -> None:
+    data = load_portfolio()
+    env = Environment(loader=FileSystemLoader(str(REPO_ROOT)), autoescape=True)
+    render_index(env, data)
+    project_count = render_projects(env, data)
+    render_resume_pdf()
+    print(
+        f"Generated index.html, {PDF_NAME}, "
+        f"and {project_count} project pages."
+    )
+
+
+if __name__ == "__main__":
+    main()

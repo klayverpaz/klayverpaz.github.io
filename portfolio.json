@@ -1,13 +1,14 @@
 {
   "name": "Klayver Paz",
-  "label": "AI Specialist / Data Scientist",
+  "label": "AI Engineer",
+  "headline": "AI Engineer",
   "image_path": "portfolio_media/profile.jpg",
   "contact": {
     "email": "klayverpaz@gmail.com",
     "phone": "+55 85 99692-9159 / +1 (917) 310-8558",
     "location": "Fortaleza, Brazil 🇧🇷 & New York, USA 🇺🇸"
   },
-  "summary": "Data Scientist and Software Developer bridging research precision with industry execution and pragmatism, driven to innovate through curiosity and a creative lens.",
+  "summary": "Full-stack AI Engineer specializing in production agent systems. Build end-to-end AI products — LangGraph multi-agent orchestration, FastAPI backends, React frontends. Research roots in computer vision and geospatial ML at NYU.",
   "base_url": "https://klayverpaz.github.io/",
   "social_links": [
     {
@@ -19,25 +20,43 @@
       "label": "Github",
       "url": "https://github.com/klayverpaz",
       "svg_path": "img/github.svg"
-    },
-    {
-      "label": "Instagran",
-      "url": "https://www.instagram.com/klayverpaz",
-      "svg_path": "img/instagram.svg"
     }
   ],
   "work_experience": [
     {
-      "company": "Vida Center - New York University Tandon School of Engineering",
-      "position": "Research Scientist, Data Science",
+      "company": "Arke Analytica",
+      "position": "AI Engineer / Agent Engineer",
+      "url": "",
+      "start_date": "January 2026",
+      "end_date": "Present",
+      "summary": "Building production AI products for B2B platforms. Independent practice.",
+      "highlights": [
+        {"lead": "Cycle-time reduction.", "body": "Reduced a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) by building a production multi-agent system on LangGraph: intent classification, deterministic workflow subgraphs, human-in-the-loop confirmation gates for state-changing operations."},
+        {"lead": "Lateral query pattern.", "body": "Designed an interrupt-and-resume mechanism enabling users to pause in-flight workflows, ask side questions, then resume from the exact same node."},
+        {"lead": "Session persistence.", "body": "Implemented Redis checkpoints (TTL-bounded) and bearer-token pass-through auth where the agent never stores credentials. Deployed on AWS (ECS, MemoryDB)."},
+        {"lead": "Full-stack delivery.", "body": "Shipped FastAPI + async SQLAlchemy + Postgres backend with LangGraph AI module (Anthropic / OpenAI provider abstraction, SSE streaming) + React 19 + TypeScript + Tailwind frontend."}
+      ],
+      "stack": [
+        "LangGraph", "LangSmith", "Pinecone", "Redis", "FastAPI",
+        "React 19", "TypeScript", "Tailwind", "AWS", "PostgreSQL",
+        "Anthropic / OpenAI"
+      ]
+    },
+    {
+      "company": "Vida Center — NYU Tandon School of Engineering",
+      "position": "Research Scientist (Data Science)",
       "url": "https://vida.engineering.nyu.edu/",
       "start_date": "September 2025",
-      "end_date": "Present",
-      "summary": "Contributing to the UrbanMapper project, an analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.",
+      "end_date": "December 2025",
+      "summary": "Contributed to the UrbanMapper project — an analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.",
       "highlights": [
-        "Conducted exploratory data analysis and built Bayesian models to address urban Big Data challenges.",
-        "Applied geospatial and statistical tools such as GeoPandas, Rasterio, and advanced Bayesian modeling techniques to perform dasymetric mapping.",
-        "Collaborated with interdisciplinary teams to enhance data-driven decision-making in urban analytics research contexts."
+        {"lead": "CRIF library.", "body": "Built CRIF (Calibrated Raster Interpolation), a Python library for unified geospatial rasterization and dasymetric mapping — formal mathematical derivation, custom Jupyter widgets, Docker packaging."},
+        {"lead": "Bayesian + geospatial.", "body": "Applied Bayesian modeling and geospatial methods (GeoPandas, Rasterio) to urban Big Data: point-to-raster aggregation, polygon rasterization with overlap handling, hotspot discovery via raster fusion."},
+        {"lead": "Cross-discipline work.", "body": "Worked with urban science, data visualization, and applied math teams to enhance data-driven decision-making in research contexts."}
+      ],
+      "stack": [
+        "Python", "GeoPandas", "Rasterio", "PyTorch",
+        "Bayesian modeling", "Jupyter widgets", "Docker"
       ]
     },
     {
@@ -46,188 +65,255 @@
       "url": "https://www.atlantico.com.br/",
       "start_date": "November 2024",
       "end_date": "August 2025",
-      "summary": "Developed NLP and anomaly detection models for large-scale datasets in industrial and operational environments.",
+      "summary": "Built NLP and anomaly detection systems for industrial datasets.",
       "highlights": [
-        "Developed and optimized Natural Language Processing solutions, including sentiment analysis and entity recognition leveraging OLLAMA, RAG, and GPT models.",
-        "Designed and implemented anomaly detection models and defect forecasting algorithms for industrial time series data.",
-        "Built and maintained APIs and web services using C# .NET and Python within Azure Cloud microservices architecture.",
-        "Created interactive dashboards to support data-driven decision-making."
-      ]
+        {"lead": "NLP pipelines.", "body": "Shipped sentiment analysis and entity recognition using RAG patterns over Ollama and GPT models — early production work with LLMs before the agent stack matured."},
+        {"lead": "Anomaly detection.", "body": "Built defect-forecasting models for industrial time-series data."},
+        {"lead": "APIs & microservices.", "body": "Delivered Python + .NET services on Azure."}
+      ],
+      "stack": ["Python", "Ollama", "GPT", "RAG", "Azure", ".NET"]
     },
     {
       "company": "Agilean",
-      "position": "Data Scientist and Software Developer",
+      "position": "Data Scientist & Software Developer",
       "url": "https://www.agilean.com.br/",
       "start_date": "October 2020",
       "end_date": "November 2024",
-      "summary": "Developed predictive analytics and data integration systems for the construction and industrial sectors.",
+      "summary": "Built predictive analytics and data integration systems for the construction and industrial sectors.",
       "highlights": [
-        "Forecasted waste and delays using machine learning and data mining techniques in Python.",
-        "Designed and deployed ETL processes using Azure Data Factory and Microsoft Integration Services.",
-        "Created reports and dashboards using Power BI, Tableau, and Telerik Reporting.",
-        "Developed APIs and microservices with C# ASP.NET MVC and Python in Azure Cloud."
-      ]
+        {"lead": "Predictive ML.", "body": "Forecasted construction-site waste and schedule delay using ML and data-mining over operational data."},
+        {"lead": "ETL pipelines.", "body": "Designed and deployed integrations on Azure Data Factory."},
+        {"lead": "APIs & microservices.", "body": "Built C# ASP.NET MVC and Python services on Azure Cloud."}
+      ],
+      "stack": ["Python", "ML", "Azure", "ETL", "C# / .NET"]
     },
     {
-      "company": "Chief Scientist Program",
-      "position": "Research Scientist, Data Science",
-      "url": "https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura",
-      "start_date": "September 2023",
-      "end_date": "September 2025",
-      "summary": "Developed computer vision solutions for roadway defect localization and segmentation to improve infrastructure management.",
-      "highlights": [
-        "Developed computer vision models using TensorFlow, Keras, and YOLO frameworks.",
-        "Designed and implemented scalable data pipelines for storage, preprocessing, and modeling.",
-        "Collaborated with civil engineering and AI experts to enhance road defect detection accuracy."
-      ]
-    },
-    {
-      "company": "Chief Scientist Program",
-      "position": "Junior Data Science Researcher",
+      "company": "Chief Scientist Program (FUNCAP, Ceará State Government)",
+      "position": "Researcher",
       "url": "https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura",
       "start_date": "January 2020",
-      "end_date": "October 2020",
-      "summary": "Developed and tested deep learning models for computer vision applications in Brazilian highway infrastructure.",
+      "end_date": "September 2025",
+      "summary": "Computer vision research applied to highway infrastructure management.",
       "highlights": [
-        "Implemented three deep neural network models using Keras to identify highway defects.",
-        "Analyzed model performance metrics to guide iterative improvements.",
-        "Processed and mined unstructured data to improve model training and robustness."
-      ]
+        {"lead": "MIDR ensemble.", "body": "Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Ceará (TCE-CE)."},
+        {"lead": "Data pipelines.", "body": "Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets."},
+        {"lead": "Iterative refinement.", "body": "Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations."}
+      ],
+      "stack": ["PyTorch", "YOLO", "Ultralytics", "OpenCV", "Python"]
     }
   ],
   "projects": [
     {
-      "title": "Midr - Computer Vision for Roads Distress Detection",
-      "summary": "YOLO-based object detection algorithm for highway maintenance",
-      "url": "https://www.instagram.com/reel/C6wSjDZo3jv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "highlights": [
-        "The software was patented and is currently the standard system for highway construction inspection used by the Court of Accounts of the State of Ceará, Brazil."
-      ],
-      "images": [
-        {
-          "img_path": "portfolio_media/midr.png",
-          "caption": "Project Logo"
-        },
-        {
-          "img_path": "portfolio_media/patch.png",
-          "caption": "Distress Detection"
-        },
-        {
-          "img_path": "portfolio_media/midr_team.png",
-          "caption": "Team"
-        }
-      ]
+      "slug": "multi-agent-ops",
+      "title": "Multi-Agent Operations Assistant",
+      "codename": "Confidential client",
+      "status": "Production · Confidential",
+      "tagline": "Conversational AI that automates complex operational workflows for an enterprise B2B SaaS platform.",
+      "cover_image": "portfolio_media/covers/multi-agent-ops.svg",
+      "stack": ["LangGraph", "LangSmith", "Pinecone", "Redis", "FastAPI",
+                "AWS (ECS, MemoryDB)", "Anthropic / OpenAI"],
+      "sections": {
+        "problem": "TODO_PHASE_3",
+        "architecture": "TODO_PHASE_3",
+        "architecture_diagram": "portfolio_media/diagrams/multi-agent-ops.png",
+        "tech_stack": "TODO_PHASE_3",
+        "engineering_highlights": ["TODO_PHASE_3"],
+        "outcomes": ["TODO_PHASE_3"],
+        "demo": null
+      }
     },
     {
-      "title": "Nutrir - Computer vision for verification of meals for vulnerable populations.",
-      "summary": "Computer vision system for meals verification and analytics.",
-      "url": "",
-      "highlights": [
-        "This project fostered the adoption of this technology by the Municipality of Fortaleza, Brazil."
-      ],
-      "images": [
-        {
-          "img_path": "portfolio_media/nutrir.png",
-          "caption": "Project Logo"
-        },
-        {
-          "img_path": "portfolio_media/Quentinha.png",
-          "caption": "Meal Sample"
-        },
-        {
-          "img_path": "portfolio_media/nutrir_sample.jpeg",
-          "caption": "Output Sample"
-        }
-      ]
+      "slug": "etherpay",
+      "title": "Etherpay — Full-Stack AI SaaS",
+      "codename": "Etherpay",
+      "status": "Pre-launch · Pilot ready",
+      "tagline": "Vertical SaaS for martial-arts gym operations — financial management module with embedded AI assistant.",
+      "cover_image": "portfolio_media/covers/etherpay.svg",
+      "stack": ["FastAPI", "SQLAlchemy 2.0 async", "PostgreSQL", "Alembic",
+                "LangGraph", "LangSmith", "React 19", "TypeScript",
+                "Tailwind v4", "TanStack Query v5"],
+      "sections": {
+        "problem": "TODO_PHASE_3",
+        "architecture": "TODO_PHASE_3",
+        "architecture_diagram": "portfolio_media/diagrams/etherpay.png",
+        "tech_stack": "TODO_PHASE_3",
+        "engineering_highlights": ["TODO_PHASE_3"],
+        "outcomes": ["TODO_PHASE_3"],
+        "demo": "portfolio_media/demos/etherpay.mp4"
+      }
+    },
+    {
+      "slug": "finance-skill",
+      "title": "Personal Finance Skill",
+      "codename": "fatura-processor",
+      "status": "In development · Anthropic Skill",
+      "tagline": "Anthropic Skill that processes Brazilian bank statements with a stage-based state machine.",
+      "cover_image": "portfolio_media/covers/finance-skill.svg",
+      "stack": ["Anthropic Skills protocol", "Python", "SQLite",
+                "PDF parsing", "state machine"],
+      "sections": {
+        "problem": "TODO_PHASE_3",
+        "architecture": "TODO_PHASE_3",
+        "architecture_diagram": "portfolio_media/diagrams/finance-skill.png",
+        "tech_stack": "TODO_PHASE_3",
+        "engineering_highlights": ["TODO_PHASE_3"],
+        "outcomes": ["TODO_PHASE_3"],
+        "demo": "portfolio_media/demos/finance-skill.mp4"
+      }
+    },
+    {
+      "slug": "crif",
+      "title": "CRIF — Calibrated Raster Interpolation",
+      "codename": "CRIF",
+      "status": "Open research",
+      "tagline": "Geospatial library for unified rasterization and dasymetric mapping. Built at NYU Vida Center.",
+      "cover_image": "portfolio_media/covers/crif.svg",
+      "stack": ["Python", "GeoPandas", "Rasterio", "Jupyter widgets",
+                "Docker", "applied math"],
+      "sections": {
+        "problem": "TODO_PHASE_3",
+        "architecture": "TODO_PHASE_3",
+        "architecture_diagram": "portfolio_media/diagrams/crif.png",
+        "tech_stack": "TODO_PHASE_3",
+        "engineering_highlights": ["TODO_PHASE_3"],
+        "outcomes": ["TODO_PHASE_3"],
+        "demo": null
+      }
+    },
+    {
+      "slug": "midr",
+      "title": "MIDR — Pavement Defect Detection",
+      "codename": "MIDR",
+      "status": "Production · Patented",
+      "tagline": "YOLO-ensemble defect detection adopted by the Court of Accounts of Ceará (TCE-CE).",
+      "cover_image": "portfolio_media/covers/midr.svg",
+      "stack": ["PyTorch", "YOLO", "Ultralytics", "OpenCV", "Python"],
+      "sections": {
+        "problem": "TODO_PHASE_3",
+        "architecture": "TODO_PHASE_3",
+        "architecture_diagram": "portfolio_media/diagrams/midr.png",
+        "tech_stack": "TODO_PHASE_3",
+        "engineering_highlights": ["TODO_PHASE_3"],
+        "outcomes": ["TODO_PHASE_3"],
+        "demo": "https://www.instagram.com/reel/C6wSjDZo3jv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+      }
+    },
+    {
+      "slug": "nutrir",
+      "title": "Nutrir — Meal Verification CV",
+      "codename": "Nutrir",
+      "status": "Production · Adopted",
+      "tagline": "Computer vision for meal verification adopted by the Municipality of Fortaleza.",
+      "cover_image": "portfolio_media/covers/nutrir.svg",
+      "stack": ["Python", "Computer Vision", "PyTorch", "image segmentation"],
+      "sections": {
+        "problem": "TODO_PHASE_3",
+        "architecture": "TODO_PHASE_3",
+        "architecture_diagram": "portfolio_media/diagrams/nutrir.png",
+        "tech_stack": "TODO_PHASE_3",
+        "engineering_highlights": ["TODO_PHASE_3"],
+        "outcomes": ["TODO_PHASE_3"],
+        "demo": null
+      }
     }
   ],
   "volunteer_experience": [],
   "education": [
     {
-      "institution": "Vida Center - New York University Tandon School of Engineering",
-      "location": "New York, NY, USA",
-      "url": "https://engineering.nyu.edu/",
-      "degrees": [
-        "Research Scientist (Urban Science and Data Science Research)",
-        "Vida Lab - Visualization and Data Analytics Research Center"
-      ],
-      "honors": [],
-      "gpa_cumulative": "",
-      "gpa_major": "",
-      "graduation_date": ""
-    },
-    {
-      "institution": "Universidade Federal do Ceará - UFC",
+      "kind": "degree",
+      "institution": "Universidade Federal do Ceará (UFC)",
       "location": "Fortaleza, CE, Brazil",
       "url": "https://www.ufc.br/",
-      "degrees": [
-        "Research Scientist (Data Science)",
-        "Bachelor’s in Civil Engineering"
-      ],
-      "honors": [],
-      "gpa_cumulative": "",
-      "gpa_major": "",
-      "graduation_date": "2022"
+      "degree_title": "B.S. Civil Engineering (Computer Science research track)",
+      "graduation_date": "2022",
+      "notes": "Concurrent research training in Data Science via Chief Scientist Program (FUNCAP, Ceará State Government).",
+      "coursework_label": "Selected coursework (computer science track)",
+      "coursework": [
+        "Machine Learning", "Data Mining", "Digital Image Processing",
+        "Numerical Methods", "Programming Fundamentals", "Linear Algebra",
+        "Probability & Statistics", "Optimization"
+      ]
+    },
+    {
+      "kind": "research_affiliation",
+      "institution": "NYU Tandon School of Engineering, Vida Center",
+      "location": "New York, NY, USA",
+      "url": "https://engineering.nyu.edu/",
+      "role_title": "Research Scientist (Data Science)",
+      "start_date": "September 2025",
+      "end_date": "December 2025",
+      "notes": "Urban analytics and geospatial ML research affiliation (UrbanMapper / CRIF). Also listed under Work Experience."
     }
   ],
   "skills": [
     {
-      "name": "Python for Data Science (Pandas, geopandas, numpy, pytorch, Sklearn etc...)",
-      "proficiency": 100,
-      "proficiency_label": "Expert"
+      "category": "Core (Agent / LLM Engineering)",
+      "items": [
+        "LangGraph", "LangSmith", "LangChain", "Anthropic Skills protocol",
+        "Multi-agent orchestration", "HITL workflows", "RAG", "Pinecone",
+        "OpenAI / Anthropic SDKs", "MCP"
+      ]
     },
     {
-      "name": "Azure Cloud, API Development (Python and .NET C#)",
-      "proficiency": 85,
-      "proficiency_label": "Advanced"
+      "category": "Backend Engineering",
+      "items": [
+        "Python 3.12", "FastAPI", "Pydantic v2", "SQLAlchemy 2.0 async",
+        "Alembic", "PostgreSQL / SQL Server", "Redis", "DDD + CQRS",
+        "Value Objects", "vertical slicing"
+      ]
     },
     {
-      "name": "Data Engineering on cloud (Microsoft Fabric and Databricks)",
-      "proficiency": 90,
-      "proficiency_label": "Advanced"
+      "category": "Frontend Engineering",
+      "items": [
+        "TypeScript", "React 19", "Vite", "Tailwind v4",
+        "TanStack Query v5", "React Router v7", "Radix UI",
+        "react-hook-form + zod", "Vitest", "MSW"
+      ]
     },
     {
-      "name": "SQL, Database Design, Data Modeling",
-      "proficiency": 90,
-      "proficiency_label": "Advanced"
+      "category": "DevOps & Quality",
+      "items": [
+        "Docker", "CI/CD (Bitbucket Pipelines, GitHub Actions)",
+        "pytest", "ruff", "mypy", "type-checked Python",
+        "AWS (ECS, MemoryDB)"
+      ]
     },
     {
-      "name": "GPTs (Ollama, Azure Ai foundry, RAG etc...)",
-      "proficiency": 80,
-      "proficiency_label": "Proficient"
+      "category": "Computer Vision & Geospatial ML",
+      "items": [
+        "PyTorch", "YOLO (ensemble + custom fusion)", "OpenCV",
+        "scikit-learn", "Bayesian modeling", "GeoPandas", "Rasterio",
+        "pandas / NumPy"
+      ]
     },
     {
-      "name": "Data Visualization (Power BI, Tableau, Matplotlib)",
-      "proficiency": 80,
-      "proficiency_label": "Proficient"
+      "category": "Past stack (still serviceable if needed)",
+      "items": [
+        "C# / .NET", "Azure", "Power BI",
+        "Microsoft Fabric", "Databricks"
+      ]
     }
   ],
   "interests": [
     {
       "name": "Economics",
-      "summary": "Exploring the intersection of data, incentives, and decision-making in complex systems.",
+      "summary": "Incentives and decision-making in complex systems.",
       "images": []
     },
     {
       "name": "Game Theory",
-      "summary": "Studying strategic interaction models and their applications in economics, AI, and human behavior.",
+      "summary": "Strategic interaction and applications in AI / human behavior.",
       "images": []
     },
     {
       "name": "Kickboxing",
-      "summary": "Practitioner and competitor with Blue Belt rank (5th of 7 belts).",
+      "summary": "Practitioner and competitor (Blue Belt).",
       "images": []
     }
   ],
   "languages": [
-    {
-      "language": "English",
-      "fluency": "Native speaker"
-    },
-    {
-      "language": "Portuguese",
-      "fluency": "Native speaker"
-    }
+    {"language": "English", "fluency": "Full professional proficiency"},
+    {"language": "Portuguese", "fluency": "Native speaker"}
   ],
   "references": [
   ]

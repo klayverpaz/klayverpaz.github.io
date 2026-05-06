@@ -471,3 +471,494 @@ blockquote {
     print-color-adjust: exact !important;
   }
 }
+
+/* Skills — categorized tag list */
+.skill-category {
+  margin-bottom: 1.25rem;
+}
+.skill-category h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Stack chips — reusable */
+.stack-chips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.stack-chip {
+  display: inline-block;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: #eef0f4;
+  color: #1f2933;
+  white-space: nowrap;
+}
+
+/* Full-width Featured Projects section — breaks out of main column */
+.projects-full {
+  padding: 2rem;
+}
+@media (min-width: 48rem) {
+  .projects-full {
+    grid-column: 1 / -1;
+    border-top: 1px solid #ccc;
+  }
+}
+
+/* CV download button — header CTA */
+.header-cv-link {
+  margin: 0.6rem 0 0;
+}
+.cv-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #5b21b6;
+  color: #fff !important;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 120ms ease;
+}
+.cv-button:hover,
+.cv-button:focus {
+  background: #4c1d95;
+  color: #fff !important;
+  text-decoration: none;
+}
+@media print {
+  .header-cv-link,
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Project grid (index page) */
+.project-grid {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.project-card {
+  background: #fff;
+  border: 1px solid #e3e7ed;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+.project-card-link {
+  display: block;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
+}
+.project-card-cover {
+  display: block;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: #f3f4f6;
+}
+.project-card-title {
+  font-size: 1.05rem;
+  margin: 0.85rem 1rem 0.25rem;
+}
+.project-card-status {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #5b6472;
+  margin: 0 1rem 0.5rem;
+}
+.project-card-tagline {
+  font-size: 0.9rem;
+  color: #232b35;
+  margin: 0 1rem 0.6rem;
+}
+.project-card-stack {
+  margin: 0 1rem 0.6rem;
+}
+.project-card-cta {
+  display: block;
+  font-size: 0.85rem;
+  color: #2563eb;
+  margin: 0 1rem 1rem;
+}
+
+/* Job stack line in work experience */
+.job-stack {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* Status tag (also reused on project detail pages) */
+.status-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #5b6472;
+  background: #eef0f4;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+}
+
+/* Card link: kill underline on hover/focus + cover fallback */
+.project-card-link,
+.project-card-link:hover,
+.project-card-link:focus,
+.project-card-link:visited {
+  text-decoration: none;
+  color: inherit;
+}
+.project-card-link h3,
+.project-card-link p,
+.project-card-link span,
+.project-card-link ul,
+.project-card-link li {
+  text-decoration: none;
+}
+
+/* Cover fallback — shown when no image or image fails */
+.project-card-cover {
+  background: linear-gradient(135deg, #eef0f4 0%, #d8dde6 100%);
+}
+
+/* Read more — ghost button */
+.project-card-cta {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  margin: 0.5rem 1rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #2563eb;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.project-card:hover .project-card-cta {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Work experience — V2: card with left accent + restructured header */
+.work-entry {
+  border-left: 3px solid #5b21b6;
+  padding: 0.5rem 0 1rem 1.25rem;
+  margin-bottom: 2.25rem;
+  background: linear-gradient(90deg, rgba(91, 33, 182, 0.04) 0%, transparent 30%);
+}
+.work-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
+.work-entry-role {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  line-height: 1.3;
+}
+.work-entry-company {
+  font-weight: 500;
+  color: #4b5563;
+  font-size: 1rem;
+}
+.work-entry-company a {
+  color: #2563eb;
+  text-decoration: none;
+}
+.work-entry-company a:hover {
+  text-decoration: underline;
+}
+.work-entry-date {
+  font-size: 0.82rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.work-entry-summary {
+  font-style: italic;
+  color: #374151;
+  margin: 0.4rem 0 0.7rem;
+}
+.work-entry-stack {
+  margin: 0 0 0.9rem;
+}
+.work-entry-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0.7rem 0 0.4rem;
+}
+.work-entry-highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.55;
+}
+.work-entry-highlights li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #5b21b6;
+  font-weight: 700;
+}
+.work-entry-highlights li strong {
+  color: #111827;
+}
+
+/* ============================================================
+   PRINT STYLES
+   Tighten everything for 1–2 page resume PDFs. Targets browsers
+   that print Save-as-PDF without "Background graphics" enabled.
+   ============================================================ */
+@media print {
+  @page {
+    size: A4;
+    margin: 1.2cm 1.2cm;
+  }
+  html, body {
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+    /* Screen sets `display: grid; min-height: 100vh` — that fills the
+       page on print and pushes content down. Reset here. */
+    display: block !important;
+    min-height: 0 !important;
+  }
+  /* Hide the global footer year line. */
+  .page-footer {
+    display: none !important;
+  }
+  /* Header — kill hero padding so page 1 fills with content. */
+  .page-header {
+    padding: 0 !important;
+    margin: 0 0 0.4rem !important;
+    background: #fff !important;
+    border-bottom: 1px solid #000;
+  }
+  .page-header .container {
+    padding: 0 !important;
+  }
+  .header-top {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .header-info h1 {
+    font-size: 18pt;
+    margin: 0 0 0.15rem;
+  }
+  .header-label {
+    font-size: 11pt;
+    margin: 0 0 0.25rem;
+  }
+  .header-summary {
+    font-size: 10pt;
+    margin: 0.25rem 0 0;
+    line-height: 1.4;
+  }
+  .header-image {
+    display: none !important;  /* drop profile photo on print */
+  }
+  /* Two-column print layout: main 2fr, aside 1fr. Recovers vertical
+     space the previous single-column dump wasted on Skills/Education/
+     Languages/Interests. */
+  .page-content .container {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr !important;
+    gap: 1.4rem !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  main, aside {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  aside {
+    padding-left: 0.7rem !important;
+    border-left: 1px solid #999 !important;
+  }
+  /* Header portfolio link line — sits below the summary. */
+  .header-portfolio-link {
+    font-size: 9pt !important;
+    margin: 0.2rem 0 0 !important;
+    color: #000 !important;
+  }
+  .header-portfolio-link a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+  /* Unified section-heading style: small caps with a hairline rule.
+     Same treatment for both main and aside, so visual hierarchy is
+     consistent across the page. */
+  .section-heading {
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: left !important;
+    color: #000 !important;
+    margin: 0.7rem 0 0.4rem !important;
+    padding: 0 0 0.15rem !important;
+    border: none !important;
+    border-bottom: 0.5pt solid #000 !important;
+    display: block !important;
+  }
+  .section-heading::before,
+  .section-heading::after {
+    display: none !important;
+  }
+  /* aside heading stays consistent with main heading (drop left border). */
+  aside .section-heading {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+  /* Compact languages/interests as a single inline line. */
+  .languages-section .languages-line,
+  .interests-section .interests-line {
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
+    margin: 0.1rem 0 0 !important;
+  }
+  .lang-item, .interest-item {
+    white-space: nowrap;
+  }
+  .dot-sep {
+    color: #888;
+  }
+  /* Work entry — keep only the left rule, drop gradient. */
+  .work-entry {
+    background: none !important;
+    border-left: 2px solid #000 !important;
+    padding: 0.15rem 0 0.35rem 0.55rem !important;
+    margin-bottom: 0.55rem !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .work-entry-header {
+    margin-bottom: 0.15rem !important;
+  }
+  .work-entry-role {
+    font-size: 10.5pt !important;
+    line-height: 1.3 !important;
+  }
+  .work-entry-company {
+    font-size: 10pt !important;
+  }
+  .work-entry-company a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  .work-entry-date {
+    font-size: 8pt !important;
+  }
+  .work-entry-summary {
+    margin: 0.1rem 0 0.25rem !important;
+    font-size: 9.5pt !important;
+  }
+  .work-entry-stack {
+    margin: 0.15rem 0 0.3rem !important;
+  }
+  .work-entry-highlights {
+    margin: 0.2rem 0 0 !important;
+  }
+  .work-entry-highlights li {
+    margin-bottom: 0.18rem !important;
+    line-height: 1.35 !important;
+    padding-left: 0.85rem !important;
+  }
+  .work-entry-highlights li::before {
+    color: #000 !important;
+  }
+  /* Stack chips — outline-only, smaller, no pill background. */
+  .stack-chips {
+    gap: 0.2rem !important;
+  }
+  .stack-chip {
+    background: none !important;
+    color: #000 !important;
+    border: 1px solid #888 !important;
+    border-radius: 3px !important;
+    font-size: 8pt !important;
+    padding: 0.02rem 0.3rem !important;
+  }
+  /* Skills sidebar — tight, avoid splitting category across pages. */
+  .skill-category {
+    margin-bottom: 0.4rem !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .skill-category h3 {
+    font-size: 10pt !important;
+    margin: 0 0 0.15rem !important;
+  }
+  /* Education entries — tight + avoid splits. */
+  .education-entry {
+    margin-bottom: 0.45rem !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .education-entry h3 {
+    font-size: 10.5pt !important;
+    margin: 0 0 0.15rem !important;
+  }
+  .education-entry h3 a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  /* Address/contact list inline. */
+  address {
+    font-style: normal !important;
+  }
+  .inline-list {
+    gap: 0.4rem !important;
+    margin: 0 !important;
+  }
+  .inline-list a {
+    color: #000 !important;
+  }
+  /* Hide social link icons on print to save space. */
+  .link-with-icon svg {
+    display: none !important;
+  }
+  /* Generic links black. */
+  a, a:visited {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  /* Job stack legacy fallback. */
+  .job-stack {
+    font-size: 9pt !important;
+  }
+  /* Reduce list noise overall. */
+  ul {
+    margin: 0.2rem 0 !important;
+    padding-left: 1rem !important;
+  }
+  /* Avoid orphan headings. */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}
