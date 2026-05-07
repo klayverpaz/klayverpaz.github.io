@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Nutrir — Meal Verification CV — Klayver Paz</title>
-    <meta name="description" content="Computer vision for meal verification adopted by the Municipality of Fortaleza.">
+    <meta name="description" content="Computer-vision pipeline for meal verification deployed by the Municipality of Fortaleza — classifies meal components from a photo and pairs the percentages with a scale weight to produce per-meal nutritional records.">
     <meta name="author" content="Klayver Paz">
 
     <meta property="og:title" content="Nutrir — Meal Verification CV — Klayver Paz">
@@ -31,7 +31,7 @@
         <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
         <h1>Nutrir — Meal Verification CV</h1>
         <p class="status-tag">Production · Adopted</p>
-        <p class="tagline">Computer vision for meal verification adopted by the Municipality of Fortaleza.</p>
+        <p class="tagline">Computer-vision pipeline for meal verification deployed by the Municipality of Fortaleza — classifies meal components from a photo and pairs the percentages with a scale weight to produce per-meal nutritional records.</p>
       </div>
     </header>
 
@@ -40,7 +40,7 @@
 
         <section class="project-section">
           <h2>Problem</h2>
-          <p>TODO_PHASE_3</p>
+          <p>The Municipality of Fortaleza distributes meals (&#34;quentinhas&#34;) to vulnerable populations and needs an objective record that each meal contains the required food groups in the right proportions. Manual verification across thousands of meals doesn&#39;t scale, and there is no way to audit historical batches without photos and measurements.</p>
         </section>
 
         <section class="project-section">
@@ -52,7 +52,7 @@
                    onerror="this.parentElement.remove()">
             </figure>
           
-          <p>TODO_PHASE_3</p>
+          <p>Mobile photo + scale weight per meal feeds an image-segmentation model that classifies regions into food categories (rice, beans, meat, vegetables, other) and estimates each category&#39;s volume percentage. Output is structured JSON: per-food description plus `percentual_volume` plus `peso_total_refeicao` in grams — auditable, queryable, and ready for downstream dashboards.</p>
         </section>
 
         <section class="project-section">
@@ -61,15 +61,15 @@
             
               <li class="stack-chip">Python</li>
             
-              <li class="stack-chip">Computer Vision</li>
-            
               <li class="stack-chip">PyTorch</li>
             
               <li class="stack-chip">image segmentation</li>
             
+              <li class="stack-chip">OpenCV</li>
+            
           </ul>
           
-            <p>TODO_PHASE_3</p>
+            <p>Python, PyTorch, image segmentation models, OpenCV. Output is a structured JSON record per meal photo, with the meal&#39;s total weight read from a calibration scale.</p>
           
         </section>
 
@@ -77,7 +77,11 @@
           <h2>Engineering Highlights</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Pairs CV output (food-category percentages) with a calibration scale weight to produce gram-level totals, not just relative proportions.</li>
+            
+              <li>Generates structured, auditable JSON per meal — the pipeline is the source of truth for nutritional auditing, not a one-off model.</li>
+            
+              <li>Image-segmentation model trained on labeled regional Brazilian meal compositions.</li>
             
           </ul>
         </section>
@@ -86,7 +90,9 @@
           <h2>Outcomes</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Deployed and adopted by the Municipality of Fortaleza for meal-distribution programs.</li>
+            
+              <li>Replaces hand-counting with a queryable, auditable record of every meal&#39;s composition and weight.</li>
             
           </ul>
         </section>

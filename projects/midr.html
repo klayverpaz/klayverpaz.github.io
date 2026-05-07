@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>MIDR — Pavement Defect Detection — Klayver Paz</title>
-    <meta name="description" content="YOLO-ensemble defect detection adopted by the Court of Accounts of Ceará (TCE-CE).">
+    <meta name="description" content="YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Ceará (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models.">
     <meta name="author" content="Klayver Paz">
 
     <meta property="og:title" content="MIDR — Pavement Defect Detection — Klayver Paz">
@@ -30,8 +30,8 @@
       <div class="container">
         <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
         <h1>MIDR — Pavement Defect Detection</h1>
-        <p class="status-tag">Production · Patented</p>
-        <p class="tagline">YOLO-ensemble defect detection adopted by the Court of Accounts of Ceará (TCE-CE).</p>
+        <p class="status-tag">Production · Adopted</p>
+        <p class="tagline">YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Ceará (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models.</p>
       </div>
     </header>
 
@@ -40,7 +40,7 @@
 
         <section class="project-section">
           <h2>Problem</h2>
-          <p>TODO_PHASE_3</p>
+          <p>Highway concessionaires and audit bodies need objective, scalable evidence of pavement condition. Manual inspection is slow, subjective, and inconsistent across reviewers. The system needs to detect potholes (buracos), cracks (trincas), patches (remendos), and signage from drive-by smartphone or vehicle-mounted footage — kilometers at a time.</p>
         </section>
 
         <section class="project-section">
@@ -52,26 +52,28 @@
                    onerror="this.parentElement.remove()">
             </figure>
           
-          <p>TODO_PHASE_3</p>
+          <p>MIDR is an ensemble of YOLO models, each trained on a curated subset, orchestrated by a `Detector` class (`src/midr/dd.py`) that runs models in parallel, applies per-model IOU and NMS, then fuses detections via consensus, confidence, and class-priority rules. The training pipeline reads from per-version SQLite databases (`midr_18072024.db`, `midr_01052025_smartphone_hd.db`) and runs in Google Colab notebooks (`yolo_tl_2025.ipynb`) for reproducibility. End-to-end image and video processing scripts (`main_process_images.py`, `main_process_video.py`) take folders in `to_process/source` and write annotated outputs to `to_process/destination`.</p>
         </section>
 
         <section class="project-section">
           <h2>Tech Stack</h2>
           <ul class="stack-chips">
             
+              <li class="stack-chip">Python 3.11</li>
+            
               <li class="stack-chip">PyTorch</li>
             
-              <li class="stack-chip">YOLO</li>
-            
-              <li class="stack-chip">Ultralytics</li>
+              <li class="stack-chip">Ultralytics YOLO 8.3.x</li>
             
               <li class="stack-chip">OpenCV</li>
             
-              <li class="stack-chip">Python</li>
+              <li class="stack-chip">SQLite (dataset versioning)</li>
+            
+              <li class="stack-chip">Jupyter / Google Colab</li>
             
           </ul>
           
-            <p>TODO_PHASE_3</p>
+            <p>Python 3.11; PyTorch + Ultralytics YOLO (8.3.3); OpenCV; SQLite-backed dataset versioning; Conda environment spec; Jupyter / Google Colab notebook for transfer-learning training.</p>
           
         </section>
 
@@ -79,7 +81,13 @@
           <h2>Engineering Highlights</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Custom IOU + NMS fusion logic combines predictions across the YOLO ensemble; consensus + confidence-weighted voting reduce false positives a single model would emit.</li>
+            
+              <li>Per-version SQLite datasets make dataset evolution reproducible — the team retrains incrementally as new footage is collected.</li>
+            
+              <li>Drop-in image and video processing scripts so field operators can process new footage without touching model code.</li>
+            
+              <li>Class-specialized YOLO ensemble: each defect class (potholes, cracks, patches, signage) has its own training loop tuned for that class&#39;s failure modes.</li>
             
           </ul>
         </section>
@@ -88,7 +96,9 @@
           <h2>Outcomes</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Deployed as the standard inspection system used by the Court of Accounts of Ceará (TCE-CE).</li>
+            
+              <li>Replaces the visual-inspection bottleneck for kilometers of recorded highway footage with an automated first-pass defect screen.</li>
             
           </ul>
         </section>
