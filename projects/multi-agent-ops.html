@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Multi-Agent Operations Assistant — Klayver Paz</title>
-    <meta name="description" content="Conversational AI that automates complex operational workflows for an enterprise B2B SaaS platform.">
+    <meta name="description" content="LangGraph multi-agent system that cut a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) for an enterprise SaaS platform.">
     <meta name="author" content="Klayver Paz">
 
     <meta property="og:title" content="Multi-Agent Operations Assistant — Klayver Paz">
@@ -31,7 +31,7 @@
         <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
         <h1>Multi-Agent Operations Assistant</h1>
         <p class="status-tag">Production · Confidential</p>
-        <p class="tagline">Conversational AI that automates complex operational workflows for an enterprise B2B SaaS platform.</p>
+        <p class="tagline">LangGraph multi-agent system that cut a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) for an enterprise SaaS platform.</p>
       </div>
     </header>
 
@@ -40,7 +40,7 @@
 
         <section class="project-section">
           <h2>Problem</h2>
-          <p>TODO_PHASE_3</p>
+          <p>Recurring B2B operational workflows that span multiple internal systems took roughly a month to complete because each step needed human escalation, context lookup, and manual data entry. Customer-facing teams spent the bulk of their week chasing these workflows instead of doing higher-leverage work, and the lead-time gap was visible to end customers.</p>
         </section>
 
         <section class="project-section">
@@ -52,7 +52,7 @@
                    onerror="this.parentElement.remove()">
             </figure>
           
-          <p>TODO_PHASE_3</p>
+          <p>LangGraph multi-agent system: an intent classifier routes incoming requests into deterministic workflow subgraphs, and every state-changing operation is gated by a human-in-the-loop confirmation. A &#39;lateral query&#39; interrupt mechanism lets users pause an in-flight workflow, ask a side question against the same agent, and resume from the exact same node without losing state. Sessions persist via TTL-bounded Redis checkpoints. Bearer-token pass-through auth keeps user credentials out of the agent process. Backend is FastAPI + async SQLAlchemy + Postgres; frontend is React 19 + TypeScript + Tailwind streaming over SSE; deployment is on AWS (ECS + MemoryDB).</p>
         </section>
 
         <section class="project-section">
@@ -69,13 +69,17 @@
             
               <li class="stack-chip">FastAPI</li>
             
+              <li class="stack-chip">React 19</li>
+            
+              <li class="stack-chip">TypeScript</li>
+            
               <li class="stack-chip">AWS (ECS, MemoryDB)</li>
             
               <li class="stack-chip">Anthropic / OpenAI</li>
             
           </ul>
           
-            <p>TODO_PHASE_3</p>
+            <p>LangGraph + LangSmith for orchestration and tracing, Pinecone for retrieval, Redis for checkpointing. Anthropic and OpenAI models sit behind a provider abstraction so the LLM is swappable. Backend: FastAPI + async SQLAlchemy + PostgreSQL. Frontend: React 19 + TypeScript + Tailwind + Server-Sent Events.</p>
           
         </section>
 
@@ -83,7 +87,15 @@
           <h2>Engineering Highlights</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Deterministic workflow subgraphs replace ad-hoc agent reasoning for the steps that must be reliable; the LLM only owns intent classification and human-facing dialogue.</li>
+            
+              <li>Lateral-query interrupt-and-resume pattern: pauses a running workflow, runs a side conversation, then resumes from the exact same graph node without losing state.</li>
+            
+              <li>HITL confirmation gates on every state-changing operation — the agent never silently mutates a system of record.</li>
+            
+              <li>TTL-bounded Redis checkpoints make sessions resumable across reconnects and bound memory growth.</li>
+            
+              <li>Bearer-token pass-through auth: the agent forwards the caller&#39;s token without ever storing credentials.</li>
             
           </ul>
         </section>
@@ -92,7 +104,9 @@
           <h2>Outcomes</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>~99% cycle-time reduction on a recurring operational workflow (~1 month → ~40 minutes).</li>
+            
+              <li>Production system serving the client&#39;s enterprise B2B platform; specifics under NDA.</li>
             
           </ul>
         </section>

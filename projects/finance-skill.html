@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Personal Finance Skill — Klayver Paz</title>
-    <meta name="description" content="Anthropic Skill that processes Brazilian bank statements with a stage-based state machine.">
+    <meta name="description" content="Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine — parse, validate, classify merchants, and persist to a personal SQLite ledger.">
     <meta name="author" content="Klayver Paz">
 
     <meta property="og:title" content="Personal Finance Skill — Klayver Paz">
@@ -31,7 +31,7 @@
         <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
         <h1>Personal Finance Skill</h1>
         <p class="status-tag">In development · Anthropic Skill</p>
-        <p class="tagline">Anthropic Skill that processes Brazilian bank statements with a stage-based state machine.</p>
+        <p class="tagline">Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine — parse, validate, classify merchants, and persist to a personal SQLite ledger.</p>
       </div>
     </header>
 
@@ -40,7 +40,7 @@
 
         <section class="project-section">
           <h2>Problem</h2>
-          <p>TODO_PHASE_3</p>
+          <p>Brazilian bank statements arrive as PDFs with inconsistent layouts (one per bank, one per statement type — credit card faturas vs. current-account extratos). Importing these by hand into a personal-finance ledger is a Saturday-morning ritual: parse, dedupe, classify each merchant. The cost compounds month over month.</p>
         </section>
 
         <section class="project-section">
@@ -52,7 +52,7 @@
                    onerror="this.parentElement.remove()">
             </figure>
           
-          <p>TODO_PHASE_3</p>
+          <p>Anthropic Skill packaged as a stage-based state machine: parse PDF → normalize transactions → validate gates (running balance, sign conventions, duplicates) → classify each merchant against a learned table → persist to SQLite. Idempotent imports — re-running over the same PDF is a no-op, keyed on (bank, statement_id, transaction_hash). Merchant classification is self-improving: human-confirmed mappings are written back so subsequent runs need fewer interactive prompts.</p>
         </section>
 
         <section class="project-section">
@@ -71,7 +71,7 @@
             
           </ul>
           
-            <p>TODO_PHASE_3</p>
+            <p>Anthropic Skills protocol; Python; PDF parsing libraries; SQLite for the personal ledger; deterministic state machine with explicit validation gates between stages.</p>
           
         </section>
 
@@ -79,7 +79,13 @@
           <h2>Engineering Highlights</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Stage-based state machine with explicit validation gates — failed validation halts the pipeline at a known, debuggable boundary instead of silently corrupting the ledger.</li>
+            
+              <li>Idempotent imports keyed on (bank, statement_id, transaction_hash) — running the Skill twice over the same PDF is a no-op.</li>
+            
+              <li>Self-improving merchant classifier: confirmed mappings are written back to the ledger so the Skill needs fewer prompts on future runs.</li>
+            
+              <li>Fits the Anthropic Skills protocol so the same workflow is callable from any Anthropic-Skills-aware client.</li>
             
           </ul>
         </section>
@@ -88,7 +94,9 @@
           <h2>Outcomes</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Personal-use Skill in active development.</li>
+            
+              <li>Replaces a manual monthly bank-statement reconciliation with a single Skill invocation.</li>
             
           </ul>
         </section>

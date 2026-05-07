@@ -108,37 +108,56 @@
       "title": "Multi-Agent Operations Assistant",
       "codename": "Confidential client",
       "status": "Production · Confidential",
-      "tagline": "Conversational AI that automates complex operational workflows for an enterprise B2B SaaS platform.",
+      "tagline": "LangGraph multi-agent system that cut a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) for an enterprise SaaS platform.",
       "cover_image": "portfolio_media/covers/multi-agent-ops.svg",
       "stack": ["LangGraph", "LangSmith", "Pinecone", "Redis", "FastAPI",
-                "AWS (ECS, MemoryDB)", "Anthropic / OpenAI"],
+                "React 19", "TypeScript", "AWS (ECS, MemoryDB)",
+                "Anthropic / OpenAI"],
       "sections": {
-        "problem": "TODO_PHASE_3",
-        "architecture": "TODO_PHASE_3",
+        "problem": "Recurring B2B operational workflows that span multiple internal systems took roughly a month to complete because each step needed human escalation, context lookup, and manual data entry. Customer-facing teams spent the bulk of their week chasing these workflows instead of doing higher-leverage work, and the lead-time gap was visible to end customers.",
+        "architecture": "LangGraph multi-agent system: an intent classifier routes incoming requests into deterministic workflow subgraphs, and every state-changing operation is gated by a human-in-the-loop confirmation. A 'lateral query' interrupt mechanism lets users pause an in-flight workflow, ask a side question against the same agent, and resume from the exact same node without losing state. Sessions persist via TTL-bounded Redis checkpoints. Bearer-token pass-through auth keeps user credentials out of the agent process. Backend is FastAPI + async SQLAlchemy + Postgres; frontend is React 19 + TypeScript + Tailwind streaming over SSE; deployment is on AWS (ECS + MemoryDB).",
         "architecture_diagram": "portfolio_media/diagrams/multi-agent-ops.png",
-        "tech_stack": "TODO_PHASE_3",
-        "engineering_highlights": ["TODO_PHASE_3"],
-        "outcomes": ["TODO_PHASE_3"],
+        "tech_stack": "LangGraph + LangSmith for orchestration and tracing, Pinecone for retrieval, Redis for checkpointing. Anthropic and OpenAI models sit behind a provider abstraction so the LLM is swappable. Backend: FastAPI + async SQLAlchemy + PostgreSQL. Frontend: React 19 + TypeScript + Tailwind + Server-Sent Events.",
+        "engineering_highlights": [
+          "Deterministic workflow subgraphs replace ad-hoc agent reasoning for the steps that must be reliable; the LLM only owns intent classification and human-facing dialogue.",
+          "Lateral-query interrupt-and-resume pattern: pauses a running workflow, runs a side conversation, then resumes from the exact same graph node without losing state.",
+          "HITL confirmation gates on every state-changing operation — the agent never silently mutates a system of record.",
+          "TTL-bounded Redis checkpoints make sessions resumable across reconnects and bound memory growth.",
+          "Bearer-token pass-through auth: the agent forwards the caller's token without ever storing credentials."
+        ],
+        "outcomes": [
+          "~99% cycle-time reduction on a recurring operational workflow (~1 month → ~40 minutes).",
+          "Production system serving the client's enterprise B2B platform; specifics under NDA."
+        ],
         "demo": null
       }
     },
     {
       "slug": "etherpay",
-      "title": "Etherpay — Full-Stack AI SaaS",
+      "title": "Etherpay — Web SaaS",
       "codename": "Etherpay",
       "status": "Pre-launch · Pilot ready",
-      "tagline": "Vertical SaaS for martial-arts gym operations — financial management module with embedded AI assistant.",
+      "tagline": "Mobile-first web SaaS for service-business client and billing management — track customers, charges, and payment status, with an embedded AI assistant on a Supabase backend.",
       "cover_image": "portfolio_media/covers/etherpay.svg",
-      "stack": ["FastAPI", "SQLAlchemy 2.0 async", "PostgreSQL", "Alembic",
-                "LangGraph", "LangSmith", "React 19", "TypeScript",
-                "Tailwind v4", "TanStack Query v5"],
+      "stack": ["Next.js (App Router)", "TypeScript",
+                "Supabase (Postgres / Auth / Storage)", "Tailwind",
+                "Radix UI", "react-hook-form + zod", "Playwright",
+                "Vitest", "next-pwa", "Netlify"],
       "sections": {
-        "problem": "TODO_PHASE_3",
-        "architecture": "TODO_PHASE_3",
+        "problem": "Small service businesses (gyms, clinics, instructors) juggle recurring charges across many clients with whatever tool happens to be at hand — spreadsheets, paper, generic CRMs. They lose track of who paid, who is overdue, and what is due today. The workflow is read-heavy and mobile, but most CRMs are desktop-first and overbuilt for the use case.",
+        "architecture": "Next.js App Router with route groups per surface: `(app)` for the authenticated app (today, clients, charges, reports, settings) and `(auth)` for sign-up / sign-in. Supabase provides Postgres + Auth + Storage; row-level security enforces tenancy. The UI is server-component-first with client islands for interactive forms. PWA support (next-pwa) makes it installable on mobile. Migrations live under `supabase/` and are applied via `supabase db reset`. Deployed to Netlify; demo data lives behind a `refresh_demo_data(email)` Postgres function so any account can be re-seeded on demand.",
         "architecture_diagram": "portfolio_media/diagrams/etherpay.png",
-        "tech_stack": "TODO_PHASE_3",
-        "engineering_highlights": ["TODO_PHASE_3"],
-        "outcomes": ["TODO_PHASE_3"],
+        "tech_stack": "Next.js (App Router), TypeScript, Supabase (Postgres + GoTrue auth + Storage + Studio), Tailwind, Radix UI primitives, react-hook-form + zod for typed forms, Playwright for E2E and Vitest + happy-dom for unit tests. PWA via @ducanh2912/next-pwa. Deployed on Netlify.",
+        "engineering_highlights": [
+          "Strict TypeScript end-to-end with Zod-validated forms — one schema is the source of truth for client validation, server validation, and inferred types.",
+          "Repeatable demo flow: a `seed.sql` plus a `refresh_demo_data(email)` Postgres function lets any tenant be re-seeded with 15 clients and ~140 charges covering every UI state (paid, pending, overdue, today, future).",
+          "Mobile-first PWA shell with routes per surface (`/hoje`, `/clientes`, `/cobrancas`, `/relatorios`) so owners can check today's charges from the field.",
+          "All-on-free-tier infrastructure (Supabase + Netlify) — the entire pilot runs at zero recurring cost."
+        ],
+        "outcomes": [
+          "Live on Netlify (`ether-brasil.netlify.app`) with a maintained demo account that walks recruiters and pilot users through every UI state.",
+          "Pilot-ready and self-deployable from the public repository, including a step-by-step setup guide."
+        ],
         "demo": "portfolio_media/demos/etherpay.mp4"
       }
     },
@@ -147,17 +166,25 @@
       "title": "Personal Finance Skill",
       "codename": "fatura-processor",
       "status": "In development · Anthropic Skill",
-      "tagline": "Anthropic Skill that processes Brazilian bank statements with a stage-based state machine.",
+      "tagline": "Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine — parse, validate, classify merchants, and persist to a personal SQLite ledger.",
       "cover_image": "portfolio_media/covers/finance-skill.svg",
       "stack": ["Anthropic Skills protocol", "Python", "SQLite",
                 "PDF parsing", "state machine"],
       "sections": {
-        "problem": "TODO_PHASE_3",
-        "architecture": "TODO_PHASE_3",
+        "problem": "Brazilian bank statements arrive as PDFs with inconsistent layouts (one per bank, one per statement type — credit card faturas vs. current-account extratos). Importing these by hand into a personal-finance ledger is a Saturday-morning ritual: parse, dedupe, classify each merchant. The cost compounds month over month.",
+        "architecture": "Anthropic Skill packaged as a stage-based state machine: parse PDF → normalize transactions → validate gates (running balance, sign conventions, duplicates) → classify each merchant against a learned table → persist to SQLite. Idempotent imports — re-running over the same PDF is a no-op, keyed on (bank, statement_id, transaction_hash). Merchant classification is self-improving: human-confirmed mappings are written back so subsequent runs need fewer interactive prompts.",
         "architecture_diagram": "portfolio_media/diagrams/finance-skill.png",
-        "tech_stack": "TODO_PHASE_3",
-        "engineering_highlights": ["TODO_PHASE_3"],
-        "outcomes": ["TODO_PHASE_3"],
+        "tech_stack": "Anthropic Skills protocol; Python; PDF parsing libraries; SQLite for the personal ledger; deterministic state machine with explicit validation gates between stages.",
+        "engineering_highlights": [
+          "Stage-based state machine with explicit validation gates — failed validation halts the pipeline at a known, debuggable boundary instead of silently corrupting the ledger.",
+          "Idempotent imports keyed on (bank, statement_id, transaction_hash) — running the Skill twice over the same PDF is a no-op.",
+          "Self-improving merchant classifier: confirmed mappings are written back to the ledger so the Skill needs fewer prompts on future runs.",
+          "Fits the Anthropic Skills protocol so the same workflow is callable from any Anthropic-Skills-aware client."
+        ],
+        "outcomes": [
+          "Personal-use Skill in active development.",
+          "Replaces a manual monthly bank-statement reconciliation with a single Skill invocation."
+        ],
         "demo": "portfolio_media/demos/finance-skill.mp4"
       }
     },
@@ -166,17 +193,26 @@
       "title": "CRIF — Calibrated Raster Interpolation",
       "codename": "CRIF",
       "status": "Open research",
-      "tagline": "Geospatial library for unified rasterization and dasymetric mapping. Built at NYU Vida Center.",
+      "tagline": "Geospatial Python library for unified grid rasterization, dasymetric mapping, and hotspot discovery. Built at NYU VIDA Center for the UrbanMapper project.",
       "cover_image": "portfolio_media/covers/crif.svg",
-      "stack": ["Python", "GeoPandas", "Rasterio", "Jupyter widgets",
-                "Docker", "applied math"],
+      "stack": ["Python", "GeoPandas", "Rasterio", "NumPy",
+                "Jupyter widgets", "Docker", "applied math"],
       "sections": {
-        "problem": "TODO_PHASE_3",
-        "architecture": "TODO_PHASE_3",
+        "problem": "Urban analysts repeatedly hit the same wall: heterogeneous geospatial data — points, polygons, administrative units — needs to be aligned to a common raster grid for downstream Bayesian modeling and visualization. Each project ends up rewriting the same rasterization, normalization, and overlap-handling code, with subtle bugs that propagate into research findings and break reproducibility.",
+        "architecture": "CRIF (Calibrated Raster Interpolation) exposes a single `Crif` class that defines grid bounds and cell size, plus three primitives: `create_raster_from_point` (point aggregation, with optional min-max-scaled multi-band normalization), `polygon_to_raster` (polygon rasterization with `average` or `sum` overlap handling), and `dasymetric_mapping` (distributes a polygon-level statistic across a finer raster using prior weights). A `combine_rasters` helper supports hotspot discovery by summing or thresholding raster fusions across heterogeneous signals. Each primitive has a formal mathematical derivation in the README so research artifacts stay reproducible.",
         "architecture_diagram": "portfolio_media/diagrams/crif.png",
-        "tech_stack": "TODO_PHASE_3",
-        "engineering_highlights": ["TODO_PHASE_3"],
-        "outcomes": ["TODO_PHASE_3"],
+        "tech_stack": "Python, GeoPandas, Rasterio, NumPy, custom Jupyter widgets, Docker. Editable install (`pip install -e .`) plus a Dockerfile so urban-science collaborators iterate without breaking environments.",
+        "engineering_highlights": [
+          "Formal mathematical derivation for every primitive (point rasterization, polygon rasterization with overlap handling, dasymetric mapping, multi-band normalization) lives alongside the code.",
+          "`combine_rasters` enables hotspot discovery — fusing e.g. robberies + violence rasters into a composite hotspot map.",
+          "Multi-band normalization (`create_raster_from_point_min_max_scaled`) so heterogeneous priors can be combined on a common scale.",
+          "Custom Jupyter widgets for interactive raster exploration in research notebooks.",
+          "Editable install plus Dockerfile so collaborators reproduce results without environment churn."
+        ],
+        "outcomes": [
+          "Adopted internally by NYU VIDA Center's UrbanMapper project for urban Big Data analytics.",
+          "Reduces the boilerplate cost of rasterizing and normalizing new datasets from days of project setup to a few `Crif` calls."
+        ],
         "demo": null
       }
     },
@@ -184,17 +220,27 @@
       "slug": "midr",
       "title": "MIDR — Pavement Defect Detection",
       "codename": "MIDR",
-      "status": "Production · Patented",
-      "tagline": "YOLO-ensemble defect detection adopted by the Court of Accounts of Ceará (TCE-CE).",
+      "status": "Production · Adopted",
+      "tagline": "YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Ceará (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models.",
       "cover_image": "portfolio_media/covers/midr.svg",
-      "stack": ["PyTorch", "YOLO", "Ultralytics", "OpenCV", "Python"],
+      "stack": ["Python 3.11", "PyTorch", "Ultralytics YOLO 8.3.x",
+                "OpenCV", "SQLite (dataset versioning)",
+                "Jupyter / Google Colab"],
       "sections": {
-        "problem": "TODO_PHASE_3",
-        "architecture": "TODO_PHASE_3",
+        "problem": "Highway concessionaires and audit bodies need objective, scalable evidence of pavement condition. Manual inspection is slow, subjective, and inconsistent across reviewers. The system needs to detect potholes (buracos), cracks (trincas), patches (remendos), and signage from drive-by smartphone or vehicle-mounted footage — kilometers at a time.",
+        "architecture": "MIDR is an ensemble of YOLO models, each trained on a curated subset, orchestrated by a `Detector` class (`src/midr/dd.py`) that runs models in parallel, applies per-model IOU and NMS, then fuses detections via consensus, confidence, and class-priority rules. The training pipeline reads from per-version SQLite databases (`midr_18072024.db`, `midr_01052025_smartphone_hd.db`) and runs in Google Colab notebooks (`yolo_tl_2025.ipynb`) for reproducibility. End-to-end image and video processing scripts (`main_process_images.py`, `main_process_video.py`) take folders in `to_process/source` and write annotated outputs to `to_process/destination`.",
         "architecture_diagram": "portfolio_media/diagrams/midr.png",
-        "tech_stack": "TODO_PHASE_3",
-        "engineering_highlights": ["TODO_PHASE_3"],
-        "outcomes": ["TODO_PHASE_3"],
+        "tech_stack": "Python 3.11; PyTorch + Ultralytics YOLO (8.3.3); OpenCV; SQLite-backed dataset versioning; Conda environment spec; Jupyter / Google Colab notebook for transfer-learning training.",
+        "engineering_highlights": [
+          "Custom IOU + NMS fusion logic combines predictions across the YOLO ensemble; consensus + confidence-weighted voting reduce false positives a single model would emit.",
+          "Per-version SQLite datasets make dataset evolution reproducible — the team retrains incrementally as new footage is collected.",
+          "Drop-in image and video processing scripts so field operators can process new footage without touching model code.",
+          "Class-specialized YOLO ensemble: each defect class (potholes, cracks, patches, signage) has its own training loop tuned for that class's failure modes."
+        ],
+        "outcomes": [
+          "Deployed as the standard inspection system used by the Court of Accounts of Ceará (TCE-CE).",
+          "Replaces the visual-inspection bottleneck for kilometers of recorded highway footage with an automated first-pass defect screen."
+        ],
         "demo": "https://www.instagram.com/reel/C6wSjDZo3jv/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
       }
     },
@@ -203,16 +249,24 @@
       "title": "Nutrir — Meal Verification CV",
       "codename": "Nutrir",
       "status": "Production · Adopted",
-      "tagline": "Computer vision for meal verification adopted by the Municipality of Fortaleza.",
+      "tagline": "Computer-vision pipeline for meal verification deployed by the Municipality of Fortaleza — classifies meal components from a photo and pairs the percentages with a scale weight to produce per-meal nutritional records.",
       "cover_image": "portfolio_media/covers/nutrir.svg",
-      "stack": ["Python", "Computer Vision", "PyTorch", "image segmentation"],
+      "stack": ["Python", "PyTorch", "image segmentation",
+                "OpenCV"],
       "sections": {
-        "problem": "TODO_PHASE_3",
-        "architecture": "TODO_PHASE_3",
+        "problem": "The Municipality of Fortaleza distributes meals (\"quentinhas\") to vulnerable populations and needs an objective record that each meal contains the required food groups in the right proportions. Manual verification across thousands of meals doesn't scale, and there is no way to audit historical batches without photos and measurements.",
+        "architecture": "Mobile photo + scale weight per meal feeds an image-segmentation model that classifies regions into food categories (rice, beans, meat, vegetables, other) and estimates each category's volume percentage. Output is structured JSON: per-food description plus `percentual_volume` plus `peso_total_refeicao` in grams — auditable, queryable, and ready for downstream dashboards.",
         "architecture_diagram": "portfolio_media/diagrams/nutrir.png",
-        "tech_stack": "TODO_PHASE_3",
-        "engineering_highlights": ["TODO_PHASE_3"],
-        "outcomes": ["TODO_PHASE_3"],
+        "tech_stack": "Python, PyTorch, image segmentation models, OpenCV. Output is a structured JSON record per meal photo, with the meal's total weight read from a calibration scale.",
+        "engineering_highlights": [
+          "Pairs CV output (food-category percentages) with a calibration scale weight to produce gram-level totals, not just relative proportions.",
+          "Generates structured, auditable JSON per meal — the pipeline is the source of truth for nutritional auditing, not a one-off model.",
+          "Image-segmentation model trained on labeled regional Brazilian meal compositions."
+        ],
+        "outcomes": [
+          "Deployed and adopted by the Municipality of Fortaleza for meal-distribution programs.",
+          "Replaces hand-counting with a queryable, auditable record of every meal's composition and weight."
+        ],
         "demo": null
       }
     }

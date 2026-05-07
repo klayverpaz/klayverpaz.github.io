@@ -170,22 +170,22 @@ Full-stack AI Engineer specializing in production agent systems. Build end-to-en
 \section{Featured Projects}
 
 \project{Multi-Agent Operations Assistant}{Production --- Confidential (under NDA)}
-Conversational AI that automates complex operational workflows for an enterprise B2B SaaS platform. \textit{\small LangGraph, LangSmith, Pinecone, Redis.}
+LangGraph multi-agent system that cut a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes ($\sim$99\%). Intent classification, deterministic workflow subgraphs, HITL gates, lateral-query interrupt-and-resume, Redis checkpoints on AWS. \textit{\small LangGraph, LangSmith, Pinecone, Redis, FastAPI, React 19, AWS.}
 
-\project{Etherpay --- Full-Stack AI SaaS}{Pre-launch --- Pilot ready}
-Vertical SaaS for martial-arts gym operations; financial-management module with embedded AI assistant. \textit{\small FastAPI, SQLAlchemy 2.0 async, PostgreSQL, Alembic.}
+\project{Etherpay --- Web SaaS}{Pre-launch --- Pilot ready}
+Mobile-first web SaaS for service-business client and billing management --- track customers, charges, payment status. Next.js App Router on Supabase, Zod-validated forms, PWA shell, deployed on Netlify (\href{https://ether-brasil.netlify.app}{ether-brasil.netlify.app}). \textit{\small Next.js, TypeScript, Supabase, Tailwind, Radix UI, Playwright.}
 
 \project{Personal Finance Skill}{In development --- Anthropic Skill}
-Anthropic Skill that processes Brazilian bank statements with a stage-based state machine. \textit{\small Anthropic Skills protocol, Python, SQLite, PDF parsing.}
+Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine: parse $\rightarrow$ normalize $\rightarrow$ validate $\rightarrow$ classify $\rightarrow$ persist. Idempotent imports, self-improving merchant classifier. \textit{\small Anthropic Skills protocol, Python, SQLite, PDF parsing.}
 
 \project{CRIF --- Calibrated Raster Interpolation}{Open research}
-Geospatial Python library for unified rasterization and dasymetric mapping. Built at NYU Vida Center. \textit{\small Python, GeoPandas, Rasterio, Jupyter widgets.}
+Geospatial Python library for unified grid rasterization, dasymetric mapping, and hotspot discovery. Point + polygon rasterization with overlap handling and multi-band normalization, formal mathematical derivation, custom Jupyter widgets. Built at NYU VIDA Center for the UrbanMapper project. \textit{\small Python, GeoPandas, Rasterio, NumPy, Jupyter widgets, Docker.}
 
-\project{MIDR --- Pavement Defect Detection}{Production --- Patented}
-YOLO-ensemble defect-detection system adopted by the Court of Accounts of Cear\'a (TCE-CE). \textit{\small PyTorch, YOLO, Ultralytics, OpenCV.}
+\project{MIDR --- Pavement Defect Detection}{Production --- Adopted}
+YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Cear\'a (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models (potholes, cracks, patches, signage); per-version SQLite-backed dataset versioning. \textit{\small Python, PyTorch, Ultralytics YOLO, OpenCV.}
 
 \project{Nutrir --- Meal Verification CV}{Production --- Adopted}
-Computer-vision pipeline for meal verification adopted by the Municipality of Fortaleza. \textit{\small Python, computer vision, PyTorch, image segmentation.}
+Image-segmentation pipeline that classifies meal components (rice, beans, meat, vegetables) from a photo and pairs the percentages with a calibration-scale weight to produce structured per-meal nutritional records. Adopted by the Municipality of Fortaleza. \textit{\small Python, PyTorch, image segmentation, OpenCV.}
 
 % -------------------------------------------------------------
 % Skills

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>CRIF — Calibrated Raster Interpolation — Klayver Paz</title>
-    <meta name="description" content="Geospatial library for unified rasterization and dasymetric mapping. Built at NYU Vida Center.">
+    <meta name="description" content="Geospatial Python library for unified grid rasterization, dasymetric mapping, and hotspot discovery. Built at NYU VIDA Center for the UrbanMapper project.">
     <meta name="author" content="Klayver Paz">
 
     <meta property="og:title" content="CRIF — Calibrated Raster Interpolation — Klayver Paz">
@@ -31,7 +31,7 @@
         <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
         <h1>CRIF — Calibrated Raster Interpolation</h1>
         <p class="status-tag">Open research</p>
-        <p class="tagline">Geospatial library for unified rasterization and dasymetric mapping. Built at NYU Vida Center.</p>
+        <p class="tagline">Geospatial Python library for unified grid rasterization, dasymetric mapping, and hotspot discovery. Built at NYU VIDA Center for the UrbanMapper project.</p>
       </div>
     </header>
 
@@ -40,7 +40,7 @@
 
         <section class="project-section">
           <h2>Problem</h2>
-          <p>TODO_PHASE_3</p>
+          <p>Urban analysts repeatedly hit the same wall: heterogeneous geospatial data — points, polygons, administrative units — needs to be aligned to a common raster grid for downstream Bayesian modeling and visualization. Each project ends up rewriting the same rasterization, normalization, and overlap-handling code, with subtle bugs that propagate into research findings and break reproducibility.</p>
         </section>
 
         <section class="project-section">
@@ -52,7 +52,7 @@
                    onerror="this.parentElement.remove()">
             </figure>
           
-          <p>TODO_PHASE_3</p>
+          <p>CRIF (Calibrated Raster Interpolation) exposes a single `Crif` class that defines grid bounds and cell size, plus three primitives: `create_raster_from_point` (point aggregation, with optional min-max-scaled multi-band normalization), `polygon_to_raster` (polygon rasterization with `average` or `sum` overlap handling), and `dasymetric_mapping` (distributes a polygon-level statistic across a finer raster using prior weights). A `combine_rasters` helper supports hotspot discovery by summing or thresholding raster fusions across heterogeneous signals. Each primitive has a formal mathematical derivation in the README so research artifacts stay reproducible.</p>
         </section>
 
         <section class="project-section">
@@ -65,6 +65,8 @@
             
               <li class="stack-chip">Rasterio</li>
             
+              <li class="stack-chip">NumPy</li>
+            
               <li class="stack-chip">Jupyter widgets</li>
             
               <li class="stack-chip">Docker</li>
@@ -73,7 +75,7 @@
             
           </ul>
           
-            <p>TODO_PHASE_3</p>
+            <p>Python, GeoPandas, Rasterio, NumPy, custom Jupyter widgets, Docker. Editable install (`pip install -e .`) plus a Dockerfile so urban-science collaborators iterate without breaking environments.</p>
           
         </section>
 
@@ -81,7 +83,15 @@
           <h2>Engineering Highlights</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Formal mathematical derivation for every primitive (point rasterization, polygon rasterization with overlap handling, dasymetric mapping, multi-band normalization) lives alongside the code.</li>
+            
+              <li>`combine_rasters` enables hotspot discovery — fusing e.g. robberies + violence rasters into a composite hotspot map.</li>
+            
+              <li>Multi-band normalization (`create_raster_from_point_min_max_scaled`) so heterogeneous priors can be combined on a common scale.</li>
+            
+              <li>Custom Jupyter widgets for interactive raster exploration in research notebooks.</li>
+            
+              <li>Editable install plus Dockerfile so collaborators reproduce results without environment churn.</li>
             
           </ul>
         </section>
@@ -90,7 +100,9 @@
           <h2>Outcomes</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Adopted internally by NYU VIDA Center&#39;s UrbanMapper project for urban Big Data analytics.</li>
+            
+              <li>Reduces the boilerplate cost of rasterizing and normalizing new datasets from days of project setup to a few `Crif` calls.</li>
             
           </ul>
         </section>

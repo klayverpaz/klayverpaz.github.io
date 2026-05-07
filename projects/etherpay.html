@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Etherpay — Full-Stack AI SaaS — Klayver Paz</title>
-    <meta name="description" content="Vertical SaaS for martial-arts gym operations — financial management module with embedded AI assistant.">
+    <title>Etherpay — Web SaaS — Klayver Paz</title>
+    <meta name="description" content="Mobile-first web SaaS for service-business client and billing management — track customers, charges, and payment status, with an embedded AI assistant on a Supabase backend.">
     <meta name="author" content="Klayver Paz">
 
-    <meta property="og:title" content="Etherpay — Full-Stack AI SaaS — Klayver Paz">
+    <meta property="og:title" content="Etherpay — Web SaaS — Klayver Paz">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://klayverpaz.github.io//projects/etherpay.html">
     <meta property="og:image" content="https://klayverpaz.github.io//portfolio_media/covers/etherpay.svg">
@@ -29,9 +29,9 @@
     <header class="page-header project-header">
       <div class="container">
         <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
-        <h1>Etherpay — Full-Stack AI SaaS</h1>
+        <h1>Etherpay — Web SaaS</h1>
         <p class="status-tag">Pre-launch · Pilot ready</p>
-        <p class="tagline">Vertical SaaS for martial-arts gym operations — financial management module with embedded AI assistant.</p>
+        <p class="tagline">Mobile-first web SaaS for service-business client and billing management — track customers, charges, and payment status, with an embedded AI assistant on a Supabase backend.</p>
       </div>
     </header>
 
@@ -40,7 +40,7 @@
 
         <section class="project-section">
           <h2>Problem</h2>
-          <p>TODO_PHASE_3</p>
+          <p>Small service businesses (gyms, clinics, instructors) juggle recurring charges across many clients with whatever tool happens to be at hand — spreadsheets, paper, generic CRMs. They lose track of who paid, who is overdue, and what is due today. The workflow is read-heavy and mobile, but most CRMs are desktop-first and overbuilt for the use case.</p>
         </section>
 
         <section class="project-section">
@@ -48,40 +48,40 @@
           
             <figure class="architecture-figure">
               <img src="../portfolio_media/diagrams/etherpay.png"
-                   alt="Etherpay — Full-Stack AI SaaS architecture diagram"
+                   alt="Etherpay — Web SaaS architecture diagram"
                    onerror="this.parentElement.remove()">
             </figure>
           
-          <p>TODO_PHASE_3</p>
+          <p>Next.js App Router with route groups per surface: `(app)` for the authenticated app (today, clients, charges, reports, settings) and `(auth)` for sign-up / sign-in. Supabase provides Postgres + Auth + Storage; row-level security enforces tenancy. The UI is server-component-first with client islands for interactive forms. PWA support (next-pwa) makes it installable on mobile. Migrations live under `supabase/` and are applied via `supabase db reset`. Deployed to Netlify; demo data lives behind a `refresh_demo_data(email)` Postgres function so any account can be re-seeded on demand.</p>
         </section>
 
         <section class="project-section">
           <h2>Tech Stack</h2>
           <ul class="stack-chips">
             
-              <li class="stack-chip">FastAPI</li>
-            
-              <li class="stack-chip">SQLAlchemy 2.0 async</li>
-            
-              <li class="stack-chip">PostgreSQL</li>
-            
-              <li class="stack-chip">Alembic</li>
-            
-              <li class="stack-chip">LangGraph</li>
-            
-              <li class="stack-chip">LangSmith</li>
-            
-              <li class="stack-chip">React 19</li>
+              <li class="stack-chip">Next.js (App Router)</li>
             
               <li class="stack-chip">TypeScript</li>
             
-              <li class="stack-chip">Tailwind v4</li>
+              <li class="stack-chip">Supabase (Postgres / Auth / Storage)</li>
             
-              <li class="stack-chip">TanStack Query v5</li>
+              <li class="stack-chip">Tailwind</li>
+            
+              <li class="stack-chip">Radix UI</li>
+            
+              <li class="stack-chip">react-hook-form + zod</li>
+            
+              <li class="stack-chip">Playwright</li>
+            
+              <li class="stack-chip">Vitest</li>
+            
+              <li class="stack-chip">next-pwa</li>
+            
+              <li class="stack-chip">Netlify</li>
             
           </ul>
           
-            <p>TODO_PHASE_3</p>
+            <p>Next.js (App Router), TypeScript, Supabase (Postgres + GoTrue auth + Storage + Studio), Tailwind, Radix UI primitives, react-hook-form + zod for typed forms, Playwright for E2E and Vitest + happy-dom for unit tests. PWA via @ducanh2912/next-pwa. Deployed on Netlify.</p>
           
         </section>
 
@@ -89,7 +89,13 @@
           <h2>Engineering Highlights</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Strict TypeScript end-to-end with Zod-validated forms — one schema is the source of truth for client validation, server validation, and inferred types.</li>
+            
+              <li>Repeatable demo flow: a `seed.sql` plus a `refresh_demo_data(email)` Postgres function lets any tenant be re-seeded with 15 clients and ~140 charges covering every UI state (paid, pending, overdue, today, future).</li>
+            
+              <li>Mobile-first PWA shell with routes per surface (`/hoje`, `/clientes`, `/cobrancas`, `/relatorios`) so owners can check today&#39;s charges from the field.</li>
+            
+              <li>All-on-free-tier infrastructure (Supabase + Netlify) — the entire pilot runs at zero recurring cost.</li>
             
           </ul>
         </section>
@@ -98,7 +104,9 @@
           <h2>Outcomes</h2>
           <ul>
             
-              <li>TODO_PHASE_3</li>
+              <li>Live on Netlify (`ether-brasil.netlify.app`) with a maintained demo account that walks recruiters and pilot users through every UI state.</li>
+            
+              <li>Pilot-ready and self-deployable from the public repository, including a step-by-step setup guide.</li>
             
           </ul>
         </section>
