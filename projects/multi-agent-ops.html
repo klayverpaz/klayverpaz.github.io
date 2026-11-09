@@ -52,7 +52,7 @@
                    onerror="this.parentElement.remove()">
             </figure>
           
-          <p>LangGraph multi-agent system: an intent classifier routes incoming requests into deterministic workflow subgraphs, and every state-changing operation is gated by a human-in-the-loop confirmation. A &#39;lateral query&#39; interrupt mechanism lets users pause an in-flight workflow, ask a side question against the same agent, and resume from the exact same node without losing state. Sessions persist via TTL-bounded Redis checkpoints. Bearer-token pass-through auth keeps user credentials out of the agent process. Backend is FastAPI + async SQLAlchemy + Postgres; frontend is React 19 + TypeScript + Tailwind streaming over SSE; deployment is on AWS (ECS + MemoryDB).</p>
+          <p>LangGraph multi-agent system: an intent classifier routes incoming requests into deterministic workflow subgraphs, and every state-changing operation is gated by a human-in-the-loop confirmation. A &#39;lateral query&#39; interrupt mechanism lets users pause an in-flight workflow, ask a side question against the same agent, and resume from the exact same node without losing state. Sessions persist via TTL-bounded Redis checkpoints. Bearer-token pass-through auth keeps user credentials out of the agent process. Backend is FastAPI + async SQLAlchemy + Postgres; frontend is React 19 + TypeScript + Tailwind streaming over SSE; images ship to Amazon ECR and deploy to Kubernetes via Argo CD.</p>
         </section>
 
         <section class="project-section">
@@ -63,7 +63,7 @@
             
               <li class="stack-chip">LangSmith</li>
             
-              <li class="stack-chip">Pinecone</li>
+              <li class="stack-chip">pgvector</li>
             
               <li class="stack-chip">Redis</li>
             
@@ -73,13 +73,15 @@
             
               <li class="stack-chip">TypeScript</li>
             
-              <li class="stack-chip">AWS (ECS, MemoryDB)</li>
+              <li class="stack-chip">AWS (ECR, S3)</li>
+            
+              <li class="stack-chip">Kubernetes + Argo CD</li>
             
               <li class="stack-chip">Anthropic / OpenAI</li>
             
           </ul>
           
-            <p>LangGraph + LangSmith for orchestration and tracing, Pinecone for retrieval, Redis for checkpointing. Anthropic and OpenAI models sit behind a provider abstraction so the LLM is swappable. Backend: FastAPI + async SQLAlchemy + PostgreSQL. Frontend: React 19 + TypeScript + Tailwind + Server-Sent Events.</p>
+            <p>LangGraph + LangSmith for orchestration and tracing, PostgreSQL + pgvector for retrieval, Redis for checkpointing. Anthropic and OpenAI models sit behind a provider abstraction so the LLM is swappable. Backend: FastAPI + async SQLAlchemy + PostgreSQL. Frontend: React 19 + TypeScript + Tailwind + Server-Sent Events.</p>
           
         </section>
 

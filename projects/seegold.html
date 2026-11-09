@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Seegold — SaaS + WhatsApp AI Agent — Klayver Paz</title>
+    <meta name="description" content="Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), plus an LLM sales agent that drafts WhatsApp replies to leads, with deterministic guardrails deciding what ships automatically and what goes to human review.">
+    <meta name="author" content="Klayver Paz">
+
+    <meta property="og:title" content="Seegold — SaaS + WhatsApp AI Agent — Klayver Paz">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://klayverpaz.github.io//projects/seegold.html">
+    <meta property="og:image" content="https://klayverpaz.github.io//portfolio_media/covers/seegold.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/modern_normalize.css" />
+    <link rel="stylesheet" href="../css/html5bp.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/projects.css">
+
+    <meta name="theme-color" content="#fafafa">
+  </head>
+
+  <body>
+    <header class="page-header project-header">
+      <div class="container">
+        <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
+        <h1>Seegold — SaaS + WhatsApp AI Agent</h1>
+        <p class="status-tag">Production · 22 paying gyms</p>
+        <p class="tagline">Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), plus an LLM sales agent that drafts WhatsApp replies to leads, with deterministic guardrails deciding what ships automatically and what goes to human review.</p>
+      </div>
+    </header>
+
+    <main class="page-content project-detail">
+      <div class="container">
+
+        <section class="project-section">
+          <h2>Problem</h2>
+          <p>Small gyms and martial-arts schools collect monthly fees by hand: chasing students on WhatsApp, checking bank transfers, keeping a spreadsheet of who paid. Owners want billing to run itself on the channel their students already use. On the sales side, a solo founder cannot answer every inbound lead within minutes, and leads that wait hours rarely engage.</p>
+        </section>
+
+        <section class="project-section">
+          <h2>Architecture</h2>
+          
+          <p>FastAPI backend in layered vertical slices (api → use cases → domain ← infrastructure), multi-tenant by business, with async SQLAlchemy on PostgreSQL. Charges and subscriptions run through the Asaas payment gateway; WhatsApp messages go out through Twilio. React 19 + Vite frontend served from CloudFront. Production on AWS (ECS behind an ALB, RDS PostgreSQL, ECR, CloudWatch alarms), provisioned with Terraform. The sales agent runs on a 10-minute schedule: a queue of leads → Claude drafts the next message from a fixed playbook → guardrails → send, hold for review, or wait.</p>
+        </section>
+
+        <section class="project-section">
+          <h2>Tech Stack</h2>
+          <ul class="stack-chips">
+            
+              <li class="stack-chip">Python</li>
+            
+              <li class="stack-chip">FastAPI</li>
+            
+              <li class="stack-chip">SQLAlchemy 2.0 async</li>
+            
+              <li class="stack-chip">PostgreSQL</li>
+            
+              <li class="stack-chip">React 19</li>
+            
+              <li class="stack-chip">Vite</li>
+            
+              <li class="stack-chip">TanStack Query</li>
+            
+              <li class="stack-chip">Tailwind v4</li>
+            
+              <li class="stack-chip">Anthropic Claude</li>
+            
+              <li class="stack-chip">Twilio WhatsApp</li>
+            
+              <li class="stack-chip">Asaas payments</li>
+            
+              <li class="stack-chip">AWS (ECS, RDS, ALB, CloudFront, ECR, CloudWatch)</li>
+            
+              <li class="stack-chip">Terraform</li>
+            
+          </ul>
+          
+            <p>Python, FastAPI, Pydantic v2, SQLAlchemy 2.0 async, Alembic, PostgreSQL, APScheduler, pytest, ruff, mypy; React 19, Vite, TanStack Query, React Router, Tailwind v4, Playwright; Asaas, Twilio WhatsApp, Resend; Anthropic Claude for the sales agent; AWS (ECS, RDS, ALB, CloudFront, ECR, S3, CloudWatch) with Terraform.</p>
+          
+        </section>
+
+        <section class="project-section">
+          <h2>Engineering Highlights</h2>
+          <ul>
+            
+              <li>LLM agent with deterministic guardrails: only whitelisted prices and links can leave automatically; any other price, link or e-mail holds the draft for human review, and support requests always go to a human.</li>
+            
+              <li>Prompt-injection containment: the model runs with no tools and no MCP servers, and everything it needs is passed inside the prompt, so text written by a lead cannot read secrets or touch files.</li>
+            
+              <li>Send verification: every automated message is checked against the outbound record and the run stops on the first message that did not go out identical to the approved text.</li>
+            
+              <li>Funnel instrumentation: a CRM and a fixed-window scoreboard (account created within 7 days, paid within 14) make conversion comparable across weeks and playbook changes.</li>
+            
+          </ul>
+        </section>
+
+        <section class="project-section">
+          <h2>Outcomes</h2>
+          <ul>
+            
+              <li>Live in production with 22 paying gyms, built and operated end to end by one engineer.</li>
+            
+              <li>Lead first response went from hours to minutes, the variable the funnel data showed mattered most for engagement.</li>
+            
+          </ul>
+        </section>
+
+        
+
+      </div>
+    </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <p>© 2026 Klayver Paz. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -6,7 +6,7 @@
 
     <!-- Site Info -->
     <title>Klayver Paz - Portfolio</title>
-    <meta name="description" content="Klayver Paz - Full-stack AI Engineer specializing in production agent systems. Build end-to-end AI products — LangGraph multi-agent orchestration, FastAPI backends, React frontends. Research roots in computer vision and geospatial ML at NYU.">
+    <meta name="description" content="Klayver Paz - AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Founder and sole engineer of Seegold, a SaaS live with 22 paying gyms. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.">
     <meta name="author" content="Klayver Paz">
 
     <!-- Open Graph Tags: The title of the page for social media sharing. It can match the title tag or be more descriptive. -->
@@ -67,7 +67,7 @@
           
           <div class="header-info">
             <h1>Klayver Paz</h1>
-            <h2 class="header-label">AI Engineer</h2>
+            <h2 class="header-label">AI Engineer · LLM Agents &amp; RAG</h2>
             
               <address>
                 <ul class="inline-list flex-responsive">
@@ -78,10 +78,10 @@
                   
                   
                     <li>
-                      <a href="tel:++55 85 996929159 / +1 (917) 3108558">+55 85 99692-9159 / +1 (917) 310-8558</a>
+                      <a href="tel:++55 85 996929159">+55 85 99692-9159</a>
                     </li>
                   
-                  <li>Fortaleza, Brazil 🇧🇷 &amp; New York, USA 🇺🇸</li>
+                  <li>Fortaleza, Brazil 🇧🇷 · Remote</li>
                 </ul>
               </address>
             
@@ -130,7 +130,7 @@
                 
               </ul>
             
-            <p class="header-summary">Full-stack AI Engineer specializing in production agent systems. Build end-to-end AI products — LangGraph multi-agent orchestration, FastAPI backends, React frontends. Research roots in computer vision and geospatial ML at NYU.</p>
+            <p class="header-summary">AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Founder and sole engineer of Seegold, a SaaS live with 22 paying gyms. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.</p>
             <p class="header-cv-link"><a class="cv-button" href="Klayver_Paz_Resume.pdf" download>Download CV (PDF)</a></p>
           </div>
         </div>
@@ -156,22 +156,24 @@
                       <span class="work-entry-date">January 2026 — Present</span>
                     
                   </div>
-                  <p class="work-entry-summary">Building production AI products for B2B platforms. Independent practice.</p>
+                  <p class="work-entry-summary">Production LLM agents and RAG systems for B2B platforms. Independent practice.</p>
                   
                     <ul class="stack-chips work-entry-stack">
-                      <li class="stack-chip">LangGraph</li><li class="stack-chip">LangSmith</li><li class="stack-chip">Pinecone</li><li class="stack-chip">Redis</li><li class="stack-chip">FastAPI</li><li class="stack-chip">React 19</li><li class="stack-chip">TypeScript</li><li class="stack-chip">Tailwind</li><li class="stack-chip">AWS</li><li class="stack-chip">PostgreSQL</li><li class="stack-chip">Anthropic / OpenAI</li>
+                      <li class="stack-chip">LangGraph</li><li class="stack-chip">LangChain</li><li class="stack-chip">LangSmith</li><li class="stack-chip">Anthropic Claude</li><li class="stack-chip">OpenAI</li><li class="stack-chip">RAG</li><li class="stack-chip">pgvector</li><li class="stack-chip">PostgreSQL</li><li class="stack-chip">Redis</li><li class="stack-chip">FastAPI</li><li class="stack-chip">React 19</li><li class="stack-chip">TypeScript</li><li class="stack-chip">AWS (ECR, S3)</li><li class="stack-chip">Kubernetes</li><li class="stack-chip">Argo CD</li>
                     </ul>
                   
                   
                     <ul class="work-entry-highlights">
                       
-                        <li><strong>Cycle-time reduction.</strong> Reduced a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) by building a production multi-agent system on LangGraph: intent classification, deterministic workflow subgraphs, human-in-the-loop confirmation gates for state-changing operations.</li>
+                        <li><strong>Multi-agent system (LangGraph).</strong> Reduced a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) with a production multi-agent system on LangGraph: agents only where the work is open-ended (a ReAct planner with 14 tools), deterministic workflow subgraphs everywhere else, and human-in-the-loop approval gates before any state-changing operation.</li>
                       
-                        <li><strong>Lateral query pattern.</strong> Designed an interrupt-and-resume mechanism enabling users to pause in-flight workflows, ask side questions, then resume from the exact same node.</li>
+                        <li><strong>RAG pipeline.</strong> Designed three-tier RAG retrieval over the client&#39;s own history (current project → same company → general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context.</li>
                       
-                        <li><strong>Session persistence.</strong> Implemented Redis checkpoints (TTL-bounded) and bearer-token pass-through auth where the agent never stores credentials. Deployed on AWS (ECS, MemoryDB).</li>
+                        <li><strong>LLM evaluation.</strong> Built an accuracy harness for LLM pipelines: real cases as fixtures, hit-rate / leakage / miss metrics, repeated runs per case compared against a blessed baseline per model and commit, plus LangSmith tracing and golden conversation tests on the production model.</li>
                       
-                        <li><strong>Full-stack delivery.</strong> Shipped FastAPI + async SQLAlchemy + Postgres backend with LangGraph AI module (Anthropic / OpenAI provider abstraction, SSE streaming) + React 19 + TypeScript + Tailwind frontend.</li>
+                        <li><strong>Agent safety &amp; human-in-the-loop.</strong> Interrupt-and-resume pattern lets users pause an in-flight workflow, ask a side question, and resume from the same node, backed by TTL-bounded Redis checkpoints. Bearer-token pass-through: the agent never stores credentials and every tool acts with the caller&#39;s own permissions.</li>
+                      
+                        <li><strong>Shipped on AWS.</strong> FastAPI + async SQLAlchemy + PostgreSQL services (Anthropic / OpenAI provider abstraction, SSE streaming) and a React 19 + TypeScript frontend, containerized to Amazon ECR via Bitbucket Pipelines and deployed GitOps-style to Kubernetes with Argo CD (dev / prod), using S3 and TLS-secured Redis.</li>
                       
                     </ul>
                   
@@ -220,20 +222,51 @@
                       <span class="work-entry-date">November 2024 — August 2025</span>
                     
                   </div>
-                  <p class="work-entry-summary">Built NLP and anomaly detection systems for industrial datasets.</p>
+                  <p class="work-entry-summary">Built LLM-powered NLP and anomaly detection systems for industrial datasets.</p>
                   
                     <ul class="stack-chips work-entry-stack">
-                      <li class="stack-chip">Python</li><li class="stack-chip">Ollama</li><li class="stack-chip">GPT</li><li class="stack-chip">RAG</li><li class="stack-chip">Azure</li><li class="stack-chip">.NET</li>
+                      <li class="stack-chip">Python</li><li class="stack-chip">LangChain</li><li class="stack-chip">LangGraph</li><li class="stack-chip">LangSmith</li><li class="stack-chip">OpenAI</li><li class="stack-chip">RAG</li><li class="stack-chip">Azure</li><li class="stack-chip">.NET</li>
                     </ul>
                   
                   
                     <ul class="work-entry-highlights">
                       
-                        <li><strong>NLP pipelines.</strong> Shipped sentiment analysis and entity recognition using RAG patterns over Ollama and GPT models — early production work with LLMs before the agent stack matured.</li>
+                        <li><strong>LLM / NLP pipelines.</strong> Shipped sentiment analysis, text classification and entity recognition over large-scale industrial text, built with LangChain and LangGraph on OpenAI GPT models, using RAG for domain context and LangSmith for tracing and evaluation.</li>
                       
                         <li><strong>Anomaly detection.</strong> Built defect-forecasting models for industrial time-series data.</li>
                       
                         <li><strong>APIs &amp; microservices.</strong> Delivered Python + .NET services on Azure.</li>
+                      
+                    </ul>
+                  
+                </section>
+              
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      Researcher (Computer Vision)
+                      
+                        <span class="work-entry-company">· <a href="https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura">Federal University of Ceará (UFC)</a></span>
+                      
+                    </h3>
+                    
+                      <span class="work-entry-date">September 2023 — August 2025</span>
+                    
+                  </div>
+                  <p class="work-entry-summary">Computer vision research applied to highway infrastructure management, within Ceará&#39;s Chief Scientist Program (FUNCAP).</p>
+                  
+                    <ul class="stack-chips work-entry-stack">
+                      <li class="stack-chip">PyTorch</li><li class="stack-chip">YOLO</li><li class="stack-chip">Ultralytics</li><li class="stack-chip">OpenCV</li><li class="stack-chip">Python</li>
+                    </ul>
+                  
+                  
+                    <ul class="work-entry-highlights">
+                      
+                        <li><strong>MIDR ensemble.</strong> Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Ceará (TCE-CE).</li>
+                      
+                        <li><strong>Data pipelines.</strong> Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets.</li>
+                      
+                        <li><strong>Iterative refinement.</strong> Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations.</li>
                       
                     </ul>
                   
@@ -270,37 +303,6 @@
                   
                 </section>
               
-                <section class="work-entry">
-                  <div class="work-entry-header">
-                    <h3 class="work-entry-role">
-                      Researcher
-                      
-                        <span class="work-entry-company">· <a href="https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura">Chief Scientist Program (FUNCAP, Ceará State Government)</a></span>
-                      
-                    </h3>
-                    
-                      <span class="work-entry-date">January 2020 — September 2025</span>
-                    
-                  </div>
-                  <p class="work-entry-summary">Computer vision research applied to highway infrastructure management.</p>
-                  
-                    <ul class="stack-chips work-entry-stack">
-                      <li class="stack-chip">PyTorch</li><li class="stack-chip">YOLO</li><li class="stack-chip">Ultralytics</li><li class="stack-chip">OpenCV</li><li class="stack-chip">Python</li>
-                    </ul>
-                  
-                  
-                    <ul class="work-entry-highlights">
-                      
-                        <li><strong>MIDR ensemble.</strong> Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Ceará (TCE-CE).</li>
-                      
-                        <li><strong>Data pipelines.</strong> Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets.</li>
-                      
-                        <li><strong>Iterative refinement.</strong> Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations.</li>
-                      
-                    </ul>
-                  
-                </section>
-              
             </section>
           
 
@@ -325,19 +327,27 @@
                     
                       <li class="stack-chip">LangChain</li>
                     
-                      <li class="stack-chip">Anthropic Skills protocol</li>
-                    
                       <li class="stack-chip">Multi-agent orchestration</li>
-                    
-                      <li class="stack-chip">HITL workflows</li>
                     
                       <li class="stack-chip">RAG</li>
                     
-                      <li class="stack-chip">Pinecone</li>
+                      <li class="stack-chip">pgvector</li>
+                    
+                      <li class="stack-chip">HITL workflows</li>
+                    
+                      <li class="stack-chip">LLM evaluation</li>
+                    
+                      <li class="stack-chip">Prompt-injection guardrails</li>
                     
                       <li class="stack-chip">OpenAI / Anthropic SDKs</li>
                     
+                      <li class="stack-chip">Amazon Bedrock (Converse API, Knowledge Bases)</li>
+                    
                       <li class="stack-chip">MCP</li>
+                    
+                      <li class="stack-chip">Anthropic Skills protocol</li>
+                    
+                      <li class="stack-chip">Claude Code (agentic coding)</li>
                     
                   </ul>
                 </section>
@@ -412,7 +422,11 @@
                     
                       <li class="stack-chip">type-checked Python</li>
                     
-                      <li class="stack-chip">AWS (ECS, MemoryDB)</li>
+                      <li class="stack-chip">AWS (ECS, RDS, ECR, S3, CloudFront, CloudWatch)</li>
+                    
+                      <li class="stack-chip">Terraform</li>
+                    
+                      <li class="stack-chip">Kubernetes + Argo CD</li>
                     
                   </ul>
                 </section>
@@ -566,7 +580,7 @@
                       
                         <li class="stack-chip">LangSmith</li>
                       
-                        <li class="stack-chip">Pinecone</li>
+                        <li class="stack-chip">pgvector</li>
                       
                         <li class="stack-chip">Redis</li>
                       
@@ -577,25 +591,25 @@
               
                 <li class="project-card">
                   <a class="project-card-link"
-                     href="projects/etherpay.html">
+                     href="projects/seegold.html">
                     
                       <img class="project-card-cover"
-                           src="portfolio_media/covers/etherpay.svg"
+                           src="portfolio_media/covers/seegold.svg"
                            alt=""
                            onerror="this.remove()">
                     
-                    <h3 class="project-card-title">Etherpay — Web SaaS</h3>
-                    <p class="project-card-status">Pre-launch · Pilot ready</p>
-                    <p class="project-card-tagline">Mobile-first web SaaS for service-business client and billing management — track customers, charges, and payment status, with an embedded AI assistant on a Supabase backend.</p>
+                    <h3 class="project-card-title">Seegold — SaaS + WhatsApp AI Agent</h3>
+                    <p class="project-card-status">Production · 22 paying gyms</p>
+                    <p class="project-card-tagline">Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), plus an LLM sales agent that drafts WhatsApp replies to leads, with deterministic guardrails deciding what ships automatically and what goes to human review.</p>
                     <ul class="stack-chips project-card-stack">
                       
-                        <li class="stack-chip">Next.js (App Router)</li>
+                        <li class="stack-chip">Python</li>
                       
-                        <li class="stack-chip">TypeScript</li>
+                        <li class="stack-chip">FastAPI</li>
                       
-                        <li class="stack-chip">Supabase (Postgres / Auth / Storage)</li>
+                        <li class="stack-chip">SQLAlchemy 2.0 async</li>
                       
-                        <li class="stack-chip">Tailwind</li>
+                        <li class="stack-chip">PostgreSQL</li>
                       
                     </ul>
                     <span class="project-card-cta">Read more →</span>

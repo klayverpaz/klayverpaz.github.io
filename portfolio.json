@@ -1,14 +1,14 @@
 {
   "name": "Klayver Paz",
-  "label": "AI Engineer",
-  "headline": "AI Engineer",
+  "label": "AI Engineer · LLM Agents & RAG",
+  "headline": "AI Engineer · LLM Agents & RAG",
   "image_path": "portfolio_media/profile.jpg",
   "contact": {
     "email": "klayverpaz@gmail.com",
-    "phone": "+55 85 99692-9159 / +1 (917) 310-8558",
-    "location": "Fortaleza, Brazil 🇧🇷 & New York, USA 🇺🇸"
+    "phone": "+55 85 99692-9159",
+    "location": "Fortaleza, Brazil 🇧🇷 · Remote"
   },
-  "summary": "Full-stack AI Engineer specializing in production agent systems. Build end-to-end AI products — LangGraph multi-agent orchestration, FastAPI backends, React frontends. Research roots in computer vision and geospatial ML at NYU.",
+  "summary": "AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Founder and sole engineer of Seegold, a SaaS live with 22 paying gyms. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.",
   "base_url": "https://klayverpaz.github.io/",
   "social_links": [
     {
@@ -29,17 +29,45 @@
       "url": "",
       "start_date": "January 2026",
       "end_date": "Present",
-      "summary": "Building production AI products for B2B platforms. Independent practice.",
+      "summary": "Production LLM agents and RAG systems for B2B platforms. Independent practice.",
       "highlights": [
-        {"lead": "Cycle-time reduction.", "body": "Reduced a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) by building a production multi-agent system on LangGraph: intent classification, deterministic workflow subgraphs, human-in-the-loop confirmation gates for state-changing operations."},
-        {"lead": "Lateral query pattern.", "body": "Designed an interrupt-and-resume mechanism enabling users to pause in-flight workflows, ask side questions, then resume from the exact same node."},
-        {"lead": "Session persistence.", "body": "Implemented Redis checkpoints (TTL-bounded) and bearer-token pass-through auth where the agent never stores credentials. Deployed on AWS (ECS, MemoryDB)."},
-        {"lead": "Full-stack delivery.", "body": "Shipped FastAPI + async SQLAlchemy + Postgres backend with LangGraph AI module (Anthropic / OpenAI provider abstraction, SSE streaming) + React 19 + TypeScript + Tailwind frontend."}
+        {
+          "lead": "Multi-agent system (LangGraph).",
+          "body": "Reduced a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) with a production multi-agent system on LangGraph: agents only where the work is open-ended (a ReAct planner with 14 tools), deterministic workflow subgraphs everywhere else, and human-in-the-loop approval gates before any state-changing operation."
+        },
+        {
+          "lead": "RAG pipeline.",
+          "body": "Designed three-tier RAG retrieval over the client's own history (current project → same company → general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context."
+        },
+        {
+          "lead": "LLM evaluation.",
+          "body": "Built an accuracy harness for LLM pipelines: real cases as fixtures, hit-rate / leakage / miss metrics, repeated runs per case compared against a blessed baseline per model and commit, plus LangSmith tracing and golden conversation tests on the production model."
+        },
+        {
+          "lead": "Agent safety & human-in-the-loop.",
+          "body": "Interrupt-and-resume pattern lets users pause an in-flight workflow, ask a side question, and resume from the same node, backed by TTL-bounded Redis checkpoints. Bearer-token pass-through: the agent never stores credentials and every tool acts with the caller's own permissions."
+        },
+        {
+          "lead": "Shipped on AWS.",
+          "body": "FastAPI + async SQLAlchemy + PostgreSQL services (Anthropic / OpenAI provider abstraction, SSE streaming) and a React 19 + TypeScript frontend, containerized to Amazon ECR via Bitbucket Pipelines and deployed GitOps-style to Kubernetes with Argo CD (dev / prod), using S3 and TLS-secured Redis."
+        }
       ],
       "stack": [
-        "LangGraph", "LangSmith", "Pinecone", "Redis", "FastAPI",
-        "React 19", "TypeScript", "Tailwind", "AWS", "PostgreSQL",
-        "Anthropic / OpenAI"
+        "LangGraph",
+        "LangChain",
+        "LangSmith",
+        "Anthropic Claude",
+        "OpenAI",
+        "RAG",
+        "pgvector",
+        "PostgreSQL",
+        "Redis",
+        "FastAPI",
+        "React 19",
+        "TypeScript",
+        "AWS (ECR, S3)",
+        "Kubernetes",
+        "Argo CD"
       ]
     },
     {
@@ -50,13 +78,27 @@
       "end_date": "December 2025",
       "summary": "Contributed to the UrbanMapper project — an analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.",
       "highlights": [
-        {"lead": "CRIF library.", "body": "Built CRIF (Calibrated Raster Interpolation), a Python library for unified geospatial rasterization and dasymetric mapping — formal mathematical derivation, custom Jupyter widgets, Docker packaging."},
-        {"lead": "Bayesian + geospatial.", "body": "Applied Bayesian modeling and geospatial methods (GeoPandas, Rasterio) to urban Big Data: point-to-raster aggregation, polygon rasterization with overlap handling, hotspot discovery via raster fusion."},
-        {"lead": "Cross-discipline work.", "body": "Worked with urban science, data visualization, and applied math teams to enhance data-driven decision-making in research contexts."}
+        {
+          "lead": "CRIF library.",
+          "body": "Built CRIF (Calibrated Raster Interpolation), a Python library for unified geospatial rasterization and dasymetric mapping — formal mathematical derivation, custom Jupyter widgets, Docker packaging."
+        },
+        {
+          "lead": "Bayesian + geospatial.",
+          "body": "Applied Bayesian modeling and geospatial methods (GeoPandas, Rasterio) to urban Big Data: point-to-raster aggregation, polygon rasterization with overlap handling, hotspot discovery via raster fusion."
+        },
+        {
+          "lead": "Cross-discipline work.",
+          "body": "Worked with urban science, data visualization, and applied math teams to enhance data-driven decision-making in research contexts."
+        }
       ],
       "stack": [
-        "Python", "GeoPandas", "Rasterio", "PyTorch",
-        "Bayesian modeling", "Jupyter widgets", "Docker"
+        "Python",
+        "GeoPandas",
+        "Rasterio",
+        "PyTorch",
+        "Bayesian modeling",
+        "Jupyter widgets",
+        "Docker"
       ]
     },
     {
@@ -65,13 +107,60 @@
       "url": "https://www.atlantico.com.br/",
       "start_date": "November 2024",
       "end_date": "August 2025",
-      "summary": "Built NLP and anomaly detection systems for industrial datasets.",
+      "summary": "Built LLM-powered NLP and anomaly detection systems for industrial datasets.",
       "highlights": [
-        {"lead": "NLP pipelines.", "body": "Shipped sentiment analysis and entity recognition using RAG patterns over Ollama and GPT models — early production work with LLMs before the agent stack matured."},
-        {"lead": "Anomaly detection.", "body": "Built defect-forecasting models for industrial time-series data."},
-        {"lead": "APIs & microservices.", "body": "Delivered Python + .NET services on Azure."}
+        {
+          "lead": "LLM / NLP pipelines.",
+          "body": "Shipped sentiment analysis, text classification and entity recognition over large-scale industrial text, built with LangChain and LangGraph on OpenAI GPT models, using RAG for domain context and LangSmith for tracing and evaluation."
+        },
+        {
+          "lead": "Anomaly detection.",
+          "body": "Built defect-forecasting models for industrial time-series data."
+        },
+        {
+          "lead": "APIs & microservices.",
+          "body": "Delivered Python + .NET services on Azure."
+        }
       ],
-      "stack": ["Python", "Ollama", "GPT", "RAG", "Azure", ".NET"]
+      "stack": [
+        "Python",
+        "LangChain",
+        "LangGraph",
+        "LangSmith",
+        "OpenAI",
+        "RAG",
+        "Azure",
+        ".NET"
+      ]
+    },
+    {
+      "company": "Federal University of Ceará (UFC)",
+      "position": "Researcher (Computer Vision)",
+      "url": "https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura",
+      "start_date": "September 2023",
+      "end_date": "August 2025",
+      "summary": "Computer vision research applied to highway infrastructure management, within Ceará's Chief Scientist Program (FUNCAP).",
+      "highlights": [
+        {
+          "lead": "MIDR ensemble.",
+          "body": "Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Ceará (TCE-CE)."
+        },
+        {
+          "lead": "Data pipelines.",
+          "body": "Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets."
+        },
+        {
+          "lead": "Iterative refinement.",
+          "body": "Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations."
+        }
+      ],
+      "stack": [
+        "PyTorch",
+        "YOLO",
+        "Ultralytics",
+        "OpenCV",
+        "Python"
+      ]
     },
     {
       "company": "Agilean",
@@ -81,25 +170,26 @@
       "end_date": "November 2024",
       "summary": "Built predictive analytics and data integration systems for the construction and industrial sectors.",
       "highlights": [
-        {"lead": "Predictive ML.", "body": "Forecasted construction-site waste and schedule delay using ML and data-mining over operational data."},
-        {"lead": "ETL pipelines.", "body": "Designed and deployed integrations on Azure Data Factory."},
-        {"lead": "APIs & microservices.", "body": "Built C# ASP.NET MVC and Python services on Azure Cloud."}
+        {
+          "lead": "Predictive ML.",
+          "body": "Forecasted construction-site waste and schedule delay using ML and data-mining over operational data."
+        },
+        {
+          "lead": "ETL pipelines.",
+          "body": "Designed and deployed integrations on Azure Data Factory."
+        },
+        {
+          "lead": "APIs & microservices.",
+          "body": "Built C# ASP.NET MVC and Python services on Azure Cloud."
+        }
       ],
-      "stack": ["Python", "ML", "Azure", "ETL", "C# / .NET"]
-    },
-    {
-      "company": "Chief Scientist Program (FUNCAP, Ceará State Government)",
-      "position": "Researcher",
-      "url": "https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura",
-      "start_date": "January 2020",
-      "end_date": "September 2025",
-      "summary": "Computer vision research applied to highway infrastructure management.",
-      "highlights": [
-        {"lead": "MIDR ensemble.", "body": "Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Ceará (TCE-CE)."},
-        {"lead": "Data pipelines.", "body": "Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets."},
-        {"lead": "Iterative refinement.", "body": "Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations."}
-      ],
-      "stack": ["PyTorch", "YOLO", "Ultralytics", "OpenCV", "Python"]
+      "stack": [
+        "Python",
+        "ML",
+        "Azure",
+        "ETL",
+        "C# / .NET"
+      ]
     }
   ],
   "projects": [
@@ -110,14 +200,23 @@
       "status": "Production · Confidential",
       "tagline": "LangGraph multi-agent system that cut a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) for an enterprise SaaS platform.",
       "cover_image": "portfolio_media/covers/multi-agent-ops.svg",
-      "stack": ["LangGraph", "LangSmith", "Pinecone", "Redis", "FastAPI",
-                "React 19", "TypeScript", "AWS (ECS, MemoryDB)",
-                "Anthropic / OpenAI"],
+      "stack": [
+        "LangGraph",
+        "LangSmith",
+        "pgvector",
+        "Redis",
+        "FastAPI",
+        "React 19",
+        "TypeScript",
+        "AWS (ECR, S3)",
+        "Kubernetes + Argo CD",
+        "Anthropic / OpenAI"
+      ],
       "sections": {
         "problem": "Recurring B2B operational workflows that span multiple internal systems took roughly a month to complete because each step needed human escalation, context lookup, and manual data entry. Customer-facing teams spent the bulk of their week chasing these workflows instead of doing higher-leverage work, and the lead-time gap was visible to end customers.",
-        "architecture": "LangGraph multi-agent system: an intent classifier routes incoming requests into deterministic workflow subgraphs, and every state-changing operation is gated by a human-in-the-loop confirmation. A 'lateral query' interrupt mechanism lets users pause an in-flight workflow, ask a side question against the same agent, and resume from the exact same node without losing state. Sessions persist via TTL-bounded Redis checkpoints. Bearer-token pass-through auth keeps user credentials out of the agent process. Backend is FastAPI + async SQLAlchemy + Postgres; frontend is React 19 + TypeScript + Tailwind streaming over SSE; deployment is on AWS (ECS + MemoryDB).",
+        "architecture": "LangGraph multi-agent system: an intent classifier routes incoming requests into deterministic workflow subgraphs, and every state-changing operation is gated by a human-in-the-loop confirmation. A 'lateral query' interrupt mechanism lets users pause an in-flight workflow, ask a side question against the same agent, and resume from the exact same node without losing state. Sessions persist via TTL-bounded Redis checkpoints. Bearer-token pass-through auth keeps user credentials out of the agent process. Backend is FastAPI + async SQLAlchemy + Postgres; frontend is React 19 + TypeScript + Tailwind streaming over SSE; images ship to Amazon ECR and deploy to Kubernetes via Argo CD.",
         "architecture_diagram": "portfolio_media/diagrams/multi-agent-ops.png",
-        "tech_stack": "LangGraph + LangSmith for orchestration and tracing, Pinecone for retrieval, Redis for checkpointing. Anthropic and OpenAI models sit behind a provider abstraction so the LLM is swappable. Backend: FastAPI + async SQLAlchemy + PostgreSQL. Frontend: React 19 + TypeScript + Tailwind + Server-Sent Events.",
+        "tech_stack": "LangGraph + LangSmith for orchestration and tracing, PostgreSQL + pgvector for retrieval, Redis for checkpointing. Anthropic and OpenAI models sit behind a provider abstraction so the LLM is swappable. Backend: FastAPI + async SQLAlchemy + PostgreSQL. Frontend: React 19 + TypeScript + Tailwind + Server-Sent Events.",
         "engineering_highlights": [
           "Deterministic workflow subgraphs replace ad-hoc agent reasoning for the steps that must be reliable; the LLM only owns intent classification and human-facing dialogue.",
           "Lateral-query interrupt-and-resume pattern: pauses a running workflow, runs a side conversation, then resumes from the exact same graph node without losing state.",
@@ -133,32 +232,41 @@
       }
     },
     {
-      "slug": "etherpay",
-      "title": "Etherpay — Web SaaS",
-      "codename": "Etherpay",
-      "status": "Pre-launch · Pilot ready",
-      "tagline": "Mobile-first web SaaS for service-business client and billing management — track customers, charges, and payment status, with an embedded AI assistant on a Supabase backend.",
-      "cover_image": "portfolio_media/covers/etherpay.svg",
-      "stack": ["Next.js (App Router)", "TypeScript",
-                "Supabase (Postgres / Auth / Storage)", "Tailwind",
-                "Radix UI", "react-hook-form + zod", "Playwright",
-                "Vitest", "next-pwa", "Netlify"],
+      "slug": "seegold",
+      "title": "Seegold — SaaS + WhatsApp AI Agent",
+      "codename": "Seegold",
+      "status": "Production · 22 paying gyms",
+      "tagline": "Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), plus an LLM sales agent that drafts WhatsApp replies to leads, with deterministic guardrails deciding what ships automatically and what goes to human review.",
+      "cover_image": "portfolio_media/covers/seegold.svg",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "SQLAlchemy 2.0 async",
+        "PostgreSQL",
+        "React 19",
+        "Vite",
+        "TanStack Query",
+        "Tailwind v4",
+        "Anthropic Claude",
+        "Twilio WhatsApp",
+        "Asaas payments",
+        "AWS (ECS, RDS, ALB, CloudFront, ECR, CloudWatch)",
+        "Terraform"
+      ],
       "sections": {
-        "problem": "Small service businesses (gyms, clinics, instructors) juggle recurring charges across many clients with whatever tool happens to be at hand — spreadsheets, paper, generic CRMs. They lose track of who paid, who is overdue, and what is due today. The workflow is read-heavy and mobile, but most CRMs are desktop-first and overbuilt for the use case.",
-        "architecture": "Next.js App Router with route groups per surface: `(app)` for the authenticated app (today, clients, charges, reports, settings) and `(auth)` for sign-up / sign-in. Supabase provides Postgres + Auth + Storage; row-level security enforces tenancy. The UI is server-component-first with client islands for interactive forms. PWA support (next-pwa) makes it installable on mobile. Migrations live under `supabase/` and are applied via `supabase db reset`. Deployed to Netlify; demo data lives behind a `refresh_demo_data(email)` Postgres function so any account can be re-seeded on demand.",
-        "architecture_diagram": "portfolio_media/diagrams/etherpay.png",
-        "tech_stack": "Next.js (App Router), TypeScript, Supabase (Postgres + GoTrue auth + Storage + Studio), Tailwind, Radix UI primitives, react-hook-form + zod for typed forms, Playwright for E2E and Vitest + happy-dom for unit tests. PWA via @ducanh2912/next-pwa. Deployed on Netlify.",
+        "problem": "Small gyms and martial-arts schools collect monthly fees by hand: chasing students on WhatsApp, checking bank transfers, keeping a spreadsheet of who paid. Owners want billing to run itself on the channel their students already use. On the sales side, a solo founder cannot answer every inbound lead within minutes, and leads that wait hours rarely engage.",
+        "architecture": "FastAPI backend in layered vertical slices (api → use cases → domain ← infrastructure), multi-tenant by business, with async SQLAlchemy on PostgreSQL. Charges and subscriptions run through the Asaas payment gateway; WhatsApp messages go out through Twilio. React 19 + Vite frontend served from CloudFront. Production on AWS (ECS behind an ALB, RDS PostgreSQL, ECR, CloudWatch alarms), provisioned with Terraform. The sales agent runs on a 10-minute schedule: a queue of leads → Claude drafts the next message from a fixed playbook → guardrails → send, hold for review, or wait.",
+        "tech_stack": "Python, FastAPI, Pydantic v2, SQLAlchemy 2.0 async, Alembic, PostgreSQL, APScheduler, pytest, ruff, mypy; React 19, Vite, TanStack Query, React Router, Tailwind v4, Playwright; Asaas, Twilio WhatsApp, Resend; Anthropic Claude for the sales agent; AWS (ECS, RDS, ALB, CloudFront, ECR, S3, CloudWatch) with Terraform.",
         "engineering_highlights": [
-          "Strict TypeScript end-to-end with Zod-validated forms — one schema is the source of truth for client validation, server validation, and inferred types.",
-          "Repeatable demo flow: a `seed.sql` plus a `refresh_demo_data(email)` Postgres function lets any tenant be re-seeded with 15 clients and ~140 charges covering every UI state (paid, pending, overdue, today, future).",
-          "Mobile-first PWA shell with routes per surface (`/hoje`, `/clientes`, `/cobrancas`, `/relatorios`) so owners can check today's charges from the field.",
-          "All-on-free-tier infrastructure (Supabase + Netlify) — the entire pilot runs at zero recurring cost."
+          "LLM agent with deterministic guardrails: only whitelisted prices and links can leave automatically; any other price, link or e-mail holds the draft for human review, and support requests always go to a human.",
+          "Prompt-injection containment: the model runs with no tools and no MCP servers, and everything it needs is passed inside the prompt, so text written by a lead cannot read secrets or touch files.",
+          "Send verification: every automated message is checked against the outbound record and the run stops on the first message that did not go out identical to the approved text.",
+          "Funnel instrumentation: a CRM and a fixed-window scoreboard (account created within 7 days, paid within 14) make conversion comparable across weeks and playbook changes."
         ],
         "outcomes": [
-          "Live on Netlify (`ether-brasil.netlify.app`) with a maintained demo account that walks recruiters and pilot users through every UI state.",
-          "Pilot-ready and self-deployable from the public repository, including a step-by-step setup guide."
-        ],
-        "demo": "portfolio_media/demos/etherpay.mp4"
+          "Live in production with 22 paying gyms, built and operated end to end by one engineer.",
+          "Lead first response went from hours to minutes, the variable the funnel data showed mattered most for engagement."
+        ]
       }
     },
     {
@@ -168,8 +276,13 @@
       "status": "In development · Anthropic Skill",
       "tagline": "Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine — parse, validate, classify merchants, and persist to a personal SQLite ledger.",
       "cover_image": "portfolio_media/covers/finance-skill.svg",
-      "stack": ["Anthropic Skills protocol", "Python", "SQLite",
-                "PDF parsing", "state machine"],
+      "stack": [
+        "Anthropic Skills protocol",
+        "Python",
+        "SQLite",
+        "PDF parsing",
+        "state machine"
+      ],
       "sections": {
         "problem": "Brazilian bank statements arrive as PDFs with inconsistent layouts (one per bank, one per statement type — credit card faturas vs. current-account extratos). Importing these by hand into a personal-finance ledger is a Saturday-morning ritual: parse, dedupe, classify each merchant. The cost compounds month over month.",
         "architecture": "Anthropic Skill packaged as a stage-based state machine: parse PDF → normalize transactions → validate gates (running balance, sign conventions, duplicates) → classify each merchant against a learned table → persist to SQLite. Idempotent imports — re-running over the same PDF is a no-op, keyed on (bank, statement_id, transaction_hash). Merchant classification is self-improving: human-confirmed mappings are written back so subsequent runs need fewer interactive prompts.",
@@ -195,8 +308,15 @@
       "status": "Open research",
       "tagline": "Geospatial Python library for unified grid rasterization, dasymetric mapping, and hotspot discovery. Built at NYU VIDA Center for the UrbanMapper project.",
       "cover_image": "portfolio_media/covers/crif.svg",
-      "stack": ["Python", "GeoPandas", "Rasterio", "NumPy",
-                "Jupyter widgets", "Docker", "applied math"],
+      "stack": [
+        "Python",
+        "GeoPandas",
+        "Rasterio",
+        "NumPy",
+        "Jupyter widgets",
+        "Docker",
+        "applied math"
+      ],
       "sections": {
         "problem": "Urban analysts repeatedly hit the same wall: heterogeneous geospatial data — points, polygons, administrative units — needs to be aligned to a common raster grid for downstream Bayesian modeling and visualization. Each project ends up rewriting the same rasterization, normalization, and overlap-handling code, with subtle bugs that propagate into research findings and break reproducibility.",
         "architecture": "CRIF (Calibrated Raster Interpolation) exposes a single `Crif` class that defines grid bounds and cell size, plus three primitives: `create_raster_from_point` (point aggregation, with optional min-max-scaled multi-band normalization), `polygon_to_raster` (polygon rasterization with `average` or `sum` overlap handling), and `dasymetric_mapping` (distributes a polygon-level statistic across a finer raster using prior weights). A `combine_rasters` helper supports hotspot discovery by summing or thresholding raster fusions across heterogeneous signals. Each primitive has a formal mathematical derivation in the README so research artifacts stay reproducible.",
@@ -223,9 +343,14 @@
       "status": "Production · Adopted",
       "tagline": "YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Ceará (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models.",
       "cover_image": "portfolio_media/covers/midr.svg",
-      "stack": ["Python 3.11", "PyTorch", "Ultralytics YOLO 8.3.x",
-                "OpenCV", "SQLite (dataset versioning)",
-                "Jupyter / Google Colab"],
+      "stack": [
+        "Python 3.11",
+        "PyTorch",
+        "Ultralytics YOLO 8.3.x",
+        "OpenCV",
+        "SQLite (dataset versioning)",
+        "Jupyter / Google Colab"
+      ],
       "sections": {
         "problem": "Highway concessionaires and audit bodies need objective, scalable evidence of pavement condition. Manual inspection is slow, subjective, and inconsistent across reviewers. The system needs to detect potholes (buracos), cracks (trincas), patches (remendos), and signage from drive-by smartphone or vehicle-mounted footage — kilometers at a time.",
         "architecture": "MIDR is an ensemble of YOLO models, each trained on a curated subset, orchestrated by a `Detector` class (`src/midr/dd.py`) that runs models in parallel, applies per-model IOU and NMS, then fuses detections via consensus, confidence, and class-priority rules. The training pipeline reads from per-version SQLite databases (`midr_18072024.db`, `midr_01052025_smartphone_hd.db`) and runs in Google Colab notebooks (`yolo_tl_2025.ipynb`) for reproducibility. End-to-end image and video processing scripts (`main_process_images.py`, `main_process_video.py`) take folders in `to_process/source` and write annotated outputs to `to_process/destination`.",
@@ -251,8 +376,12 @@
       "status": "Production · Adopted",
       "tagline": "Computer-vision pipeline for meal verification deployed by the Municipality of Fortaleza — classifies meal components from a photo and pairs the percentages with a scale weight to produce per-meal nutritional records.",
       "cover_image": "portfolio_media/covers/nutrir.svg",
-      "stack": ["Python", "PyTorch", "image segmentation",
-                "OpenCV"],
+      "stack": [
+        "Python",
+        "PyTorch",
+        "image segmentation",
+        "OpenCV"
+      ],
       "sections": {
         "problem": "The Municipality of Fortaleza distributes meals (\"quentinhas\") to vulnerable populations and needs an objective record that each meal contains the required food groups in the right proportions. Manual verification across thousands of meals doesn't scale, and there is no way to audit historical batches without photos and measurements.",
         "architecture": "Mobile photo + scale weight per meal feeds an image-segmentation model that classifies regions into food categories (rice, beans, meat, vegetables, other) and estimates each category's volume percentage. Output is structured JSON: per-food description plus `percentual_volume` plus `peso_total_refeicao` in grams — auditable, queryable, and ready for downstream dashboards.",
@@ -283,9 +412,14 @@
       "notes": "Concurrent research training in Data Science via Chief Scientist Program (FUNCAP, Ceará State Government).",
       "coursework_label": "Selected coursework (computer science track)",
       "coursework": [
-        "Machine Learning", "Data Mining", "Digital Image Processing",
-        "Numerical Methods", "Programming Fundamentals", "Linear Algebra",
-        "Probability & Statistics", "Optimization"
+        "Machine Learning",
+        "Data Mining",
+        "Digital Image Processing",
+        "Numerical Methods",
+        "Programming Fundamentals",
+        "Linear Algebra",
+        "Probability & Statistics",
+        "Optimization"
       ]
     },
     {
@@ -303,48 +437,87 @@
     {
       "category": "Core (Agent / LLM Engineering)",
       "items": [
-        "LangGraph", "LangSmith", "LangChain", "Anthropic Skills protocol",
-        "Multi-agent orchestration", "HITL workflows", "RAG", "Pinecone",
-        "OpenAI / Anthropic SDKs", "MCP"
+        "LangGraph",
+        "LangSmith",
+        "LangChain",
+        "Multi-agent orchestration",
+        "RAG",
+        "pgvector",
+        "HITL workflows",
+        "LLM evaluation",
+        "Prompt-injection guardrails",
+        "OpenAI / Anthropic SDKs",
+        "Amazon Bedrock (Converse API, Knowledge Bases)",
+        "MCP",
+        "Anthropic Skills protocol",
+        "Claude Code (agentic coding)"
       ]
     },
     {
       "category": "Backend Engineering",
       "items": [
-        "Python 3.12", "FastAPI", "Pydantic v2", "SQLAlchemy 2.0 async",
-        "Alembic", "PostgreSQL / SQL Server", "Redis", "DDD + CQRS",
-        "Value Objects", "vertical slicing"
+        "Python 3.12",
+        "FastAPI",
+        "Pydantic v2",
+        "SQLAlchemy 2.0 async",
+        "Alembic",
+        "PostgreSQL / SQL Server",
+        "Redis",
+        "DDD + CQRS",
+        "Value Objects",
+        "vertical slicing"
       ]
     },
     {
       "category": "Frontend Engineering",
       "items": [
-        "TypeScript", "React 19", "Vite", "Tailwind v4",
-        "TanStack Query v5", "React Router v7", "Radix UI",
-        "react-hook-form + zod", "Vitest", "MSW"
+        "TypeScript",
+        "React 19",
+        "Vite",
+        "Tailwind v4",
+        "TanStack Query v5",
+        "React Router v7",
+        "Radix UI",
+        "react-hook-form + zod",
+        "Vitest",
+        "MSW"
       ]
     },
     {
       "category": "DevOps & Quality",
       "items": [
-        "Docker", "CI/CD (Bitbucket Pipelines, GitHub Actions)",
-        "pytest", "ruff", "mypy", "type-checked Python",
-        "AWS (ECS, MemoryDB)"
+        "Docker",
+        "CI/CD (Bitbucket Pipelines, GitHub Actions)",
+        "pytest",
+        "ruff",
+        "mypy",
+        "type-checked Python",
+        "AWS (ECS, RDS, ECR, S3, CloudFront, CloudWatch)",
+        "Terraform",
+        "Kubernetes + Argo CD"
       ]
     },
     {
       "category": "Computer Vision & Geospatial ML",
       "items": [
-        "PyTorch", "YOLO (ensemble + custom fusion)", "OpenCV",
-        "scikit-learn", "Bayesian modeling", "GeoPandas", "Rasterio",
+        "PyTorch",
+        "YOLO (ensemble + custom fusion)",
+        "OpenCV",
+        "scikit-learn",
+        "Bayesian modeling",
+        "GeoPandas",
+        "Rasterio",
         "pandas / NumPy"
       ]
     },
     {
       "category": "Past stack (still serviceable if needed)",
       "items": [
-        "C# / .NET", "Azure", "Power BI",
-        "Microsoft Fabric", "Databricks"
+        "C# / .NET",
+        "Azure",
+        "Power BI",
+        "Microsoft Fabric",
+        "Databricks"
       ]
     }
   ],
@@ -366,9 +539,14 @@
     }
   ],
   "languages": [
-    {"language": "English", "fluency": "Full professional proficiency"},
-    {"language": "Portuguese", "fluency": "Native speaker"}
+    {
+      "language": "English",
+      "fluency": "Full professional proficiency"
+    },
+    {
+      "language": "Portuguese",
+      "fluency": "Native speaker"
+    }
   ],
-  "references": [
-  ]
+  "references": []
 }

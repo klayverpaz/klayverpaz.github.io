@@ -37,7 +37,7 @@
   linkcolor=accent,
   pdftitle={Klayver Paz — Resume},
   pdfauthor={Klayver Paz},
-  pdfsubject={AI Engineer / Agent Engineer},
+  pdfsubject={AI Engineer --- LLM Agents and RAG},
 }
 
 % -------------------------------------------------------------
@@ -97,12 +97,12 @@
 \begin{center}
   {\Huge\bfseries Klayver Paz}\par
   \vspace{2pt}
-  {\large\color{muted} AI Engineer / Agent Engineer}\par
+  {\large\color{muted} AI Engineer \textperiodcentered{} LLM Agents \& RAG}\par
   \vspace{6pt}
   {\small
     \faEnvelope\,\href{mailto:klayverpaz@gmail.com}{klayverpaz@gmail.com}
-    \quad\faPhone\,+55 85 99692-9159 \,/\, +1 (917) 310-8558
-    \quad\faMapMarker\,Fortaleza, Brazil \& New York, USA \\[2pt]
+    \quad\faPhone\,+55 85 99692-9159
+    \quad\faMapMarker\,Fortaleza, Brazil \textperiodcentered{} Remote \\[2pt]
     \faLinkedin\,\href{https://www.linkedin.com/in/klayverpaz/}{linkedin.com/in/klayverpaz}
     \quad\faGithub\,\href{https://github.com/klayverpaz}{github.com/klayverpaz}
     \quad\faGlobe\,\href{https://klayverpaz.github.io/}{Portfolio}
@@ -111,7 +111,7 @@
 
 \vspace{2pt}
 \noindent
-Full-stack AI Engineer specializing in production agent systems. Build end-to-end AI products --- LangGraph multi-agent orchestration, FastAPI backends, React frontends. Research roots in computer vision and geospatial ML at NYU. Open to international roles (US, EU; on-site or remote).
+AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Founder and sole engineer of Seegold, a SaaS live with 22 paying gyms. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.
 
 % -------------------------------------------------------------
 % Experience
@@ -119,14 +119,15 @@ Full-stack AI Engineer specializing in production agent systems. Build end-to-en
 \section{Experience}
 
 \job{AI Engineer / Agent Engineer}{Arke Analytica}{Jan 2026 -- Present}
-\textit{\small Building production AI products for B2B platforms. Independent practice.}
+\textit{\small Production LLM agents and RAG systems for B2B platforms. Independent practice.}
 \begin{itemize}
-  \item \textbf{Cycle-time reduction ($\sim$99\%).} Reduced a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes by building a production multi-agent system on LangGraph: intent classification, deterministic workflow subgraphs, human-in-the-loop confirmation gates for state-changing operations.
-  \item \textbf{Lateral query pattern.} Designed an interrupt-and-resume mechanism enabling users to pause in-flight workflows, ask side questions, then resume from the exact same node.
-  \item \textbf{Session persistence \& security.} Implemented Redis checkpoints (TTL-bounded) and bearer-token pass-through auth where the agent never stores credentials. Deployed on AWS (ECS, MemoryDB).
-  \item \textbf{Full-stack delivery.} Shipped FastAPI + async SQLAlchemy + Postgres backend with a LangGraph AI module (Anthropic / OpenAI provider abstraction, SSE streaming) and React 19 + TypeScript + Tailwind frontend.
+  \item \textbf{Multi-agent system (LangGraph).} Reduced a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes with a production multi-agent system on LangGraph: agents only where the work is open-ended (a ReAct planner with 14 tools), deterministic workflow subgraphs everywhere else, and human-in-the-loop approval gates before any state-changing operation.
+  \item \textbf{RAG pipeline.} Designed three-tier RAG retrieval over the client's own history (current project $\rightarrow$ same company $\rightarrow$ general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context.
+  \item \textbf{LLM evaluation.} Built an accuracy harness for LLM pipelines: real cases as fixtures, hit-rate / leakage / miss metrics, repeated runs per case compared against a blessed baseline per model and commit, plus LangSmith tracing and golden conversation tests on the production model.
+  \item \textbf{Agent safety \& human-in-the-loop.} Interrupt-and-resume pattern lets users pause an in-flight workflow, ask a side question, and resume from the same node, backed by TTL-bounded Redis checkpoints. Bearer-token pass-through: the agent never stores credentials and every tool acts with the caller's own permissions.
+  \item \textbf{Shipped on AWS.} FastAPI + async SQLAlchemy + PostgreSQL services (Anthropic / OpenAI provider abstraction, SSE streaming) and a React 19 + TypeScript frontend, containerized to Amazon ECR via Bitbucket Pipelines and deployed GitOps-style to Kubernetes with Argo CD (dev / prod), using S3 and TLS-secured Redis.
 \end{itemize}
-\textit{\small Stack: LangGraph, LangSmith, Pinecone, Redis, FastAPI, React 19, TypeScript, Tailwind, AWS, PostgreSQL, Anthropic / OpenAI.}
+\textit{\small Stack: LangGraph, LangChain, LangSmith, Anthropic Claude, OpenAI, RAG, pgvector, PostgreSQL, Redis, FastAPI, React 19, TypeScript, AWS (ECR, S3), Kubernetes, Argo CD.}
 
 \job{Research Scientist (Data Science)}{Vida Center --- NYU Tandon School of Engineering}{Sep 2025 -- Dec 2025}
 \textit{\small Contributed to the UrbanMapper project --- analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.}
@@ -138,13 +139,22 @@ Full-stack AI Engineer specializing in production agent systems. Build end-to-en
 \textit{\small Stack: Python, GeoPandas, Rasterio, PyTorch, Bayesian modeling, Jupyter widgets, Docker.}
 
 \job{Data Scientist}{Atl\^antico}{Nov 2024 -- Aug 2025}
-\textit{\small NLP and anomaly-detection systems for industrial datasets.}
+\textit{\small LLM-powered NLP and anomaly-detection systems for industrial datasets.}
 \begin{itemize}
-  \item \textbf{NLP pipelines.} Shipped sentiment analysis and entity recognition using RAG patterns over Ollama and GPT models --- early production work with LLMs before the agent stack matured.
+  \item \textbf{LLM / NLP pipelines.} Shipped sentiment analysis, text classification and entity recognition over large-scale industrial text, built with LangChain and LangGraph on OpenAI GPT models, using RAG for domain context and LangSmith for tracing and evaluation.
   \item \textbf{Anomaly detection.} Built defect-forecasting models for industrial time-series data.
   \item \textbf{APIs \& microservices.} Delivered Python and .NET services on Azure.
 \end{itemize}
-\textit{\small Stack: Python, Ollama, GPT, RAG, Azure, .NET.}
+\textit{\small Stack: Python, LangChain, LangGraph, LangSmith, OpenAI, RAG, Azure, .NET.}
+
+\job{Researcher (Computer Vision)}{Federal University of Cear\'a (UFC)}{Sep 2023 -- Aug 2025}
+\textit{\small Computer vision research applied to highway infrastructure management, within Cear\'a's Chief Scientist Program (FUNCAP).}
+\begin{itemize}
+  \item \textbf{MIDR ensemble.} Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Cear\'a (TCE-CE).
+  \item \textbf{Data pipelines.} Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets.
+  \item \textbf{Iterative refinement.} Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations.
+\end{itemize}
+\textit{\small Stack: PyTorch, YOLO, Ultralytics, OpenCV, Python.}
 
 \job{Data Scientist \& Software Developer}{Agilean}{Oct 2020 -- Nov 2024}
 \textit{\small Predictive analytics and data-integration systems for the construction and industrial sectors.}
@@ -155,25 +165,16 @@ Full-stack AI Engineer specializing in production agent systems. Build end-to-en
 \end{itemize}
 \textit{\small Stack: Python, ML, Azure, ETL, C\# / .NET.}
 
-\job{Researcher}{Chief Scientist Program (FUNCAP, Cear\'a State Government)}{Jan 2020 -- Sep 2025}
-\textit{\small Computer vision research applied to highway infrastructure management.}
-\begin{itemize}
-  \item \textbf{MIDR ensemble.} Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Cear\'a (TCE-CE).
-  \item \textbf{Data pipelines.} Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets.
-  \item \textbf{Iterative refinement.} Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations.
-\end{itemize}
-\textit{\small Stack: PyTorch, YOLO, Ultralytics, OpenCV, Python.}
-
 % -------------------------------------------------------------
 % Featured Projects
 % -------------------------------------------------------------
 \section{Featured Projects}
 
 \project{Multi-Agent Operations Assistant}{Production --- Confidential (under NDA)}
-LangGraph multi-agent system that cut a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes ($\sim$99\%). Intent classification, deterministic workflow subgraphs, HITL gates, lateral-query interrupt-and-resume, Redis checkpoints on AWS. \textit{\small LangGraph, LangSmith, Pinecone, Redis, FastAPI, React 19, AWS.}
+LangGraph multi-agent system that cut a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes ($\sim$99\%). Intent classification, deterministic workflow subgraphs, HITL gates, lateral-query interrupt-and-resume, Redis checkpoints, deployed on AWS + Kubernetes. \textit{\small LangGraph, LangSmith, pgvector, Redis, FastAPI, React 19, AWS (ECR, S3), Kubernetes + Argo CD.}
 
-\project{Etherpay --- Web SaaS}{Pre-launch --- Pilot ready}
-Mobile-first web SaaS for service-business client and billing management --- track customers, charges, payment status. Next.js App Router on Supabase, Zod-validated forms, PWA shell, deployed on Netlify (\href{https://ether-brasil.netlify.app}{ether-brasil.netlify.app}). \textit{\small Next.js, TypeScript, Supabase, Tailwind, Radix UI, Playwright.}
+\project{Seegold --- SaaS + WhatsApp AI Agent}{Production --- 22 paying gyms}
+Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), built and operated end to end as founder and sole engineer. Includes an LLM sales agent that drafts WhatsApp replies to leads: deterministic guardrails (whitelisted prices and links, human review for anything else), prompt-injection containment (model runs with no tools), and send verification against the outbound record. \textit{\small FastAPI, SQLAlchemy async, PostgreSQL, React 19, Anthropic Claude, Twilio WhatsApp, Asaas, AWS (ECS, RDS, CloudFront), Terraform.}
 
 \project{Personal Finance Skill}{In development --- Anthropic Skill}
 Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine: parse $\rightarrow$ normalize $\rightarrow$ validate $\rightarrow$ classify $\rightarrow$ persist. Idempotent imports, self-improving merchant classifier. \textit{\small Anthropic Skills protocol, Python, SQLite, PDF parsing.}
@@ -192,10 +193,10 @@ Image-segmentation pipeline that classifies meal components (rice, beans, meat, 
 % -------------------------------------------------------------
 \section{Skills}
 
-\skillrow{Core (Agent / LLM Engineering)}{LangGraph, LangSmith, LangChain, Anthropic Skills protocol, multi-agent orchestration, HITL workflows, RAG, Pinecone, OpenAI / Anthropic SDKs, MCP}
+\skillrow{Core (Agent / LLM Engineering)}{LangGraph, LangSmith, LangChain, multi-agent orchestration, RAG, pgvector, HITL workflows, LLM evaluation, prompt-injection guardrails, OpenAI / Anthropic SDKs, Amazon Bedrock (Converse API, Knowledge Bases), MCP, Anthropic Skills protocol, Claude Code (agentic coding)}
 \skillrow{Backend Engineering}{Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2.0 async, Alembic, PostgreSQL / SQL Server, Redis, DDD + CQRS, Value Objects, vertical slicing}
 \skillrow{Frontend Engineering}{TypeScript, React 19, Vite, Tailwind v4, TanStack Query v5, React Router v7, Radix UI, react-hook-form + zod, Vitest, MSW}
-\skillrow{DevOps \& Quality}{Docker, CI/CD (Bitbucket Pipelines, GitHub Actions), pytest, ruff, mypy, type-checked Python, AWS (ECS, MemoryDB)}
+\skillrow{DevOps \& Quality}{Docker, CI/CD (Bitbucket Pipelines, GitHub Actions), pytest, ruff, mypy, type-checked Python, AWS (ECS, RDS, ECR, S3, CloudFront, CloudWatch), Terraform, Kubernetes + Argo CD}
 \skillrow{Computer Vision \& Geospatial ML}{PyTorch, YOLO (ensemble + custom fusion), OpenCV, scikit-learn, Bayesian modeling, GeoPandas, Rasterio, pandas / NumPy}
 \skillrow{Past stack (still serviceable)}{C\# / .NET, Azure, Power BI, Microsoft Fabric, Databricks}
 
