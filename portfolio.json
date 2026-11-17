@@ -8,7 +8,7 @@
     "phone": "+55 85 99692-9159",
     "location": "Fortaleza, Brazil 🇧🇷 · Remote"
   },
-  "summary": "AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Founder and sole engineer of Seegold, a SaaS live with 22 paying gyms. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.",
+  "summary": "AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.",
   "base_url": "https://klayverpaz.github.io/",
   "social_links": [
     {
@@ -29,7 +29,7 @@
       "url": "",
       "start_date": "January 2026",
       "end_date": "Present",
-      "summary": "Production LLM agents and RAG systems for B2B platforms. Independent practice.",
+      "summary": "Production LLM agents and RAG systems for B2B platforms.",
       "highlights": [
         {
           "lead": "Multi-agent system (LangGraph).",
@@ -254,7 +254,7 @@
         "Terraform"
       ],
       "sections": {
-        "problem": "Small gyms and martial-arts schools collect monthly fees by hand: chasing students on WhatsApp, checking bank transfers, keeping a spreadsheet of who paid. Owners want billing to run itself on the channel their students already use. On the sales side, a solo founder cannot answer every inbound lead within minutes, and leads that wait hours rarely engage.",
+        "problem": "Small gyms and martial-arts schools collect monthly fees by hand: chasing students on WhatsApp, checking bank transfers, keeping a spreadsheet of who paid. Owners want billing to run itself on the channel their students already use. On the sales side, a small team cannot answer every inbound lead within minutes, and leads that wait hours rarely engage.",
         "architecture": "FastAPI backend in layered vertical slices (api → use cases → domain ← infrastructure), multi-tenant by business, with async SQLAlchemy on PostgreSQL. Charges and subscriptions run through the Asaas payment gateway; WhatsApp messages go out through Twilio. React 19 + Vite frontend served from CloudFront. Production on AWS (ECS behind an ALB, RDS PostgreSQL, ECR, CloudWatch alarms), provisioned with Terraform. The sales agent runs on a 10-minute schedule: a queue of leads → Claude drafts the next message from a fixed playbook → guardrails → send, hold for review, or wait.",
         "tech_stack": "Python, FastAPI, Pydantic v2, SQLAlchemy 2.0 async, Alembic, PostgreSQL, APScheduler, pytest, ruff, mypy; React 19, Vite, TanStack Query, React Router, Tailwind v4, Playwright; Asaas, Twilio WhatsApp, Resend; Anthropic Claude for the sales agent; AWS (ECS, RDS, ALB, CloudFront, ECR, S3, CloudWatch) with Terraform.",
         "engineering_highlights": [

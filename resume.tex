@@ -111,7 +111,7 @@
 
 \vspace{2pt}
 \noindent
-AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Founder and sole engineer of Seegold, a SaaS live with 22 paying gyms. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.
+AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.
 
 % -------------------------------------------------------------
 % Experience
@@ -119,7 +119,7 @@ AI Engineer building production LLM agents and RAG systems: LangGraph multi-agen
 \section{Experience}
 
 \job{AI Engineer / Agent Engineer}{Arke Analytica}{Jan 2026 -- Present}
-\textit{\small Production LLM agents and RAG systems for B2B platforms. Independent practice.}
+\textit{\small Production LLM agents and RAG systems for B2B platforms.}
 \begin{itemize}
   \item \textbf{Multi-agent system (LangGraph).} Reduced a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes with a production multi-agent system on LangGraph: agents only where the work is open-ended (a ReAct planner with 14 tools), deterministic workflow subgraphs everywhere else, and human-in-the-loop approval gates before any state-changing operation.
   \item \textbf{RAG pipeline.} Designed three-tier RAG retrieval over the client's own history (current project $\rightarrow$ same company $\rightarrow$ general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context.
@@ -174,7 +174,7 @@ AI Engineer building production LLM agents and RAG systems: LangGraph multi-agen
 LangGraph multi-agent system that cut a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes ($\sim$99\%). Intent classification, deterministic workflow subgraphs, HITL gates, lateral-query interrupt-and-resume, Redis checkpoints, deployed on AWS + Kubernetes. \textit{\small LangGraph, LangSmith, pgvector, Redis, FastAPI, React 19, AWS (ECR, S3), Kubernetes + Argo CD.}
 
 \project{Seegold --- SaaS + WhatsApp AI Agent}{Production --- 22 paying gyms}
-Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), built and operated end to end as founder and sole engineer. Includes an LLM sales agent that drafts WhatsApp replies to leads: deterministic guardrails (whitelisted prices and links, human review for anything else), prompt-injection containment (model runs with no tools), and send verification against the outbound record. \textit{\small FastAPI, SQLAlchemy async, PostgreSQL, React 19, Anthropic Claude, Twilio WhatsApp, Asaas, AWS (ECS, RDS, CloudFront), Terraform.}
+Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), built and operated end to end. Includes an LLM sales agent that drafts WhatsApp replies to leads: deterministic guardrails (whitelisted prices and links, human review for anything else), prompt-injection containment (model runs with no tools), and send verification against the outbound record. \textit{\small FastAPI, SQLAlchemy async, PostgreSQL, React 19, Anthropic Claude, Twilio WhatsApp, Asaas, AWS (ECS, RDS, CloudFront), Terraform.}
 
 \project{Personal Finance Skill}{In development --- Anthropic Skill}
 Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine: parse $\rightarrow$ normalize $\rightarrow$ validate $\rightarrow$ classify $\rightarrow$ persist. Idempotent imports, self-improving merchant classifier. \textit{\small Anthropic Skills protocol, Python, SQLite, PDF parsing.}
