@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<!-- portfolio: hand-made page (not generated; edit by hand) -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The whole city on one comparable map · Klayver Paz</title>
+<meta name="description" content="A Python library that puts every kind of city data on the same grid, so it can be compared and combined.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="../fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<div class="page">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="wordmark" href="../index.html">Klayver Paz</a>
+    <nav class="nav" aria-label="Sections"><a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#toolbox">Toolbox</a></nav>
+    <div class="header-end"><a class="btn btn-ghost btn-sm" href="../../Klayver_Paz_Resume.pdf" data-resume>Résumé <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></div>
+  </div>
+</header>
+<main class="container">
+<section class="cs-hero">
+  <a class="back" href="../index.html#case-crif"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> All work</a>
+  <div class="cs-head">
+    <div><p class="tag">Geospatial ML · NYU · 2025</p><h1>The whole city on one comparable map</h1><p class="lead">A Python library that puts every kind of city data on the same grid, so it can be compared and combined.</p></div>
+    <div class="cs-nums"><div class="cs-num"><b>Adopted</b><span>by NYU VIDA Center's UrbanMapper framework</span></div><div class="cs-num"><b>Days → a few calls</b><span>to rasterize and normalize a new dataset</span></div><div class="cs-num"><b>Formally derived</b><span>every primitive ships with its math, for reproducible research</span></div></div>
+  </div>
+  <div class="cs-scene"><div class="scene mo-map" data-scene data-steps="500,900,900,1300,1700,600" data-hold="3600" aria-hidden="true"><div class="stage">
+  <svg class="mp-svg" viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"></svg>
+  <div class="mp-panel">
+    <b>Layers <span>weight</span></b>
+    <div class="mp-row"><span><i class="dot" style="--c:#E7ECFA"></i>Hotels</span><span class="mp-track" style="--a:72%;--b:38%"></span></div>
+    <div class="mp-row"><span><i class="dot" style="--c:#9DBBFF"></i>Businesses</span><span class="mp-track" style="--a:40%;--b:82%"></span></div>
+    <div class="mp-row"><span><i class="dot" style="--c:#9275E8"></i>Points of interest</span><span class="mp-track" style="--a:55%;--b:60%"></span></div>
+    <p class="mp-legend">Less<i></i>More</p>
+  </div>
+</div></div></div>
+</section>
+<section class="cs-block" data-reveal><h2>The problem</h2><p>Urban analysts kept hitting the same wall: points, polygons and administrative units must be aligned to one grid before modeling. Each project rewrote the same rasterization code, with subtle bugs that leaked into findings.</p></section>
+<section class="cs-block" data-reveal><h2>How it works</h2><ol class="flow" style="--n:4"><li class=""><b>Define the grid</b><span>One Crif object fixes the bounds and cell size.</span></li><li class=""><b>Rasterize</b><span>Points are aggregated and polygons rasterized, with explicit overlap rules.</span></li><li class=""><b>Distribute</b><span>Dasymetric mapping spreads district totals onto the fine grid using prior weights.</span></li><li class=""><b>Fuse</b><span>Weighted layers combine into hotspot maps.</span></li></ol></section>
+<section class="cs-block" data-reveal><h2>Key decisions</h2><ul class="decisions"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Every primitive has a formal derivation next to the code.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Multi-band normalization puts different signals on one scale before fusing.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Custom Jupyter widgets and a Docker image, so collaborators reproduce results without environment churn.</span></li></ul></section>
+
+<section class="cs-block" data-reveal><div class="role"><div><h2>Stack</h2><ul class="chips"><li>Python</li><li>GeoPandas</li><li>Rasterio</li><li>NumPy</li><li>Jupyter widgets</li><li>Docker</li></ul></div><div><h2>My role</h2><p><b>Research Scientist, NYU Tandon School of Engineering, VIDA Center</b> (Sep – Dec 2025).</p></div></div></section>
+<nav class="pager" aria-label="More cases">
+  <a href="nutrir.html"><small>Previous case</small><b>Checking public meals from a photo</b></a>
+  <a class="next" href="multi-agent-ops.html"><small>Next case</small><b>A month of work in 40 minutes</b></a>
+</nav>
+</main>
+<footer class="site-footer">
+  <div class="container footer-row"><p>Klayver Paz · AI Engineer</p><p>Fortaleza, Brazil · Remote</p></div>
+</footer>
+</div>
+<script src="../js/portfolio.js" defer></script>
+</body>
+</html>

@@ -1,252 +1,685 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<!-- portfolio: hand-made page (not generated; edit by hand) -->
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Klayver Paz · AI Engineer</title>
-<meta name="description" content="Portfolio of Klayver Paz, AI engineer: LLM agents, RAG and computer vision in production.">
-<meta name="theme-color" content="#FFFFFF">
-<link rel="preload" href="fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/portfolio.css">
-</head>
-<body>
-<div class="page">
-<header class="site-header">
-  <div class="container header-row">
-    <a class="wordmark" href="index.html">Klayver Paz</a>
-    <nav class="nav" aria-label="Sections"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#toolbox">Toolbox</a></nav>
-    <div class="header-end"><a class="btn btn-ghost btn-sm" href="Klayver_Paz_Resume.pdf" data-resume>Résumé <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></div>
-  </div>
-</header>
-<main>
-<section class="hero">
-  <div class="hero-bg" data-topo aria-hidden="true"></div>
-  <div class="container hero-inner">
-    <div class="hero-copy">
-      <div class="who"><img src="portfolio_media/profile.jpg" alt="" width="56" height="56"><div><b>Klayver Paz</b><span>AI Engineer · LLM Agents &amp; RAG</span></div></div>
-      <h1>I build AI systems that run in production.</h1>
-      <p class="lead">LLM agents, RAG and computer vision: an agent that turned ~1 month of work into ~40 minutes, and a defect detector that became a government standard.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="Klayver_Paz_Resume.pdf" data-resume>Download résumé <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
-        <a class="btn btn-ghost" href="mailto:klayverpaz@gmail.com"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg> Email me</a>
-        <a class="btn btn-ghost btn-icon" href="https://www.linkedin.com/in/klayverpaz/" aria-label="LinkedIn" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-        <a class="btn btn-ghost btn-icon" href="https://github.com/klayverpaz" aria-label="GitHub" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Info -->
+    <title>Klayver Paz - Portfolio</title>
+    <meta name="description" content="Klayver Paz - AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.">
+    <meta name="author" content="Klayver Paz">
+
+    <!-- Open Graph Tags: The title of the page for social media sharing. It can match the title tag or be more descriptive. -->
+    <meta property="og:title" content="Klayver Paz">
+
+    <!-- Open Graph Tags: Typically set to "website" for static sites or "article" for content-heavy pages. -->
+    <meta property="og:type" content="website">
+
+    <!-- Open Graph Tags: The URL of the page, used to ensure link previews resolve to the correct page. -->
+    <meta property="og:url" content="https://klayverpaz.github.io//index.html">
+
+    <!-- Open Graph Tags: URL of an image that represents the page. Useful for link previews. -->
+    <meta property="og:image" content="https://klayverpaz.github.io//portfolio_media/profile.jpg">
+
+    <!-- Open Graph Tags: Provides an alternative text for the image to improve accessibility. -->
+    <meta property="og:image:alt" content="Klayver Paz Profile Image">
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/modern_normalize.css" />
+    <link rel="stylesheet" href="css/html5bp.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Set a theme color that matches your website's primary color -->
+    <meta name="theme-color" content="#fafafa">
+
+    <!-- Favicon for all browsers -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+    <!-- Apple touch icon for iOS devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon.png">
+
+    <!-- Web app manifest for Progressive Web Apps -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Content Security Policy: Uncomment to enhance security by restricting where content can be loaded from (useful for preventing certain attacks like XSS). Update if adding external sources (e.g., Google Fonts, Bootstrap CDN, analytics, etc). -->
+    <!-- <meta http-equiv="Content-Security-Policy" content=" default-src 'self'; script-src 'self' code.jquery.com; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' images.examplecdn.com; "> -->
+  </head>
+
+  <body>
+    <header class="page-header">
+      <div class="container">
+        <div class="header-top flex-responsive">
+          
+            <img class="header-image"
+                 width="256"
+                 height="256"
+                 src="portfolio_media/profile.jpg"
+                 alt="Klayver Paz Profile Image" />
+          
+          <div class="header-info">
+            <h1>Klayver Paz</h1>
+            <h2 class="header-label">AI Engineer · LLM Agents &amp; RAG</h2>
+            
+              <address>
+                <ul class="inline-list flex-responsive">
+                  
+                    <li>
+                      <a href="mailto:klayverpaz@gmail.com">klayverpaz@gmail.com</a>
+                    </li>
+                  
+                  
+                    <li>
+                      <a href="tel:++55 85 996929159">+55 85 99692-9159</a>
+                    </li>
+                  
+                  <li>Fortaleza, Brazil 🇧🇷 · Remote</li>
+                </ul>
+              </address>
+            
+            
+              <ul class="inline-list flex-responsive">
+                
+                  <li>
+                    <a href="https://www.linkedin.com/in/klayverpaz/"
+                       rel="noopener noreferrer"
+                       aria-label="LinkedIn"
+                       class="link-with-icon">
+                      <svg aria-hidden="true"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     width="16"
+     height="16"
+     fill="currentColor"
+     class="bi bi-linkedin"
+     viewBox="0 0 16 16">
+  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+</svg>
+
+                      LinkedIn
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="https://github.com/klayverpaz"
+                       rel="noopener noreferrer"
+                       aria-label="Github"
+                       class="link-with-icon">
+                      <svg aria-hidden="true"
+     xmlns="http://www.w3.org/2000/svg"
+     role="img"
+     width="16"
+     height="16"
+     fill="currentColor"
+     class="bi bi-github"
+     viewBox="0 0 16 16">
+  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+</svg>
+
+                      Github
+                    </a>
+                  </li>
+                
+              </ul>
+            
+            <p class="header-summary">AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.</p>
+            <p class="header-cv-link"><a class="cv-button" href="Klayver_Paz_Resume.pdf" download>Download CV (PDF)</a></p>
+          </div>
+        </div>
       </div>
-      <p class="hero-meta">Fortaleza, Brazil · Remote, US time-zone overlap</p>
-    </div>
-    <div class="showcase dark" id="showcase" role="region" aria-label="Selected work in motion">
-      <div class="sh-top"><p class="tag" data-sh-tag>LLM agents · Construction-tech SaaS · 2026</p><p class="sh-count"><b data-sh-n>01</b> / 06</p></div>
-      <div class="sh-stage" id="sh-stage" aria-hidden="true"></div>
-      <div class="sh-bottom"><p class="sh-title" data-sh-title>A month of work in 40 minutes</p><a class="sh-link" href="projects/multi-agent-ops.html" data-sh-go>See the case <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
-      <div class="sh-bars"><button type="button" aria-label="A month of work in 40 minutes"><i></i></button><button type="button" aria-label="Site constraints, suggested from past projects"><i></i></button><button type="button" aria-label="Forecasting construction delays and waste"><i></i></button><button type="button" aria-label="Road inspection from video"><i></i></button><button type="button" aria-label="Checking public meals from a photo"><i></i></button><button type="button" aria-label="The whole city on one comparable map"><i></i></button></div>
-    </div>
-    <div class="clients">
-      <p class="clients-label">Where my work runs</p>
-      <div class="marquee"><ul class="marquee-track"><li>NYU VIDA Center <span class="city">(New York)</span><svg class="flag" viewBox="0 0 19 10" role="img" aria-label="United States"><rect width="19" height="10" fill="#B22234"/><path d="M0 1.15h19M0 2.69h19M0 4.23h19M0 5.77h19M0 7.31h19M0 8.85h19" stroke="#fff" stroke-width=".77"/><rect width="7.6" height="5.38" fill="#3C3B6E"/></svg></li><li>Atlântico<svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li><li>TCE-CE <span class="city">(Court of Accounts)</span><svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li><li>Fortaleza City Hall<svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li><li>UFC · FUNCAP<svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li></ul><ul class="marquee-track" aria-hidden="true"><li>NYU VIDA Center <span class="city">(New York)</span><svg class="flag" viewBox="0 0 19 10" role="img" aria-label="United States"><rect width="19" height="10" fill="#B22234"/><path d="M0 1.15h19M0 2.69h19M0 4.23h19M0 5.77h19M0 7.31h19M0 8.85h19" stroke="#fff" stroke-width=".77"/><rect width="7.6" height="5.38" fill="#3C3B6E"/></svg></li><li>Atlântico<svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li><li>TCE-CE <span class="city">(Court of Accounts)</span><svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li><li>Fortaleza City Hall<svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li><li>UFC · FUNCAP<svg class="flag" viewBox="0 0 20 14" role="img" aria-label="Brazil"><rect width="20" height="14" fill="#009C3B"/><path d="M10 1.7L18.3 7 10 12.3 1.7 7z" fill="#FFDF00"/><circle cx="10" cy="7" r="3.3" fill="#002776"/><path d="M6.8 6.2q3.3-1 6.5.9" stroke="#fff" stroke-width=".55" fill="none"/></svg></li></ul></div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<section class="section section-alt" id="impact">
-  <div class="container">
-    <dl class="stats" data-scene data-steps="250" data-once data-reveal>
-      <div class="stat"><dt><span class="from">1 month</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="hl"><span data-to="40" data-at="1" data-dur="1400">40</span> min</span></dt><dd>budget-to-schedule matching per cycle, with a LangGraph agent</dd></div>
-      <div class="stat"><dt><span class="from">17%</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="hl"><span data-to="100" data-at="1" data-dur="1400">100</span>%</span></dt><dd>recall on the hardest case in my LLM evaluation harness</dd></div>
-      <div class="stat"><dt><span class="hl">Gov. standard</span></dt><dd>my road-defect detector is the inspection system of Ceará's Court of Accounts</dd></div>
-      <div class="stat"><dt><span><span data-to="6" data-at="1" data-dur="900">6</span> years</span></dt><dd>shipping ML and AI, from research labs to production</dd></div>
-    </dl>
-  </div>
-</section>
+    <div class="page-content">
+      <div class="container">
+        <main>
+          
+            <section>
+              <h2 class="section-heading">Work Experience</h2>
+              
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      AI Engineer / Agent Engineer
+                      
+                        <span class="work-entry-company">· Arke Analytica</span>
+                      
+                    </h3>
+                    
+                      <span class="work-entry-date">January 2026 — Present</span>
+                    
+                  </div>
+                  <p class="work-entry-summary">Production LLM agents and RAG systems for B2B platforms.</p>
+                  
+                    <ul class="stack-chips work-entry-stack">
+                      <li class="stack-chip">LangGraph</li><li class="stack-chip">LangChain</li><li class="stack-chip">LangSmith</li><li class="stack-chip">Anthropic Claude</li><li class="stack-chip">OpenAI</li><li class="stack-chip">RAG</li><li class="stack-chip">pgvector</li><li class="stack-chip">PostgreSQL</li><li class="stack-chip">Redis</li><li class="stack-chip">FastAPI</li><li class="stack-chip">React 19</li><li class="stack-chip">TypeScript</li><li class="stack-chip">AWS (ECR, S3)</li><li class="stack-chip">Kubernetes</li><li class="stack-chip">Argo CD</li>
+                    </ul>
+                  
+                  
+                    <ul class="work-entry-highlights">
+                      
+                        <li><strong>LLM agents (LangGraph).</strong> Cut a recurring B2B budget workflow from ~1 month to ~40 minutes per cycle with a production LangGraph agent that matches a construction schedule to its budget items and splits the costs, with human approval gates before anything is saved. On the same platform, built a conversational ReAct planner (14 tools): agents only where the work is open-ended, deterministic workflow subgraphs everywhere else.</li>
+                      
+                        <li><strong>RAG pipeline.</strong> Designed three-tier RAG retrieval over the platform&#39;s own history (current project → same company → general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context.</li>
+                      
+                        <li><strong>LLM evaluation.</strong> Built an accuracy harness for LLM pipelines: real cases as fixtures, hit-rate / leakage / miss metrics, repeated runs per case compared against a blessed baseline per model and commit, plus LangSmith tracing and golden conversation tests on the production model.</li>
+                      
+                        <li><strong>Agent safety &amp; human-in-the-loop.</strong> Interrupt-and-resume pattern lets users pause an in-flight workflow, ask a side question, and resume from the same node, backed by TTL-bounded Redis checkpoints. Bearer-token pass-through: the agent never stores credentials and every tool acts with the caller&#39;s own permissions.</li>
+                      
+                        <li><strong>Shipped on AWS.</strong> FastAPI + async SQLAlchemy + PostgreSQL services (Anthropic / OpenAI provider abstraction, SSE streaming) and a React 19 + TypeScript frontend, containerized to Amazon ECR via Bitbucket Pipelines and deployed GitOps-style to Kubernetes with Argo CD (dev / prod), using S3 and TLS-secured Redis.</li>
+                      
+                    </ul>
+                  
+                </section>
+              
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      Research Scientist (Data Science)
+                      
+                        <span class="work-entry-company">· <a href="https://vida.engineering.nyu.edu/">Vida Center — NYU Tandon School of Engineering</a></span>
+                      
+                    </h3>
+                    
+                      <span class="work-entry-date">September 2025 — December 2025</span>
+                    
+                  </div>
+                  <p class="work-entry-summary">Contributed to the UrbanMapper project — an analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.</p>
+                  
+                    <ul class="stack-chips work-entry-stack">
+                      <li class="stack-chip">Python</li><li class="stack-chip">GeoPandas</li><li class="stack-chip">Rasterio</li><li class="stack-chip">PyTorch</li><li class="stack-chip">Bayesian modeling</li><li class="stack-chip">Jupyter widgets</li><li class="stack-chip">Docker</li>
+                    </ul>
+                  
+                  
+                    <ul class="work-entry-highlights">
+                      
+                        <li><strong>CRIF library.</strong> Built CRIF (Calibrated Raster Interpolation), a Python library for unified geospatial rasterization and dasymetric mapping — formal mathematical derivation, custom Jupyter widgets, Docker packaging.</li>
+                      
+                        <li><strong>Bayesian + geospatial.</strong> Applied Bayesian modeling and geospatial methods (GeoPandas, Rasterio) to urban Big Data: point-to-raster aggregation, polygon rasterization with overlap handling, hotspot discovery via raster fusion.</li>
+                      
+                        <li><strong>Cross-discipline work.</strong> Worked with urban science, data visualization, and applied math teams to enhance data-driven decision-making in research contexts.</li>
+                      
+                    </ul>
+                  
+                </section>
+              
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      Data Scientist
+                      
+                        <span class="work-entry-company">· <a href="https://www.atlantico.com.br/">Atlântico</a></span>
+                      
+                    </h3>
+                    
+                      <span class="work-entry-date">November 2024 — August 2025</span>
+                    
+                  </div>
+                  <p class="work-entry-summary">Built LLM-powered NLP and anomaly detection systems for industrial datasets.</p>
+                  
+                    <ul class="stack-chips work-entry-stack">
+                      <li class="stack-chip">Python</li><li class="stack-chip">LangChain</li><li class="stack-chip">LangGraph</li><li class="stack-chip">LangSmith</li><li class="stack-chip">OpenAI</li><li class="stack-chip">RAG</li><li class="stack-chip">Azure</li><li class="stack-chip">.NET</li>
+                    </ul>
+                  
+                  
+                    <ul class="work-entry-highlights">
+                      
+                        <li><strong>LLM / NLP pipelines.</strong> Shipped sentiment analysis, text classification and entity recognition over large-scale industrial text, built with LangChain and LangGraph on OpenAI GPT models, using RAG for domain context and LangSmith for tracing and evaluation.</li>
+                      
+                        <li><strong>Anomaly detection.</strong> Built defect-forecasting models for industrial time-series data.</li>
+                      
+                        <li><strong>APIs &amp; microservices.</strong> Delivered Python + .NET services on Azure.</li>
+                      
+                    </ul>
+                  
+                </section>
+              
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      Researcher (Computer Vision)
+                      
+                        <span class="work-entry-company">· <a href="https://www.funcap.ce.gov.br/cientista-chefe-de-infraestrutura">Federal University of Ceará (UFC)</a></span>
+                      
+                    </h3>
+                    
+                      <span class="work-entry-date">September 2023 — August 2025</span>
+                    
+                  </div>
+                  <p class="work-entry-summary">Computer vision research applied to highway infrastructure management, within Ceará&#39;s Chief Scientist Program (FUNCAP).</p>
+                  
+                    <ul class="stack-chips work-entry-stack">
+                      <li class="stack-chip">PyTorch</li><li class="stack-chip">YOLO</li><li class="stack-chip">Ultralytics</li><li class="stack-chip">OpenCV</li><li class="stack-chip">Python</li>
+                    </ul>
+                  
+                  
+                    <ul class="work-entry-highlights">
+                      
+                        <li><strong>MIDR ensemble.</strong> Built a YOLO-ensemble defect-detection system with custom IOU/NMS fusion logic. Patented and currently the standard inspection system used by the Court of Accounts of the State of Ceará (TCE-CE).</li>
+                      
+                        <li><strong>Data pipelines.</strong> Designed scalable storage, preprocessing, and modeling pipelines for highway imagery datasets.</li>
+                      
+                        <li><strong>Iterative refinement.</strong> Collaborated with civil engineering and AI experts to refine defect-detection accuracy across model generations.</li>
+                      
+                    </ul>
+                  
+                </section>
+              
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      Data Scientist &amp; Software Developer
+                      
+                        <span class="work-entry-company">· <a href="https://www.agilean.com.br/">Agilean</a></span>
+                      
+                    </h3>
+                    
+                      <span class="work-entry-date">October 2020 — November 2024</span>
+                    
+                  </div>
+                  <p class="work-entry-summary">Built predictive analytics and data integration systems for the construction and industrial sectors.</p>
+                  
+                    <ul class="stack-chips work-entry-stack">
+                      <li class="stack-chip">Python</li><li class="stack-chip">ML</li><li class="stack-chip">Azure</li><li class="stack-chip">ETL</li><li class="stack-chip">C# / .NET</li>
+                    </ul>
+                  
+                  
+                    <ul class="work-entry-highlights">
+                      
+                        <li><strong>Predictive ML.</strong> Forecasted construction-site waste and schedule delay using ML and data-mining over operational data.</li>
+                      
+                        <li><strong>ETL pipelines.</strong> Designed and deployed integrations on Azure Data Factory.</li>
+                      
+                        <li><strong>APIs &amp; microservices.</strong> Built C# ASP.NET MVC and Python services on Azure Cloud.</li>
+                      
+                    </ul>
+                  
+                </section>
+              
+            </section>
+          
 
-<section class="section" id="work">
-  <div class="container">
-    <div class="section-head" data-reveal>
-      <p class="eyebrow">Selected work</p>
-      <h2>Six systems, in production or adopted.</h2>
-    </div>
-    <div class="work-list">
-      <article class="work-case" id="case-multi-agent-ops" data-reveal>
-        <div class="case-media"><div class="scene mo-month" data-scene data-steps="500,2800,400,2200,600" data-hold="3600" aria-hidden="true"><div class="stage">
-  <div class="mm-box mm-before"><header><b>Before</b><small>by hand · ~1 month per cycle</small></header><div class="mm-cal"></div></div>
-  <div class="mm-box mm-after">
-    <div class="mm-ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42" pathLength="100"/></svg><p><b><span data-to="40" data-at="3" data-dur="2000">40</span></b><small>minutes</small></p></div>
-    <div class="mm-after-txt"><small>With the agent</small><b>Schedule matched to budget</b><span class="live"><i></i>Approved &amp; saved</span></div>
-  </div>
-</div></div></div>
-        <div class="case-body">
-          <p class="tag">LLM agents · Construction-tech SaaS · 2026</p>
-          <h3>A month of work in 40 minutes</h3>
-          <dl>
-            <div><dt>Challenge</dt><dd>Engineers matched every schedule activity to its budget items by hand: ~1 month per cycle.</dd></div>
-            <div><dt>What I built</dt><dd>A LangGraph agent proposes the matches and the cost split; a person approves each step before anything is saved.</dd></div>
-          </dl>
-          <div class="impact"><small>Impact</small><b>~1 month → ~40 minutes per cycle</b></div>
-          <ul class="chips"><li>LangGraph</li><li>Claude</li><li>pgvector</li><li>LLM evals</li><li>FastAPI</li><li>Kubernetes</li></ul>
-          <a class="more" href="projects/multi-agent-ops.html">Case details <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="work-case" id="case-restrictions-rag" data-reveal>
-        <div class="case-media"><div class="scene mo-rag" data-scene data-steps="600,900,1100,1100,1100,700" data-hold="3400" aria-hidden="true"><div class="stage">
-  <div class="rg-head"><b>Next week · 4 activities</b><span class="rg-chip"><span class="w">Searching history</span><span class="d">Ready for review</span></span></div>
-  <div class="rg-src"><span class="p">This project</span><span class="co">Same builder</span><span class="g">General base</span></div>
-  <ul class="rg-list">
-    <li><i class="st"></i><span class="act">Slab pour · Tower B, floor 7</span><span class="sug">Book the concrete pump</span><span class="why" style="--c:#9DBBFF">This project</span></li>
-    <li><i class="st"></i><span class="act">Facade cladding · Tower A</span><span class="sug">Confirm panel delivery</span><span class="why" style="--c:#9275E8">Same builder</span></li>
-    <li><i class="st"></i><span class="act">Electrical rough-in · floor 3</span><span class="sug">Release the cable order</span><span class="why" style="--c:#9DBBFF">This project</span></li>
-    <li><i class="st"></i><span class="act">Elevator shaft · Tower B</span><span class="sug">Schedule the safety inspection</span><span class="why" style="--c:#FFC98A">General base</span></li>
-  </ul>
-  <p class="rg-foot">You choose who owns each one <b>Review &amp; save</b></p>
-</div></div></div>
-        <div class="case-body">
-          <p class="tag">RAG · Construction-tech SaaS · 2026</p>
-          <h3>Site constraints, suggested from past projects</h3>
-          <dl>
-            <div><dt>Challenge</dt><dd>Planners listed what could block next week's work from memory, so the same blockers kept coming back.</dd></div>
-            <div><dt>What I built</dt><dd>A RAG agent searches past projects and suggests each constraint with a reason and its source.</dd></div>
-          </dl>
-          <div class="impact"><small>Impact</small><b>Suggestions grounded in 3 tiers of history; a person approves every save</b></div>
-          <ul class="chips"><li>RAG</li><li>pgvector</li><li>LangGraph</li><li>Claude</li><li>OpenAI embeddings</li><li>FastAPI</li></ul>
-          <a class="more" href="projects/restrictions-rag.html">Case details <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="work-case" id="case-construction-forecast" data-reveal>
-        <div class="case-media"><div class="scene mo-site" data-scene data-steps="500,1500,1000,700,900" data-hold="3600" aria-hidden="true"><div class="stage">
-  <p class="ob-head"><span>Active sites</span><small>Forecast updated today</small></p>
-  <ul class="ob-list">
-    <li class="risk" style="--i:0"><b>Aurora Residences</b><em data-set="1:On track,2:Risk · +6 days" data-zero="On track">On track</em><span class="ob-bar"><i style="--p:62%"></i>Progress 62%</span></li>
-    <li style="--i:1"><b>North Warehouse</b><em>On track</em><span class="ob-bar"><i style="--p:48%"></i>Progress 48%</span></li>
-    <li style="--i:2"><b>Downtown Clinic</b><em>On track</em><span class="ob-bar"><i style="--p:81%"></i>Progress 81%</span></li>
-  </ul>
-  <div class="ob-card">
-    <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l1.9 5.1a2 2 0 0 0 1.2 1.2l5.1 1.9-5.1 1.9a2 2 0 0 0-1.2 1.2L12 19.9l-1.9-5.1a2 2 0 0 0-1.2-1.2l-5.1-1.9 5.1-1.9a2 2 0 0 0 1.2-1.2z"/></svg>Why Aurora may run late</p>
-    <ul><li>Steel delivery 4 days late</li><li>Crew 20% below plan</li><li>Site waste trending above forecast</li></ul>
-  </div>
-</div></div></div>
-        <div class="case-body">
-          <p class="tag">Predictive ML · Agilean · 2020–2024</p>
-          <h3>Forecasting construction delays and waste</h3>
-          <dl>
-            <div><dt>Challenge</dt><dd>Builders learned a site was late, or wasteful, only after the fact.</dd></div>
-            <div><dt>What I built</dt><dd>ML models trained on thousands of projects flag schedule risk and forecast site waste.</dd></div>
-          </dl>
-          <div class="impact"><small>Impact</small><b>Risk flagged ahead of time, not after the fact</b></div>
-          <ul class="chips"><li>Python</li><li>Machine learning</li><li>Data mining</li><li>Azure Data Factory</li><li>C# / .NET</li></ul>
-          <a class="more" href="projects/construction-forecast.html">Case details <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="work-case" id="case-midr" data-reveal>
-        <div class="case-media"><div class="scene mo-road" data-scene data-steps="700,1600,1600,1550,1450,1100" data-hold="3800" aria-hidden="true"><div class="stage">
-  <div class="rd-area">
-    <div class="rd-strip"><div class="rd-layer">
-      <div class="def d1"><i class="shape"></i><span class="box"><b>Pothole</b></span></div>
-      <div class="def d2"><svg class="shape" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 12 L14 7 L22 13 L35 6 L47 12 L58 5 L70 11 L83 6 L98 10"/><path d="M47 12 L52 18"/></svg><span class="box"><b>Crack</b></span></div>
-      <div class="def d3"><i class="shape"></i><span class="box"><b>Patch</b></span></div>
-      <div class="def d4"><svg class="shape" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M3 8 L18 13 L30 7 L44 14 L58 8 L72 13 L86 7 L97 11"/></svg><span class="box"><b>Crack</b></span></div>
-    </div></div>
-    <span class="rd-scan"><b>Camera</b></span>
-  </div>
-  <div class="rd-report">
-    <header><b>Road section report</b><span class="rd-state"><span class="w">Analyzing video</span><span class="d">Report ready</span></span></header>
-    <div class="rd-stat">
-      <p class="km">Distance analyzed <b><span data-to="12.4" data-dec="1" data-at="1" data-dur="7000">12.4</span> km</b></p>
-      <p>Potholes <b data-set="2:1">0</b></p><p>Cracks <b data-set="3:1,5:2">0</b></p><p>Patches <b data-set="4:1">0</b></p>
-    </div>
-  </div>
-</div></div></div>
-        <div class="case-body">
-          <p class="tag">Computer vision · Public sector</p>
-          <h3>Road inspection from video</h3>
-          <dl>
-            <div><dt>Challenge</dt><dd>Road footage was inspected by eye: slow, subjective and inconsistent.</dd></div>
-            <div><dt>What I built</dt><dd>An ensemble of YOLO models with custom fusion marks potholes, cracks and patches on its own.</dd></div>
-          </dl>
-          <div class="impact"><small>Impact</small><b>Inspection standard at Ceará's Court of Accounts (TCE-CE) · patented</b></div>
-          <ul class="chips"><li>PyTorch</li><li>YOLO ensemble</li><li>OpenCV</li><li>Python</li></ul>
-          <a class="more" href="projects/midr.html">Case details <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="work-case" id="case-nutrir" data-reveal>
-        <div class="case-media"><div class="scene mo-meal" data-scene data-steps="600,1200,1100,1100,1100,900" data-hold="3600" aria-hidden="true"><div class="stage">
-  <div class="ml-area"><div class="ml-photo">
-    <img src="portfolio_media/Quentinha.png" alt="" width="540" height="590" loading="lazy">
-    <span class="seg sg1"><b>Chicken</b></span><span class="seg sg2"><b>Couscous</b></span><span class="seg sg3"><b>Pumpkin</b></span><span class="seg sg4"><b>Scale</b></span>
-  </div></div>
-  <div class="ml-report">
-    <header><b>Meal record</b><span class="rd-state"><span class="w">Reading photo</span><span class="d">Record saved</span></span></header>
-    <div class="ml-rows">
-      <p class="r1">Chicken <b data-set="2:45%" data-zero="–">–</b><i style="--w:45%;--c:#E7C65A"></i></p>
-      <p class="r2">Couscous <b data-set="3:30%" data-zero="–">–</b><i style="--w:30%;--c:#FFC98A"></i></p>
-      <p class="r3">Pumpkin <b data-set="4:25%" data-zero="–">–</b><i style="--w:25%;--c:#9DBBFF"></i></p>
-    </div>
-    <p class="ml-weight">Total weight <b><span data-to="528" data-at="5" data-dur="900">528</span> g</b></p>
-  </div>
-</div></div></div>
-        <div class="case-body">
-          <p class="tag">Computer vision · Public sector</p>
-          <h3>Checking public meals from a photo</h3>
-          <dl>
-            <div><dt>Challenge</dt><dd>The city must show every meal it delivers has the right food groups. By hand, that doesn't scale.</dd></div>
-            <div><dt>What I built</dt><dd>A segmentation model reads the meal photo, measures each food's share and pairs it with the scale weight.</dd></div>
-          </dl>
-          <div class="impact"><small>Impact</small><b>Adopted by Fortaleza City Hall</b></div>
-          <ul class="chips"><li>PyTorch</li><li>Image segmentation</li><li>OpenCV</li><li>Python</li></ul>
-          <a class="more" href="projects/nutrir.html">Case details <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="work-case" id="case-crif" data-reveal>
-        <div class="case-media"><div class="scene mo-map" data-scene data-steps="500,900,900,1300,1700,600" data-hold="3600" aria-hidden="true"><div class="stage">
-  <svg class="mp-svg" viewBox="0 0 160 100" preserveAspectRatio="xMidYMid slice"></svg>
-  <div class="mp-panel">
-    <b>Layers <span>weight</span></b>
-    <div class="mp-row"><span><i class="dot" style="--c:#E7ECFA"></i>Hotels</span><span class="mp-track" style="--a:72%;--b:38%"></span></div>
-    <div class="mp-row"><span><i class="dot" style="--c:#9DBBFF"></i>Businesses</span><span class="mp-track" style="--a:40%;--b:82%"></span></div>
-    <div class="mp-row"><span><i class="dot" style="--c:#9275E8"></i>Points of interest</span><span class="mp-track" style="--a:55%;--b:60%"></span></div>
-    <p class="mp-legend">Less<i></i>More</p>
-  </div>
-</div></div></div>
-        <div class="case-body">
-          <p class="tag">Geospatial ML · NYU · 2025</p>
-          <h3>The whole city on one comparable map</h3>
-          <dl>
-            <div><dt>Challenge</dt><dd>City data comes as points, polygons and districts that can't be compared block by block.</dd></div>
-            <div><dt>What I built</dt><dd>A Python library that puts every dataset on one calibrated grid, with dasymetric mapping and hotspot fusion.</dd></div>
-          </dl>
-          <div class="impact"><small>Impact</small><b>Adopted by NYU VIDA's UrbanMapper framework</b></div>
-          <ul class="chips"><li>Python</li><li>GeoPandas</li><li>Rasterio</li><li>NumPy</li><li>Docker</li></ul>
-          <a class="more" href="projects/crif.html">Case details <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+          
 
-<section class="section section-alt" id="experience">
-  <div class="container">
-    <div class="section-head" data-reveal>
-      <p class="eyebrow">Experience</p>
-      <h2>Six years, from research labs to production.</h2>
-    </div>
-    <ul class="xp" data-reveal><li><div><b>AI Engineer</b> <span class="org">· Arke Analytica</span></div><span class="when">Jan 2026 – Present</span><span class="what">Production LLM agents and RAG for B2B platforms</span></li><li><div><b>Research Scientist</b> <span class="org">· NYU Tandon School of Engineering, VIDA Center</span></div><span class="when">Sep – Dec 2025</span><span class="what">Geospatial ML for the UrbanMapper project</span></li><li><div><b>Data Scientist</b> <span class="org">· Atlântico</span></div><span class="when">Nov 2024 – Aug 2025</span><span class="what">LLM / NLP pipelines and anomaly detection on industrial data</span></li><li><div><b>Researcher, Computer Vision</b> <span class="org">· Federal University of Ceará (UFC)</span></div><span class="when">Sep 2023 – Aug 2025</span><span class="what">Road inspection and meal verification, adopted by government</span></li><li><div><b>Data Scientist & Software Developer</b> <span class="org">· Agilean</span></div><span class="when">Oct 2020 – Nov 2024</span><span class="what">Delay and waste forecasting, data pipelines, services</span></li></ul>
-    <p class="edu">B.S. Civil Engineering (Computer Science research track), Federal University of Ceará, 2022 · English: full professional · Portuguese: native</p>
-  </div>
-</section>
+          
+        </main>
 
-<section class="section" id="toolbox">
-  <div class="container">
-    <div class="section-head" data-reveal>
-      <p class="eyebrow">Toolbox</p>
-      <h2>What I build with.</h2>
+        <!-- Sidebar Section -->
+        <aside>
+          
+            <section>
+              <h2 class="section-heading">Skills</h2>
+              
+                <section class="skill-category">
+                  <h3>Core (Agent / LLM Engineering)</h3>
+                  <ul class="stack-chips">
+                    
+                      <li class="stack-chip">LangGraph</li>
+                    
+                      <li class="stack-chip">LangSmith</li>
+                    
+                      <li class="stack-chip">LangChain</li>
+                    
+                      <li class="stack-chip">Multi-agent orchestration</li>
+                    
+                      <li class="stack-chip">RAG</li>
+                    
+                      <li class="stack-chip">pgvector</li>
+                    
+                      <li class="stack-chip">HITL workflows</li>
+                    
+                      <li class="stack-chip">LLM evaluation</li>
+                    
+                      <li class="stack-chip">Prompt-injection guardrails</li>
+                    
+                      <li class="stack-chip">OpenAI / Anthropic SDKs</li>
+                    
+                      <li class="stack-chip">Amazon Bedrock (Converse API, Knowledge Bases)</li>
+                    
+                      <li class="stack-chip">MCP</li>
+                    
+                      <li class="stack-chip">Anthropic Skills protocol</li>
+                    
+                      <li class="stack-chip">Claude Code (agentic coding)</li>
+                    
+                  </ul>
+                </section>
+              
+                <section class="skill-category">
+                  <h3>Backend Engineering</h3>
+                  <ul class="stack-chips">
+                    
+                      <li class="stack-chip">Python 3.12</li>
+                    
+                      <li class="stack-chip">FastAPI</li>
+                    
+                      <li class="stack-chip">Pydantic v2</li>
+                    
+                      <li class="stack-chip">SQLAlchemy 2.0 async</li>
+                    
+                      <li class="stack-chip">Alembic</li>
+                    
+                      <li class="stack-chip">PostgreSQL / SQL Server</li>
+                    
+                      <li class="stack-chip">Redis</li>
+                    
+                      <li class="stack-chip">DDD + CQRS</li>
+                    
+                      <li class="stack-chip">Value Objects</li>
+                    
+                      <li class="stack-chip">vertical slicing</li>
+                    
+                  </ul>
+                </section>
+              
+                <section class="skill-category">
+                  <h3>Frontend Engineering</h3>
+                  <ul class="stack-chips">
+                    
+                      <li class="stack-chip">TypeScript</li>
+                    
+                      <li class="stack-chip">React 19</li>
+                    
+                      <li class="stack-chip">Vite</li>
+                    
+                      <li class="stack-chip">Tailwind v4</li>
+                    
+                      <li class="stack-chip">TanStack Query v5</li>
+                    
+                      <li class="stack-chip">React Router v7</li>
+                    
+                      <li class="stack-chip">Radix UI</li>
+                    
+                      <li class="stack-chip">react-hook-form + zod</li>
+                    
+                      <li class="stack-chip">Vitest</li>
+                    
+                      <li class="stack-chip">MSW</li>
+                    
+                  </ul>
+                </section>
+              
+                <section class="skill-category">
+                  <h3>DevOps &amp; Quality</h3>
+                  <ul class="stack-chips">
+                    
+                      <li class="stack-chip">Docker</li>
+                    
+                      <li class="stack-chip">CI/CD (Bitbucket Pipelines, GitHub Actions)</li>
+                    
+                      <li class="stack-chip">pytest</li>
+                    
+                      <li class="stack-chip">ruff</li>
+                    
+                      <li class="stack-chip">mypy</li>
+                    
+                      <li class="stack-chip">type-checked Python</li>
+                    
+                      <li class="stack-chip">AWS (ECS, RDS, ECR, S3, CloudFront, CloudWatch)</li>
+                    
+                      <li class="stack-chip">Terraform</li>
+                    
+                      <li class="stack-chip">Kubernetes + Argo CD</li>
+                    
+                  </ul>
+                </section>
+              
+                <section class="skill-category">
+                  <h3>Computer Vision &amp; Geospatial ML</h3>
+                  <ul class="stack-chips">
+                    
+                      <li class="stack-chip">PyTorch</li>
+                    
+                      <li class="stack-chip">YOLO (ensemble + custom fusion)</li>
+                    
+                      <li class="stack-chip">OpenCV</li>
+                    
+                      <li class="stack-chip">scikit-learn</li>
+                    
+                      <li class="stack-chip">Bayesian modeling</li>
+                    
+                      <li class="stack-chip">GeoPandas</li>
+                    
+                      <li class="stack-chip">Rasterio</li>
+                    
+                      <li class="stack-chip">pandas / NumPy</li>
+                    
+                  </ul>
+                </section>
+              
+                <section class="skill-category">
+                  <h3>Past stack (still serviceable if needed)</h3>
+                  <ul class="stack-chips">
+                    
+                      <li class="stack-chip">C# / .NET</li>
+                    
+                      <li class="stack-chip">Azure</li>
+                    
+                      <li class="stack-chip">Power BI</li>
+                    
+                      <li class="stack-chip">Microsoft Fabric</li>
+                    
+                      <li class="stack-chip">Databricks</li>
+                    
+                  </ul>
+                </section>
+              
+            </section>
+          
+
+          
+            <section>
+              <h2 class="section-heading">Education</h2>
+              
+                <section class="education-entry">
+                  
+                    <h3><a href="https://www.ufc.br/">Universidade Federal do Ceará (UFC)</a></h3>
+                  
+                  
+                    
+                      <p>B.S. Civil Engineering (Computer Science research track) · 2022</p>
+                    
+                    <p>Concurrent research training in Data Science via Chief Scientist Program (FUNCAP, Ceará State Government).</p>
+                    
+                      <p>
+                        <strong>Selected coursework (computer science track):</strong>
+                        Machine Learning · Data Mining · Digital Image Processing · Numerical Methods · Programming Fundamentals · Linear Algebra · Probability &amp; Statistics · Optimization
+                      </p>
+                    
+                  
+                </section>
+              
+                <section class="education-entry">
+                  
+                    <h3><a href="https://engineering.nyu.edu/">NYU Tandon School of Engineering, Vida Center</a></h3>
+                  
+                  
+                    <p>Research Scientist (Data Science)</p>
+                    
+                      <p class="section-label">September 2025 – December 2025</p>
+                    
+                    <p>Urban analytics and geospatial ML research affiliation (UrbanMapper / CRIF). Also listed under Work Experience.</p>
+                  
+                </section>
+              
+            </section>
+          
+
+          
+            <section>
+              <h2 class="section-heading">Languages</h2>
+              <ul class="unstyled-list">
+                
+                  <li>
+                    <h3>English</h3>
+                    <p class="section-label">Full professional proficiency</p>
+                  </li>
+                
+                  <li>
+                    <h3>Portuguese</h3>
+                    <p class="section-label">Native speaker</p>
+                  </li>
+                
+              </ul>
+            </section>
+          
+
+          
+            <section>
+              <h2 class="section-heading">Interests</h2>
+              
+                <section>
+                  <h3>Economics</h3>
+                  <p>Incentives and decision-making in complex systems.</p>
+                  
+                </section>
+              
+                <section>
+                  <h3>Game Theory</h3>
+                  <p>Strategic interaction and applications in AI / human behavior.</p>
+                  
+                </section>
+              
+                <section>
+                  <h3>Kickboxing</h3>
+                  <p>Practitioner and competitor (Blue Belt).</p>
+                  
+                </section>
+              
+            </section>
+          
+        </aside>
+
+        
+          <section class="projects-full">
+            <h2 class="section-heading">Featured Projects</h2>
+            <ul class="project-grid">
+              
+                <li class="project-card">
+                  <a class="project-card-link"
+                     href="projects/multi-agent-ops.html">
+                    
+                      <img class="project-card-cover"
+                           src="portfolio_media/covers/multi-agent-ops.svg"
+                           alt=""
+                           onerror="this.remove()">
+                    
+                    <h3 class="project-card-title">Budget-Matching Agent</h3>
+                    <p class="project-card-status">Production · Confidential</p>
+                    <p class="project-card-tagline">LangGraph agent that matches schedule activities to budget items and splits costs, cutting each cycle from ~1 month to ~40 minutes (~99%) for a construction-tech SaaS platform.</p>
+                    <ul class="stack-chips project-card-stack">
+                      
+                        <li class="stack-chip">LangGraph</li>
+                      
+                        <li class="stack-chip">LangSmith</li>
+                      
+                        <li class="stack-chip">Claude</li>
+                      
+                        <li class="stack-chip">pgvector</li>
+                      
+                    </ul>
+                    <span class="project-card-cta">Read more →</span>
+                  </a>
+                </li>
+              
+                <li class="project-card">
+                  <a class="project-card-link"
+                     href="projects/crif.html">
+                    
+                      <img class="project-card-cover"
+                           src="portfolio_media/covers/crif.svg"
+                           alt=""
+                           onerror="this.remove()">
+                    
+                    <h3 class="project-card-title">CRIF — Calibrated Raster Interpolation</h3>
+                    <p class="project-card-status">Open research</p>
+                    <p class="project-card-tagline">Geospatial Python library for unified grid rasterization, dasymetric mapping, and hotspot discovery. Built at NYU VIDA Center for the UrbanMapper project.</p>
+                    <ul class="stack-chips project-card-stack">
+                      
+                        <li class="stack-chip">Python</li>
+                      
+                        <li class="stack-chip">GeoPandas</li>
+                      
+                        <li class="stack-chip">Rasterio</li>
+                      
+                        <li class="stack-chip">NumPy</li>
+                      
+                    </ul>
+                    <span class="project-card-cta">Read more →</span>
+                  </a>
+                </li>
+              
+                <li class="project-card">
+                  <a class="project-card-link"
+                     href="projects/midr.html">
+                    
+                      <img class="project-card-cover"
+                           src="portfolio_media/covers/midr.svg"
+                           alt=""
+                           onerror="this.remove()">
+                    
+                    <h3 class="project-card-title">MIDR — Pavement Defect Detection</h3>
+                    <p class="project-card-status">Production · Adopted</p>
+                    <p class="project-card-tagline">YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Ceará (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models.</p>
+                    <ul class="stack-chips project-card-stack">
+                      
+                        <li class="stack-chip">Python 3.11</li>
+                      
+                        <li class="stack-chip">PyTorch</li>
+                      
+                        <li class="stack-chip">Ultralytics YOLO 8.3.x</li>
+                      
+                        <li class="stack-chip">OpenCV</li>
+                      
+                    </ul>
+                    <span class="project-card-cta">Read more →</span>
+                  </a>
+                </li>
+              
+                <li class="project-card">
+                  <a class="project-card-link"
+                     href="projects/nutrir.html">
+                    
+                      <img class="project-card-cover"
+                           src="portfolio_media/covers/nutrir.svg"
+                           alt=""
+                           onerror="this.remove()">
+                    
+                    <h3 class="project-card-title">Nutrir — Meal Verification CV</h3>
+                    <p class="project-card-status">Production · Adopted</p>
+                    <p class="project-card-tagline">Computer-vision pipeline for meal verification deployed by the Municipality of Fortaleza — classifies meal components from a photo and pairs the percentages with a scale weight to produce per-meal nutritional records.</p>
+                    <ul class="stack-chips project-card-stack">
+                      
+                        <li class="stack-chip">Python</li>
+                      
+                        <li class="stack-chip">PyTorch</li>
+                      
+                        <li class="stack-chip">image segmentation</li>
+                      
+                        <li class="stack-chip">OpenCV</li>
+                      
+                    </ul>
+                    <span class="project-card-cta">Read more →</span>
+                  </a>
+                </li>
+              
+            </ul>
+          </section>
+        
+      </div>
     </div>
-    <div class="tools"><div class="tool" data-reveal><h3>LLM & agents</h3><ul class="chips"><li>LangGraph</li><li>LangChain</li><li>LangSmith</li><li>RAG</li><li>pgvector</li><li>Anthropic Claude</li><li>OpenAI</li><li>MCP</li><li>LLM evaluation</li><li>Human-in-the-loop</li></ul></div><div class="tool" data-reveal><h3>Backend & product</h3><ul class="chips"><li>Python</li><li>FastAPI</li><li>SQLAlchemy async</li><li>PostgreSQL</li><li>Redis</li><li>React 19</li><li>TypeScript</li></ul></div><div class="tool" data-reveal><h3>ML & vision</h3><ul class="chips"><li>PyTorch</li><li>YOLO</li><li>OpenCV</li><li>scikit-learn</li><li>GeoPandas</li><li>Rasterio</li><li>Bayesian modeling</li></ul></div><div class="tool" data-reveal><h3>Cloud & delivery</h3><ul class="chips"><li>AWS</li><li>Kubernetes + Argo CD</li><li>Docker</li><li>Terraform</li><li>Azure</li><li>CI/CD</li></ul></div></div>
-  </div>
-</section>
-</main>
-<footer class="site-footer">
-  <div class="container footer-row"><p>Klayver Paz · AI Engineer</p><p>Fortaleza, Brazil · Remote</p></div>
-</footer>
-</div>
-<script src="js/portfolio.js" defer></script>
-</body>
+
+    <footer class="page-footer">
+      <div class="container">
+        <p>© 2026 Klayver Paz. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>

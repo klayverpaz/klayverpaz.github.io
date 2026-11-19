@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<!-- portfolio: hand-made page (not generated; edit by hand) -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>A month of work in 40 minutes · Klayver Paz</title>
+<meta name="description" content="A LangGraph agent that matches a construction schedule to its budget and splits the cost, with a human approving each step.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="../fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<div class="page">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="wordmark" href="../index.html">Klayver Paz</a>
+    <nav class="nav" aria-label="Sections"><a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#toolbox">Toolbox</a></nav>
+    <div class="header-end"><a class="btn btn-ghost btn-sm" href="../../Klayver_Paz_Resume.pdf" data-resume>Résumé <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></div>
+  </div>
+</header>
+<main class="container">
+<section class="cs-hero">
+  <a class="back" href="../index.html#case-multi-agent-ops"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> All work</a>
+  <div class="cs-head">
+    <div><p class="tag">LLM agents · Construction-tech SaaS · 2026</p><h1>A month of work in 40 minutes</h1><p class="lead">A LangGraph agent that matches a construction schedule to its budget and splits the cost, with a human approving each step.</p></div>
+    <div class="cs-nums"><div class="cs-num"><b>~1 month → ~40 min</b><span>per budget cycle, on a construction-tech SaaS</span></div><div class="cs-num"><b>17% → 100%</b><span>recall on the hardest evaluation case after I reworked how the agent uses a reference project</span></div><div class="cs-num"><b>2 approval gates</b><span>nothing is saved until a person signs off</span></div></div>
+  </div>
+  <div class="cs-scene"><div class="scene mo-month" data-scene data-steps="500,2800,400,2200,600" data-hold="3600" aria-hidden="true"><div class="stage">
+  <div class="mm-box mm-before"><header><b>Before</b><small>by hand · ~1 month per cycle</small></header><div class="mm-cal"></div></div>
+  <div class="mm-box mm-after">
+    <div class="mm-ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42" pathLength="100"/></svg><p><b><span data-to="40" data-at="3" data-dur="2000">40</span></b><small>minutes</small></p></div>
+    <div class="mm-after-txt"><small>With the agent</small><b>Schedule matched to budget</b><span class="live"><i></i>Approved &amp; saved</span></div>
+  </div>
+</div></div></div>
+</section>
+<section class="cs-block" data-reveal><h2>The problem</h2><p>On a construction-tech SaaS, every budget scenario needs each schedule activity linked to the budget items it consumes, and each item's cost split across those activities. Engineers did it by hand: about a month per cycle, and every cost report downstream depended on it.</p></section>
+<section class="cs-block" data-reveal><h2>How it works</h2><ol class="flow" style="--n:5"><li class=""><b>Load</b><span>Pulls the schedule and the budget tree through the platform API, acting with the user's own token.</span></li><li class="ai"><b>Match</b><span>The LLM proposes activity → budget-item matches in batches, guided by a reference project when there is one.</span></li><li class="human"><b>Review</b><span>A LangGraph interrupt: the user approves, edits or asks for a recalculation. Nothing is saved yet.</span></li><li class=""><b>Split costs</b><span>Deterministic code splits each item's cost across its activities, and the user reviews again.</span></li><li class="human"><b>Save</b><span>Approved results are written back through the platform API.</span></li></ol><p class="flow-key"><span><i></i>Deterministic code</span><span><i class="ai"></i>AI model</span><span><i class="human"></i>Human decision</span></p></section>
+<section class="cs-block" data-reveal><h2>Key decisions</h2><ul class="decisions"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>The LLM only does what needs judgment. Parsing, cost math and writes are plain, deterministic code.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>An accuracy harness with real projects as fixtures measures recall, leakage and misses over 3 runs per case, compared against a blessed baseline per model and commit.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Human-in-the-loop by design: interrupts with Redis checkpoints, so a session resumes exactly where it stopped.</span></li></ul></section>
+
+<section class="cs-block" data-reveal><div class="role"><div><h2>Stack</h2><ul class="chips"><li>LangGraph</li><li>LangSmith</li><li>Claude Haiku 4.5</li><li>OpenAI embeddings</li><li>pgvector</li><li>PostgreSQL</li><li>Redis</li><li>FastAPI</li><li>SSE</li><li>React 19</li><li>TypeScript</li><li>AWS ECR</li><li>Kubernetes + Argo CD</li></ul></div><div><h2>My role</h2><p><b>AI Engineer, Arke Analytica.</b> Designed and built the agent, its evaluation harness and the streaming API for a construction-tech SaaS platform (client under NDA).</p></div></div></section>
+<nav class="pager" aria-label="More cases">
+  <a href="crif.html"><small>Previous case</small><b>The whole city on one comparable map</b></a>
+  <a class="next" href="restrictions-rag.html"><small>Next case</small><b>Site constraints, suggested from past projects</b></a>
+</nav>
+</main>
+<footer class="site-footer">
+  <div class="container footer-row"><p>Klayver Paz · AI Engineer</p><p>Fortaleza, Brazil · Remote</p></div>
+</footer>
+</div>
+<script src="../js/portfolio.js" defer></script>
+</body>
+</html>

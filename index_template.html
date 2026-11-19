@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Info -->
+    <title>{{ name }} - Portfolio</title>
+    <meta name="description" content="{{ name }} - {{ summary }}">
+    <meta name="author" content="{{ name }}">
+
+    <!-- Open Graph Tags: The title of the page for social media sharing. It can match the title tag or be more descriptive. -->
+    <meta property="og:title" content="{{ name }}">
+
+    <!-- Open Graph Tags: Typically set to "website" for static sites or "article" for content-heavy pages. -->
+    <meta property="og:type" content="website">
+
+    <!-- Open Graph Tags: The URL of the page, used to ensure link previews resolve to the correct page. -->
+    <meta property="og:url" content="{{ base_url }}/index.html">
+
+    <!-- Open Graph Tags: URL of an image that represents the page. Useful for link previews. -->
+    <meta property="og:image" content="{{ base_url }}/{{ image_path }}">
+
+    <!-- Open Graph Tags: Provides an alternative text for the image to improve accessibility. -->
+    <meta property="og:image:alt" content="{{ name }} Profile Image">
+
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/modern_normalize.css" />
+    <link rel="stylesheet" href="css/html5bp.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Set a theme color that matches your website's primary color -->
+    <meta name="theme-color" content="#fafafa">
+
+    <!-- Favicon for all browsers -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+    <!-- Apple touch icon for iOS devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon.png">
+
+    <!-- Web app manifest for Progressive Web Apps -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Content Security Policy: Uncomment to enhance security by restricting where content can be loaded from (useful for preventing certain attacks like XSS). Update if adding external sources (e.g., Google Fonts, Bootstrap CDN, analytics, etc). -->
+    <!-- <meta http-equiv="Content-Security-Policy" content=" default-src 'self'; script-src 'self' code.jquery.com; style-src 'self' fonts.googleapis.com; font-src fonts.gstatic.com; img-src 'self' images.examplecdn.com; "> -->
+  </head>
+
+  <body>
+    <header class="page-header">
+      <div class="container">
+        <div class="header-top flex-responsive">
+          {% if image_path %}
+            <img class="header-image"
+                 width="256"
+                 height="256"
+                 src="{{ image_path }}"
+                 alt="{{ name }} Profile Image" />
+          {% endif %}
+          <div class="header-info">
+            <h1>{{ name }}</h1>
+            {% if label %}<h2 class="header-label">{{ label }}</h2>{% endif %}
+            {% if contact.email or contact.phone or contact.location %}
+              <address>
+                <ul class="inline-list flex-responsive">
+                  {% if contact.email %}
+                    <li>
+                      <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                    </li>
+                  {% endif %}
+                  {% if contact.phone %}
+                    <li>
+                      <a href="tel:+{{ contact.phone | replace('-', '') }}">{{ contact.phone }}</a>
+                    </li>
+                  {% endif %}
+                  {% if contact.location %}<li>{{ contact.location }}</li>{% endif %}
+                </ul>
+              </address>
+            {% endif %}
+            {% if social_links %}
+              <ul class="inline-list flex-responsive">
+                {% for link in social_links %}
+                  <li>
+                    <a href="{{ link.url }}"
+                       rel="noopener noreferrer"
+                       aria-label="{{ link.label }}"
+                       class="link-with-icon">
+                      {% if link.svg_data %}{{ link.svg_data | safe }}{% endif %}
+                      {{ link.label }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+            {% if summary %}<p class="header-summary">{{ summary }}</p>{% endif %}
+            <p class="header-cv-link"><a class="cv-button" href="Klayver_Paz_Resume.pdf" download>Download CV (PDF)</a></p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="container">
+        <main>
+          {% if work_experience %}
+            <section>
+              <h2 class="section-heading">Work Experience</h2>
+              {% for job in work_experience %}
+                <section class="work-entry">
+                  <div class="work-entry-header">
+                    <h3 class="work-entry-role">
+                      {{ job.position }}
+                      {% if job.url %}
+                        <span class="work-entry-company">· <a href="{{ job.url }}">{{ job.company }}</a></span>
+                      {% else %}
+                        <span class="work-entry-company">· {{ job.company }}</span>
+                      {% endif %}
+                    </h3>
+                    {% if job.start_date and job.end_date %}
+                      <span class="work-entry-date">{{ job.start_date }} — {{ job.end_date }}</span>
+                    {% endif %}
+                  </div>
+                  {% if job.summary %}<p class="work-entry-summary">{{ job.summary }}</p>{% endif %}
+                  {% if job.stack %}
+                    <ul class="stack-chips work-entry-stack">
+                      {% for tech in job.stack %}<li class="stack-chip">{{ tech }}</li>{% endfor %}
+                    </ul>
+                  {% endif %}
+                  {% if job.highlights %}
+                    <ul class="work-entry-highlights">
+                      {% for highlight in job.highlights %}
+                        <li><strong>{{ highlight.lead }}</strong> {{ highlight.body }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </section>
+              {% endfor %}
+            </section>
+          {% endif %}
+
+          {% if volunteer_experience %}
+            <section>
+              <h2 class="section-heading">Volunteer Experience</h2>
+              {% for vol in volunteer_experience %}
+                <section>
+                  <h3>
+                    {% if vol.url %}
+                      {{ vol.position }} at <a href="{{ vol.url }}">{{ vol.organization }}</a>
+                    {% else %}
+                      {{ vol.position }} at {{ vol.organization }}
+                    {% endif %}
+                  </h3>
+                  {% if vol.start_date and vol.end_date %}
+                    <p class="section-label">{{ vol.start_date }} - {{ vol.end_date }}</p>
+                  {% endif %}
+                  {% if vol.summary %}<p>{{ vol.summary }}</p>{% endif %}
+                  {% if vol.highlights %}
+                    <ul>
+                      {% for highlight in vol.highlights %}<li>{{ highlight }}</li>{% endfor %}
+                    </ul>
+                  {% endif %}
+                </section>
+              {% endfor %}
+            </section>
+          {% endif %}
+
+          {% if references %}
+            <section>
+              <h2 class="section-heading">References</h2>
+              {% for ref in references %}
+                <section>
+                  {% if ref.name %}<h3>{{ ref.name }}</h3>{% endif %}
+                  {% if ref.relation %}<p class="section-label">{{ ref.relation }}</p>{% endif %}
+                  {% if ref.reference %}
+                    <blockquote>
+                      {{ ref.reference }}
+                    </blockquote>
+                  {% endif %}
+                </section>
+              {% endfor %}
+            </section>
+          {% endif %}
+        </main>
+
+        <!-- Sidebar Section -->
+        <aside>
+          {% if skills %}
+            <section>
+              <h2 class="section-heading">Skills</h2>
+              {% for block in skills %}
+                <section class="skill-category">
+                  <h3>{{ block.category }}</h3>
+                  <ul class="stack-chips">
+                    {% for item in block['items'] %}
+                      <li class="stack-chip">{{ item }}</li>
+                    {% endfor %}
+                  </ul>
+                </section>
+              {% endfor %}
+            </section>
+          {% endif %}
+
+          {% if education %}
+            <section>
+              <h2 class="section-heading">Education</h2>
+              {% for entry in education %}
+                <section class="education-entry">
+                  {% if entry.url %}
+                    <h3><a href="{{ entry.url }}">{{ entry.institution }}</a></h3>
+                  {% else %}
+                    <h3>{{ entry.institution }}</h3>
+                  {% endif %}
+                  {% if entry.kind == 'degree' %}
+                    {% if entry.degree_title %}
+                      <p>{{ entry.degree_title }}{% if entry.graduation_date %} · {{ entry.graduation_date }}{% endif %}</p>
+                    {% endif %}
+                    {% if entry.notes %}<p>{{ entry.notes }}</p>{% endif %}
+                    {% if entry.coursework %}
+                      <p>
+                        <strong>{{ entry.coursework_label or 'Selected coursework' }}:</strong>
+                        {{ entry.coursework | join(' · ') }}
+                      </p>
+                    {% endif %}
+                  {% else %}
+                    {% if entry.role_title %}<p>{{ entry.role_title }}</p>{% endif %}
+                    {% if entry.start_date and entry.end_date %}
+                      <p class="section-label">{{ entry.start_date }} – {{ entry.end_date }}</p>
+                    {% endif %}
+                    {% if entry.notes %}<p>{{ entry.notes }}</p>{% endif %}
+                  {% endif %}
+                </section>
+              {% endfor %}
+            </section>
+          {% endif %}
+
+          {% if languages %}
+            <section>
+              <h2 class="section-heading">Languages</h2>
+              <ul class="unstyled-list">
+                {% for lang in languages %}
+                  <li>
+                    <h3>{{ lang.language }}</h3>
+                    <p class="section-label">{{ lang.fluency }}</p>
+                  </li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+
+          {% if interests %}
+            <section>
+              <h2 class="section-heading">Interests</h2>
+              {% for interest in interests %}
+                <section>
+                  <h3>{{ interest.name }}</h3>
+                  {% if interest.summary %}<p>{{ interest.summary }}</p>{% endif %}
+                  {% if interest.images %}
+                    <div class="gallery side-gallery">
+                      {% for img in interest.images %}
+                        <figure>
+                          <img width="600"
+                               height="338"
+                               src="{{ img.img_path }}"
+                               alt="{{ img.caption }}">
+                          <figcaption>{{ img.caption }}</figcaption>
+                        </figure>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </section>
+              {% endfor %}
+            </section>
+          {% endif %}
+        </aside>
+
+        {% if projects %}
+          <section class="projects-full">
+            <h2 class="section-heading">Featured Projects</h2>
+            <ul class="project-grid">
+              {% for project in projects %}
+                <li class="project-card">
+                  <a class="project-card-link"
+                     href="projects/{{ project.slug }}.html">
+                    {% if project.cover_image %}
+                      <img class="project-card-cover"
+                           src="{{ project.cover_image }}"
+                           alt=""
+                           onerror="this.remove()">
+                    {% endif %}
+                    <h3 class="project-card-title">{{ project.title }}</h3>
+                    <p class="project-card-status">{{ project.status }}</p>
+                    <p class="project-card-tagline">{{ project.tagline }}</p>
+                    <ul class="stack-chips project-card-stack">
+                      {% for tech in project.stack[:4] %}
+                        <li class="stack-chip">{{ tech }}</li>
+                      {% endfor %}
+                    </ul>
+                    <span class="project-card-cta">Read more →</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      <div class="container">
+        <p>© {{ current_year }} {{ name }}. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 
 const CASES = ['multi-agent-ops', 'restrictions-rag', 'construction-forecast', 'midr', 'nutrir', 'crif'];
-const PAGES = ['/', ...CASES.map((s) => `/projects/${s}.html`)];
+const PAGES = ['/portfolio/', ...CASES.map((s) => `/portfolio/projects/${s}.html`)];
 const BANNED = [/seegold/i, /\bfounder\b/i, /our team/i, /my company/i, /paying gyms/i];
 
 function watchErrors(page: Page) {
@@ -36,18 +36,18 @@ for (const path of PAGES) {
 }
 
 test('home lists six cases whose detail links and résumé resolve', async ({ page, request }) => {
-  await page.goto('/');
+  await page.goto('/portfolio/');
   await expect(page.locator('.work-case')).toHaveCount(6);
   const hrefs = await page.locator('.work-case a.more').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
   expect(hrefs).toEqual(CASES.map((s) => `projects/${s}.html`));
-  for (const h of hrefs) expect((await request.get(`/${h}`)).status()).toBe(200);
+  for (const h of hrefs) expect((await request.get(`/portfolio/${h}`)).status()).toBe(200);
   const pdf = await request.get('/Klayver_Paz_Resume.pdf');
   expect(pdf.status()).toBe(200);
   expect(pdf.headers()['content-type']).toContain('pdf');
 });
 
 test('showcase cycles through clones of all six case scenes', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/portfolio/');
   await expect(page.locator('#sh-stage > .scene')).toHaveCount(6);
   await expect(page.locator('#sh-stage .scene[id], #sh-stage .scene [id]')).toHaveCount(0);
   await expect(page.locator('#sh-stage > .scene.is-active')).toHaveCount(1);
@@ -58,7 +58,7 @@ test('showcase cycles through clones of all six case scenes', async ({ page }) =
 });
 
 test('scenes animate when scrolled into view', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('/portfolio/');
   const scene = page.locator('#case-restrictions-rag .scene');
   await scene.scrollIntoViewIfNeeded();
   await expect(scene).toHaveClass(/\bs2\b/, { timeout: 4000 });
@@ -67,7 +67,7 @@ test('scenes animate when scrolled into view', async ({ page }) => {
 
 test('reduced motion shows final states, not zeros', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
+  await page.goto('/portfolio/');
   const nums = await page.locator('.stats [data-to]').allInnerTexts();
   expect(nums).toEqual(['40', '100', '6']);
   await expect(page.locator('#case-nutrir .scene')).toHaveClass(/\bs6\b/);
@@ -77,7 +77,7 @@ test('reduced motion shows final states, not zeros', async ({ page }) => {
 
 test('detail page deep link works on its own', async ({ page }) => {
   const errors = watchErrors(page);
-  await page.goto('/projects/nutrir.html', { waitUntil: 'networkidle' });
+  await page.goto('/portfolio/projects/nutrir.html', { waitUntil: 'networkidle' });
   await expect(page.locator('h1')).toHaveText('Checking public meals from a photo');
   await expect(page.locator('.flow li')).toHaveCount(4);
   await expect(page.locator('.gallery img')).toHaveCount(2);
@@ -86,7 +86,7 @@ test('detail page deep link works on its own', async ({ page }) => {
 });
 
 test('hero layout: showcase beside the copy on desktop, inside the gutter on mobile', async ({ page }, info) => {
-  await page.goto('/');
+  await page.goto('/portfolio/');
   const copy = await page.locator('.hero-copy').boundingBox();
   const show = await page.locator('#showcase').boundingBox();
   const vw = page.viewportSize()!.width;
@@ -99,4 +99,13 @@ test('hero layout: showcase beside the copy on desktop, inside the gutter on mob
       expect(box).toBeLessThanOrEqual(vw - 16);
     }
   }
+});
+
+test('root is still the CV page, with the PDF download', async ({ page, request }) => {
+  await page.goto('/');
+  const cv = page.locator('a.cv-button');
+  await expect(cv).toHaveText('Download CV (PDF)');
+  await expect(cv).toHaveAttribute('href', 'Klayver_Paz_Resume.pdf');
+  expect((await request.get('/Klayver_Paz_Resume.pdf')).status()).toBe(200);
+  await expect(page.locator('body')).not.toContainText('Seegold');
 });

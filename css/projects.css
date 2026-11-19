@@ -1,0 +1,49 @@
+/* Detail page: single-column layout. main.css forces `2fr 1fr` on
+   `.page-content .container` at desktop for the index/resume aside —
+   detail pages have no aside, so we force back to a single column. */
+.project-detail .container,
+.project-header .container {
+  display: block;
+  max-width: 820px;
+}
+
+/* Project detail-page layout */
+.project-header {
+  padding: 2.5rem 0 1.5rem;
+}
+.project-header .breadcrumb {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+.project-header .breadcrumb a {
+  color: #2563eb;
+  text-decoration: none;
+}
+.project-header h1 {
+  margin: 0 0 0.4rem;
+}
+.project-header .tagline {
+  font-size: 1.05rem;
+  color: #1f2933;
+  margin: 0.4rem 0 0;
+  max-width: 60ch;
+}
+
+.project-detail .project-section {
+  margin: 2rem 0;
+}
+.project-detail .project-section h2 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid #e3e7ed;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+.project-detail figure {
+  margin: 0 0 1rem;
+}
+.project-detail figure img,
+.project-detail video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
