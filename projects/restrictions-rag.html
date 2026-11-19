@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<!-- portfolio: hand-made page (not generated; edit by hand) -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Site constraints, suggested from past projects · Klayver Paz</title>
+<meta name="description" content="A RAG agent that tells planners what could block next week's work, and where that idea came from.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="../fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<div class="page">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="wordmark" href="../index.html">Klayver Paz</a>
+    <nav class="nav" aria-label="Sections"><a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#toolbox">Toolbox</a></nav>
+    <div class="header-end"><a class="btn btn-ghost btn-sm" href="../Klayver_Paz_Resume.pdf" data-resume>Résumé <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></div>
+  </div>
+</header>
+<main class="container">
+<section class="cs-hero">
+  <a class="back" href="../index.html#case-restrictions-rag"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> All work</a>
+  <div class="cs-head">
+    <div><p class="tag">RAG · Construction-tech SaaS · 2026</p><h1>Site constraints, suggested from past projects</h1><p class="lead">A RAG agent that tells planners what could block next week's work, and where that idea came from.</p></div>
+    <div class="cs-nums"><div class="cs-num"><b>3 tiers</b><span>of history: this project, the same builder's sites, a curated cross-builder base</span></div><div class="cs-num"><b>1 reason + source</b><span>on every suggestion, so planners can trust or reject it fast</span></div><div class="cs-num"><b>0 auto-saves</b><span>the AI suggests; people decide and pick who owns each item</span></div></div>
+  </div>
+  <div class="cs-scene"><div class="scene mo-rag" data-scene data-steps="600,900,1100,1100,1100,700" data-hold="3400" aria-hidden="true"><div class="stage">
+  <div class="rg-head"><b>Next week · 4 activities</b><span class="rg-chip"><span class="w">Searching history</span><span class="d">Ready for review</span></span></div>
+  <div class="rg-src"><span class="p">This project</span><span class="co">Same builder</span><span class="g">General base</span></div>
+  <ul class="rg-list">
+    <li><i class="st"></i><span class="act">Slab pour · Tower B, floor 7</span><span class="sug">Book the concrete pump</span><span class="why" style="--c:#9DBBFF">This project</span></li>
+    <li><i class="st"></i><span class="act">Facade cladding · Tower A</span><span class="sug">Confirm panel delivery</span><span class="why" style="--c:#9275E8">Same builder</span></li>
+    <li><i class="st"></i><span class="act">Electrical rough-in · floor 3</span><span class="sug">Release the cable order</span><span class="why" style="--c:#9DBBFF">This project</span></li>
+    <li><i class="st"></i><span class="act">Elevator shaft · Tower B</span><span class="sug">Schedule the safety inspection</span><span class="why" style="--c:#FFC98A">General base</span></li>
+  </ul>
+  <p class="rg-foot">You choose who owns each one <b>Review &amp; save</b></p>
+</div></div></div>
+</section>
+<section class="cs-block" data-reveal><h2>The problem</h2><p>Construction teams plan each week by clearing constraints upfront: materials, crews, permits, equipment. Planners listed them from memory, so lessons from one site rarely reached the next, and the same blockers kept slowing work down.</p></section>
+<section class="cs-block" data-reveal><h2>How it works</h2><ol class="flow" style="--n:5"><li class="human"><b>Select</b><span>The planner picks up to 8 activities for the coming week.</span></li><li class=""><b>Retrieve</b><span>Semantic search over this project's past constraints, then the same builder's other sites, then a curated base. Metadata filters run before cosine similarity.</span></li><li class="ai"><b>Suggest</b><span>The model drafts one constraint per activity with type, sector, impact and a due date, plus a two-sentence reason that cites its source.</span></li><li class=""><b>Guard</b><span>Deterministic checks drop duplicates and anything outside the project's catalog. If there's no precedent, the suggestion says so.</span></li><li class="human"><b>Review & save</b><span>The planner edits, assigns owners and saves. The AI never assigns people.</span></li></ol><p class="flow-key"><span><i></i>Deterministic code</span><span><i class="ai"></i>AI model</span><span><i class="human"></i>Human decision</span></p></section>
+<section class="cs-block" data-reveal><h2>Key decisions</h2><ul class="decisions"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Filter by metadata first, then rank by similarity, so the model only reasons over relevant history.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Every suggestion shows where it came from; "no precedent" is stated, not hidden.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Metered usage: AI credits per company, logged per project and per user for billing.</span></li></ul></section>
+
+<section class="cs-block" data-reveal><div class="role"><div><h2>Stack</h2><ul class="chips"><li>LangGraph</li><li>Claude Haiku 4.5</li><li>OpenAI embeddings</li><li>pgvector</li><li>PostgreSQL</li><li>FastAPI</li><li>SSE</li><li>React 19</li><li>TypeScript</li></ul></div><div><h2>My role</h2><p><b>AI Engineer, Arke Analytica.</b> Built the retrieval pipeline, the agent and its API for a construction-tech SaaS platform (client under NDA).</p></div></div></section>
+<nav class="pager" aria-label="More cases">
+  <a href="multi-agent-ops.html"><small>Previous case</small><b>A month of work in 40 minutes</b></a>
+  <a class="next" href="construction-forecast.html"><small>Next case</small><b>Forecasting construction delays and waste</b></a>
+</nav>
+</main>
+<footer class="site-footer">
+  <div class="container footer-row"><p>Klayver Paz · AI Engineer</p><p>Fortaleza, Brazil · Remote</p></div>
+</footer>
+</div>
+<script src="../js/portfolio.js" defer></script>
+</body>
+</html>

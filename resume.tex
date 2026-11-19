@@ -121,8 +121,8 @@ AI Engineer building production LLM agents and RAG systems: LangGraph multi-agen
 \job{AI Engineer / Agent Engineer}{Arke Analytica}{Jan 2026 -- Present}
 \textit{\small Production LLM agents and RAG systems for B2B platforms.}
 \begin{itemize}
-  \item \textbf{Multi-agent system (LangGraph).} Reduced a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes with a production multi-agent system on LangGraph: agents only where the work is open-ended (a ReAct planner with 14 tools), deterministic workflow subgraphs everywhere else, and human-in-the-loop approval gates before any state-changing operation.
-  \item \textbf{RAG pipeline.} Designed three-tier RAG retrieval over the client's own history (current project $\rightarrow$ same company $\rightarrow$ general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context.
+  \item \textbf{LLM agents (LangGraph).} Cut a recurring B2B budget workflow from $\sim$1 month to $\sim$40 minutes per cycle with a production LangGraph agent that matches a construction schedule to its budget items and splits the costs, with human approval gates before anything is saved. On the same platform, built a conversational ReAct planner (14 tools): agents only where the work is open-ended, deterministic workflow subgraphs everywhere else.
+  \item \textbf{RAG pipeline.} Designed three-tier RAG retrieval over the platform's own history (current project $\rightarrow$ same company $\rightarrow$ general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context.
   \item \textbf{LLM evaluation.} Built an accuracy harness for LLM pipelines: real cases as fixtures, hit-rate / leakage / miss metrics, repeated runs per case compared against a blessed baseline per model and commit, plus LangSmith tracing and golden conversation tests on the production model.
   \item \textbf{Agent safety \& human-in-the-loop.} Interrupt-and-resume pattern lets users pause an in-flight workflow, ask a side question, and resume from the same node, backed by TTL-bounded Redis checkpoints. Bearer-token pass-through: the agent never stores credentials and every tool acts with the caller's own permissions.
   \item \textbf{Shipped on AWS.} FastAPI + async SQLAlchemy + PostgreSQL services (Anthropic / OpenAI provider abstraction, SSE streaming) and a React 19 + TypeScript frontend, containerized to Amazon ECR via Bitbucket Pipelines and deployed GitOps-style to Kubernetes with Argo CD (dev / prod), using S3 and TLS-secured Redis.
@@ -170,14 +170,8 @@ AI Engineer building production LLM agents and RAG systems: LangGraph multi-agen
 % -------------------------------------------------------------
 \section{Featured Projects}
 
-\project{Multi-Agent Operations Assistant}{Production --- Confidential (under NDA)}
-LangGraph multi-agent system that cut a recurring B2B operational workflow from $\sim$1 month to $\sim$40 minutes ($\sim$99\%). Intent classification, deterministic workflow subgraphs, HITL gates, lateral-query interrupt-and-resume, Redis checkpoints, deployed on AWS + Kubernetes. \textit{\small LangGraph, LangSmith, pgvector, Redis, FastAPI, React 19, AWS (ECR, S3), Kubernetes + Argo CD.}
-
-\project{Seegold --- SaaS + WhatsApp AI Agent}{Production --- 22 paying gyms}
-Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), built and operated end to end. Includes an LLM sales agent that drafts WhatsApp replies to leads: deterministic guardrails (whitelisted prices and links, human review for anything else), prompt-injection containment (model runs with no tools), and send verification against the outbound record. \textit{\small FastAPI, SQLAlchemy async, PostgreSQL, React 19, Anthropic Claude, Twilio WhatsApp, Asaas, AWS (ECS, RDS, CloudFront), Terraform.}
-
-\project{Personal Finance Skill}{In development --- Anthropic Skill}
-Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine: parse $\rightarrow$ normalize $\rightarrow$ validate $\rightarrow$ classify $\rightarrow$ persist. Idempotent imports, self-improving merchant classifier. \textit{\small Anthropic Skills protocol, Python, SQLite, PDF parsing.}
+\project{Budget-Matching Agent}{Production --- Confidential (under NDA)}
+LangGraph agent that matches schedule activities to budget items and splits costs, cutting each cycle from $\sim$1 month to $\sim$40 minutes ($\sim$99\%). Two human-approval interrupts, Redis checkpoints, and an accuracy harness with blessed baselines per model and commit (hardest case: recall 0.17 $\rightarrow$ 1.00, zero leakage); deployed on AWS + Kubernetes. \textit{\small LangGraph, LangSmith, Claude, pgvector, Redis, FastAPI, React 19, AWS (ECR, S3), Kubernetes + Argo CD.}
 
 \project{CRIF --- Calibrated Raster Interpolation}{Open research}
 Geospatial Python library for unified grid rasterization, dasymetric mapping, and hotspot discovery. Point + polygon rasterization with overlap handling and multi-band normalization, formal mathematical derivation, custom Jupyter widgets. Built at NYU VIDA Center for the UrbanMapper project. \textit{\small Python, GeoPandas, Rasterio, NumPy, Jupyter widgets, Docker.}

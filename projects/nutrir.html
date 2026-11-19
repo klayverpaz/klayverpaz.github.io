@@ -1,111 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Nutrir — Meal Verification CV — Klayver Paz</title>
-    <meta name="description" content="Computer-vision pipeline for meal verification deployed by the Municipality of Fortaleza — classifies meal components from a photo and pairs the percentages with a scale weight to produce per-meal nutritional records.">
-    <meta name="author" content="Klayver Paz">
-
-    <meta property="og:title" content="Nutrir — Meal Verification CV — Klayver Paz">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://klayverpaz.github.io//projects/nutrir.html">
-    <meta property="og:image" content="https://klayverpaz.github.io//portfolio_media/covers/nutrir.svg">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="../css/modern_normalize.css" />
-    <link rel="stylesheet" href="../css/html5bp.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/projects.css">
-
-    <meta name="theme-color" content="#fafafa">
-  </head>
-
-  <body>
-    <header class="page-header project-header">
-      <div class="container">
-        <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
-        <h1>Nutrir — Meal Verification CV</h1>
-        <p class="status-tag">Production · Adopted</p>
-        <p class="tagline">Computer-vision pipeline for meal verification deployed by the Municipality of Fortaleza — classifies meal components from a photo and pairs the percentages with a scale weight to produce per-meal nutritional records.</p>
-      </div>
-    </header>
-
-    <main class="page-content project-detail">
-      <div class="container">
-
-        <section class="project-section">
-          <h2>Problem</h2>
-          <p>The Municipality of Fortaleza distributes meals (&#34;quentinhas&#34;) to vulnerable populations and needs an objective record that each meal contains the required food groups in the right proportions. Manual verification across thousands of meals doesn&#39;t scale, and there is no way to audit historical batches without photos and measurements.</p>
-        </section>
-
-        <section class="project-section">
-          <h2>Architecture</h2>
-          
-            <figure class="architecture-figure">
-              <img src="../portfolio_media/diagrams/nutrir.png"
-                   alt="Nutrir — Meal Verification CV architecture diagram"
-                   onerror="this.parentElement.remove()">
-            </figure>
-          
-          <p>Mobile photo + scale weight per meal feeds an image-segmentation model that classifies regions into food categories (rice, beans, meat, vegetables, other) and estimates each category&#39;s volume percentage. Output is structured JSON: per-food description plus `percentual_volume` plus `peso_total_refeicao` in grams — auditable, queryable, and ready for downstream dashboards.</p>
-        </section>
-
-        <section class="project-section">
-          <h2>Tech Stack</h2>
-          <ul class="stack-chips">
-            
-              <li class="stack-chip">Python</li>
-            
-              <li class="stack-chip">PyTorch</li>
-            
-              <li class="stack-chip">image segmentation</li>
-            
-              <li class="stack-chip">OpenCV</li>
-            
-          </ul>
-          
-            <p>Python, PyTorch, image segmentation models, OpenCV. Output is a structured JSON record per meal photo, with the meal&#39;s total weight read from a calibration scale.</p>
-          
-        </section>
-
-        <section class="project-section">
-          <h2>Engineering Highlights</h2>
-          <ul>
-            
-              <li>Pairs CV output (food-category percentages) with a calibration scale weight to produce gram-level totals, not just relative proportions.</li>
-            
-              <li>Generates structured, auditable JSON per meal — the pipeline is the source of truth for nutritional auditing, not a one-off model.</li>
-            
-              <li>Image-segmentation model trained on labeled regional Brazilian meal compositions.</li>
-            
-          </ul>
-        </section>
-
-        <section class="project-section">
-          <h2>Outcomes</h2>
-          <ul>
-            
-              <li>Deployed and adopted by the Municipality of Fortaleza for meal-distribution programs.</li>
-            
-              <li>Replaces hand-counting with a queryable, auditable record of every meal&#39;s composition and weight.</li>
-            
-          </ul>
-        </section>
-
-        
-
-      </div>
-    </main>
-
-    <footer class="page-footer">
-      <div class="container">
-        <p>© 2026 Klayver Paz. All rights reserved.</p>
-      </div>
-    </footer>
-  </body>
+<!-- portfolio: hand-made page (not generated; edit by hand) -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Checking public meals from a photo · Klayver Paz</title>
+<meta name="description" content="A computer-vision pipeline that turns one photo and one weight into an auditable nutrition record for every meal.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="../fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<div class="page">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="wordmark" href="../index.html">Klayver Paz</a>
+    <nav class="nav" aria-label="Sections"><a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#toolbox">Toolbox</a></nav>
+    <div class="header-end"><a class="btn btn-ghost btn-sm" href="../Klayver_Paz_Resume.pdf" data-resume>Résumé <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></div>
+  </div>
+</header>
+<main class="container">
+<section class="cs-hero">
+  <a class="back" href="../index.html#case-nutrir"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> All work</a>
+  <div class="cs-head">
+    <div><p class="tag">Computer vision · Public sector</p><h1>Checking public meals from a photo</h1><p class="lead">A computer-vision pipeline that turns one photo and one weight into an auditable nutrition record for every meal.</p></div>
+    <div class="cs-nums"><div class="cs-num"><b>Adopted</b><span>by Fortaleza City Hall for its meal-distribution programs</span></div><div class="cs-num"><b>1 photo + 1 weight</b><span>is all the field team captures per meal</span></div><div class="cs-num"><b>Every meal</b><span>gets a structured, queryable record</span></div></div>
+  </div>
+  <div class="cs-scene"><div class="scene mo-meal" data-scene data-steps="600,1200,1100,1100,1100,900" data-hold="3600" aria-hidden="true"><div class="stage">
+  <div class="ml-area"><div class="ml-photo">
+    <img src="../portfolio_media/Quentinha.png" alt="" width="540" height="590" loading="lazy">
+    <span class="seg sg1"><b>Chicken</b></span><span class="seg sg2"><b>Couscous</b></span><span class="seg sg3"><b>Pumpkin</b></span><span class="seg sg4"><b>Scale</b></span>
+  </div></div>
+  <div class="ml-report">
+    <header><b>Meal record</b><span class="rd-state"><span class="w">Reading photo</span><span class="d">Record saved</span></span></header>
+    <div class="ml-rows">
+      <p class="r1">Chicken <b data-set="2:45%" data-zero="–">–</b><i style="--w:45%;--c:#E7C65A"></i></p>
+      <p class="r2">Couscous <b data-set="3:30%" data-zero="–">–</b><i style="--w:30%;--c:#FFC98A"></i></p>
+      <p class="r3">Pumpkin <b data-set="4:25%" data-zero="–">–</b><i style="--w:25%;--c:#9DBBFF"></i></p>
+    </div>
+    <p class="ml-weight">Total weight <b><span data-to="528" data-at="5" data-dur="900">528</span> g</b></p>
+  </div>
+</div></div></div>
+</section>
+<section class="cs-block" data-reveal><h2>The problem</h2><p>The city distributes meals to vulnerable families and needs an objective record that each one contains the required food groups in the right proportions. Checking by hand across thousands of meals doesn't scale, and past batches can't be audited.</p></section>
+<section class="cs-block" data-reveal><h2>How it works</h2><ol class="flow" style="--n:4"><li class=""><b>Capture</b><span>A photo of the meal on a calibration scale.</span></li><li class="ai"><b>Segment</b><span>A segmentation model splits the plate into food categories.</span></li><li class=""><b>Measure</b><span>Each category's share of the meal, combined with the scale weight, gives grams per food.</span></li><li class=""><b>Record</b><span>A structured JSON record per meal, ready for audits and dashboards.</span></li></ol><p class="flow-key"><span><i></i>Deterministic code</span><span><i class="ai"></i>AI model</span></p></section>
+<section class="cs-block" data-reveal><h2>Key decisions</h2><ul class="decisions"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Pair vision with a real scale weight, so the output is grams, not just proportions.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>The pipeline is the system of record for audits, not a one-off model.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Trained on labeled photos of real regional Brazilian meals.</span></li></ul></section>
+<section class="cs-block" data-reveal><h2>In the field</h2><div class="gallery"><figure><img src="../portfolio_media/Quentinha.png" alt="" loading="lazy"><figcaption>A real meal on the calibration scale.</figcaption></figure><figure><img src="../portfolio_media/nutrir_sample.jpeg" alt="" loading="lazy"><figcaption>The structured record the pipeline produces for each meal.</figcaption></figure></div></section>
+<section class="cs-block" data-reveal><div class="role"><div><h2>Stack</h2><ul class="chips"><li>Python</li><li>PyTorch</li><li>Image segmentation</li><li>OpenCV</li></ul></div><div><h2>My role</h2><p><b>Researcher (Computer Vision), Federal University of Ceará</b>, within Ceará's Chief Scientist Program (FUNCAP).</p></div></div></section>
+<nav class="pager" aria-label="More cases">
+  <a href="midr.html"><small>Previous case</small><b>Road inspection from video</b></a>
+  <a class="next" href="crif.html"><small>Next case</small><b>The whole city on one comparable map</b></a>
+</nav>
+</main>
+<footer class="site-footer">
+  <div class="container footer-row"><p>Klayver Paz · AI Engineer</p><p>Fortaleza, Brazil · Remote</p></div>
+</footer>
+</div>
+<script src="../js/portfolio.js" defer></script>
+</body>
 </html>

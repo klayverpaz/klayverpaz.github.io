@@ -32,12 +32,12 @@
       "summary": "Production LLM agents and RAG systems for B2B platforms.",
       "highlights": [
         {
-          "lead": "Multi-agent system (LangGraph).",
-          "body": "Reduced a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) with a production multi-agent system on LangGraph: agents only where the work is open-ended (a ReAct planner with 14 tools), deterministic workflow subgraphs everywhere else, and human-in-the-loop approval gates before any state-changing operation."
+          "lead": "LLM agents (LangGraph).",
+          "body": "Cut a recurring B2B budget workflow from ~1 month to ~40 minutes per cycle with a production LangGraph agent that matches a construction schedule to its budget items and splits the costs, with human approval gates before anything is saved. On the same platform, built a conversational ReAct planner (14 tools): agents only where the work is open-ended, deterministic workflow subgraphs everywhere else."
         },
         {
           "lead": "RAG pipeline.",
-          "body": "Designed three-tier RAG retrieval over the client's own history (current project → same company → general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context."
+          "body": "Designed three-tier RAG retrieval over the platform's own history (current project → same company → general knowledge base on PostgreSQL + pgvector), with deterministic metadata filters applied before cosine similarity on OpenAI embeddings, so the agent only reasons over relevant context."
         },
         {
           "lead": "LLM evaluation.",
@@ -195,110 +195,38 @@
   "projects": [
     {
       "slug": "multi-agent-ops",
-      "title": "Multi-Agent Operations Assistant",
+      "title": "Budget-Matching Agent",
       "codename": "Confidential client",
       "status": "Production · Confidential",
-      "tagline": "LangGraph multi-agent system that cut a recurring B2B operational workflow from ~1 month to ~40 minutes (~99%) for an enterprise SaaS platform.",
+      "tagline": "LangGraph agent that matches schedule activities to budget items and splits costs, cutting each cycle from ~1 month to ~40 minutes (~99%) for a construction-tech SaaS platform.",
       "cover_image": "portfolio_media/covers/multi-agent-ops.svg",
       "stack": [
         "LangGraph",
         "LangSmith",
+        "Claude",
         "pgvector",
         "Redis",
         "FastAPI",
         "React 19",
         "TypeScript",
         "AWS (ECR, S3)",
-        "Kubernetes + Argo CD",
-        "Anthropic / OpenAI"
+        "Kubernetes + Argo CD"
       ],
       "sections": {
-        "problem": "Recurring B2B operational workflows that span multiple internal systems took roughly a month to complete because each step needed human escalation, context lookup, and manual data entry. Customer-facing teams spent the bulk of their week chasing these workflows instead of doing higher-leverage work, and the lead-time gap was visible to end customers.",
-        "architecture": "LangGraph multi-agent system: an intent classifier routes incoming requests into deterministic workflow subgraphs, and every state-changing operation is gated by a human-in-the-loop confirmation. A 'lateral query' interrupt mechanism lets users pause an in-flight workflow, ask a side question against the same agent, and resume from the exact same node without losing state. Sessions persist via TTL-bounded Redis checkpoints. Bearer-token pass-through auth keeps user credentials out of the agent process. Backend is FastAPI + async SQLAlchemy + Postgres; frontend is React 19 + TypeScript + Tailwind streaming over SSE; images ship to Amazon ECR and deploy to Kubernetes via Argo CD.",
+        "problem": "On a construction-tech SaaS, every budget scenario needs each schedule activity linked to the budget items it consumes, and each item's cost split across those activities. Engineers did it by hand: about a month per cycle.",
+        "architecture": "LangGraph graph with two human-approval interrupts: the LLM proposes activity-to-budget-item matches in batches (guided by a reference project when available), the user approves or edits, deterministic code splits costs, the user reviews again, and approved results are written through the platform API. Sessions persist in TTL-bounded Redis checkpoints; bearer-token pass-through keeps credentials out of the agent.",
         "architecture_diagram": "portfolio_media/diagrams/multi-agent-ops.png",
         "tech_stack": "LangGraph + LangSmith for orchestration and tracing, PostgreSQL + pgvector for retrieval, Redis for checkpointing. Anthropic and OpenAI models sit behind a provider abstraction so the LLM is swappable. Backend: FastAPI + async SQLAlchemy + PostgreSQL. Frontend: React 19 + TypeScript + Tailwind + Server-Sent Events.",
         "engineering_highlights": [
-          "Deterministic workflow subgraphs replace ad-hoc agent reasoning for the steps that must be reliable; the LLM only owns intent classification and human-facing dialogue.",
-          "Lateral-query interrupt-and-resume pattern: pauses a running workflow, runs a side conversation, then resumes from the exact same graph node without losing state.",
-          "HITL confirmation gates on every state-changing operation — the agent never silently mutates a system of record.",
-          "TTL-bounded Redis checkpoints make sessions resumable across reconnects and bound memory growth.",
-          "Bearer-token pass-through auth: the agent forwards the caller's token without ever storing credentials."
+          "The LLM only does what needs judgment; parsing, cost math and writes are deterministic code.",
+          "Accuracy harness: real projects as fixtures, recall / leakage / misses over repeated runs per case, compared against a blessed baseline per model and commit (hardest case: recall 0.17 -> 1.00, zero leakage).",
+          "Human-in-the-loop by design: LangGraph interrupts with Redis checkpoints, resumable exactly where the session stopped."
         ],
         "outcomes": [
-          "~99% cycle-time reduction on a recurring operational workflow (~1 month → ~40 minutes).",
-          "Production system serving the client's enterprise B2B platform; specifics under NDA."
+          "~99% cycle-time reduction (~1 month -> ~40 minutes per budget cycle).",
+          "Production system on the client's platform; client under NDA."
         ],
         "demo": null
-      }
-    },
-    {
-      "slug": "seegold",
-      "title": "Seegold — SaaS + WhatsApp AI Agent",
-      "codename": "Seegold",
-      "status": "Production · 22 paying gyms",
-      "tagline": "Multi-tenant billing SaaS for gyms and martial-arts schools (automatic charges and payment receipts over WhatsApp), plus an LLM sales agent that drafts WhatsApp replies to leads, with deterministic guardrails deciding what ships automatically and what goes to human review.",
-      "cover_image": "portfolio_media/covers/seegold.svg",
-      "stack": [
-        "Python",
-        "FastAPI",
-        "SQLAlchemy 2.0 async",
-        "PostgreSQL",
-        "React 19",
-        "Vite",
-        "TanStack Query",
-        "Tailwind v4",
-        "Anthropic Claude",
-        "Twilio WhatsApp",
-        "Asaas payments",
-        "AWS (ECS, RDS, ALB, CloudFront, ECR, CloudWatch)",
-        "Terraform"
-      ],
-      "sections": {
-        "problem": "Small gyms and martial-arts schools collect monthly fees by hand: chasing students on WhatsApp, checking bank transfers, keeping a spreadsheet of who paid. Owners want billing to run itself on the channel their students already use. On the sales side, a small team cannot answer every inbound lead within minutes, and leads that wait hours rarely engage.",
-        "architecture": "FastAPI backend in layered vertical slices (api → use cases → domain ← infrastructure), multi-tenant by business, with async SQLAlchemy on PostgreSQL. Charges and subscriptions run through the Asaas payment gateway; WhatsApp messages go out through Twilio. React 19 + Vite frontend served from CloudFront. Production on AWS (ECS behind an ALB, RDS PostgreSQL, ECR, CloudWatch alarms), provisioned with Terraform. The sales agent runs on a 10-minute schedule: a queue of leads → Claude drafts the next message from a fixed playbook → guardrails → send, hold for review, or wait.",
-        "tech_stack": "Python, FastAPI, Pydantic v2, SQLAlchemy 2.0 async, Alembic, PostgreSQL, APScheduler, pytest, ruff, mypy; React 19, Vite, TanStack Query, React Router, Tailwind v4, Playwright; Asaas, Twilio WhatsApp, Resend; Anthropic Claude for the sales agent; AWS (ECS, RDS, ALB, CloudFront, ECR, S3, CloudWatch) with Terraform.",
-        "engineering_highlights": [
-          "LLM agent with deterministic guardrails: only whitelisted prices and links can leave automatically; any other price, link or e-mail holds the draft for human review, and support requests always go to a human.",
-          "Prompt-injection containment: the model runs with no tools and no MCP servers, and everything it needs is passed inside the prompt, so text written by a lead cannot read secrets or touch files.",
-          "Send verification: every automated message is checked against the outbound record and the run stops on the first message that did not go out identical to the approved text.",
-          "Funnel instrumentation: a CRM and a fixed-window scoreboard (account created within 7 days, paid within 14) make conversion comparable across weeks and playbook changes."
-        ],
-        "outcomes": [
-          "Live in production with 22 paying gyms, built and operated end to end by one engineer.",
-          "Lead first response went from hours to minutes, the variable the funnel data showed mattered most for engagement."
-        ]
-      }
-    },
-    {
-      "slug": "finance-skill",
-      "title": "Personal Finance Skill",
-      "codename": "fatura-processor",
-      "status": "In development · Anthropic Skill",
-      "tagline": "Anthropic Skill that processes Brazilian bank statement PDFs through a stage-based state machine — parse, validate, classify merchants, and persist to a personal SQLite ledger.",
-      "cover_image": "portfolio_media/covers/finance-skill.svg",
-      "stack": [
-        "Anthropic Skills protocol",
-        "Python",
-        "SQLite",
-        "PDF parsing",
-        "state machine"
-      ],
-      "sections": {
-        "problem": "Brazilian bank statements arrive as PDFs with inconsistent layouts (one per bank, one per statement type — credit card faturas vs. current-account extratos). Importing these by hand into a personal-finance ledger is a Saturday-morning ritual: parse, dedupe, classify each merchant. The cost compounds month over month.",
-        "architecture": "Anthropic Skill packaged as a stage-based state machine: parse PDF → normalize transactions → validate gates (running balance, sign conventions, duplicates) → classify each merchant against a learned table → persist to SQLite. Idempotent imports — re-running over the same PDF is a no-op, keyed on (bank, statement_id, transaction_hash). Merchant classification is self-improving: human-confirmed mappings are written back so subsequent runs need fewer interactive prompts.",
-        "architecture_diagram": "portfolio_media/diagrams/finance-skill.png",
-        "tech_stack": "Anthropic Skills protocol; Python; PDF parsing libraries; SQLite for the personal ledger; deterministic state machine with explicit validation gates between stages.",
-        "engineering_highlights": [
-          "Stage-based state machine with explicit validation gates — failed validation halts the pipeline at a known, debuggable boundary instead of silently corrupting the ledger.",
-          "Idempotent imports keyed on (bank, statement_id, transaction_hash) — running the Skill twice over the same PDF is a no-op.",
-          "Self-improving merchant classifier: confirmed mappings are written back to the ledger so the Skill needs fewer prompts on future runs.",
-          "Fits the Anthropic Skills protocol so the same workflow is callable from any Anthropic-Skills-aware client."
-        ],
-        "outcomes": [
-          "Personal-use Skill in active development.",
-          "Replaces a manual monthly bank-statement reconciliation with a single Skill invocation."
-        ],
-        "demo": "portfolio_media/demos/finance-skill.mp4"
       }
     },
     {

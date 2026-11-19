@@ -68,7 +68,7 @@ def test_education_shape(portfolio_data):
 def test_projects_are_case_studies(portfolio_data):
     """Each project must include slug, status, tagline, stack, and case-study sections."""
     projects = portfolio_data["projects"]
-    assert isinstance(projects, list) and len(projects) == 6
+    assert isinstance(projects, list) and len(projects) == 4
     seen_slugs = set()
     required_fields = {"slug", "title", "status", "tagline", "stack",
                        "cover_image", "sections"}

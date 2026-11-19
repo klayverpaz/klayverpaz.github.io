@@ -1,124 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>MIDR — Pavement Defect Detection — Klayver Paz</title>
-    <meta name="description" content="YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Ceará (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models.">
-    <meta name="author" content="Klayver Paz">
-
-    <meta property="og:title" content="MIDR — Pavement Defect Detection — Klayver Paz">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://klayverpaz.github.io//projects/midr.html">
-    <meta property="og:image" content="https://klayverpaz.github.io//portfolio_media/covers/midr.svg">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="../css/modern_normalize.css" />
-    <link rel="stylesheet" href="../css/html5bp.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/projects.css">
-
-    <meta name="theme-color" content="#fafafa">
-  </head>
-
-  <body>
-    <header class="page-header project-header">
-      <div class="container">
-        <p class="breadcrumb"><a href="../index.html">← Back to portfolio</a></p>
-        <h1>MIDR — Pavement Defect Detection</h1>
-        <p class="status-tag">Production · Adopted</p>
-        <p class="tagline">YOLO-ensemble defect detection deployed in highway inspection by the Court of Accounts of Ceará (TCE-CE). Custom IOU + NMS fusion across multiple class-specialized YOLO models.</p>
-      </div>
-    </header>
-
-    <main class="page-content project-detail">
-      <div class="container">
-
-        <section class="project-section">
-          <h2>Problem</h2>
-          <p>Highway concessionaires and audit bodies need objective, scalable evidence of pavement condition. Manual inspection is slow, subjective, and inconsistent across reviewers. The system needs to detect potholes (buracos), cracks (trincas), patches (remendos), and signage from drive-by smartphone or vehicle-mounted footage — kilometers at a time.</p>
-        </section>
-
-        <section class="project-section">
-          <h2>Architecture</h2>
-          
-            <figure class="architecture-figure">
-              <img src="../portfolio_media/diagrams/midr.png"
-                   alt="MIDR — Pavement Defect Detection architecture diagram"
-                   onerror="this.parentElement.remove()">
-            </figure>
-          
-          <p>MIDR is an ensemble of YOLO models, each trained on a curated subset, orchestrated by a `Detector` class (`src/midr/dd.py`) that runs models in parallel, applies per-model IOU and NMS, then fuses detections via consensus, confidence, and class-priority rules. The training pipeline reads from per-version SQLite databases (`midr_18072024.db`, `midr_01052025_smartphone_hd.db`) and runs in Google Colab notebooks (`yolo_tl_2025.ipynb`) for reproducibility. End-to-end image and video processing scripts (`main_process_images.py`, `main_process_video.py`) take folders in `to_process/source` and write annotated outputs to `to_process/destination`.</p>
-        </section>
-
-        <section class="project-section">
-          <h2>Tech Stack</h2>
-          <ul class="stack-chips">
-            
-              <li class="stack-chip">Python 3.11</li>
-            
-              <li class="stack-chip">PyTorch</li>
-            
-              <li class="stack-chip">Ultralytics YOLO 8.3.x</li>
-            
-              <li class="stack-chip">OpenCV</li>
-            
-              <li class="stack-chip">SQLite (dataset versioning)</li>
-            
-              <li class="stack-chip">Jupyter / Google Colab</li>
-            
-          </ul>
-          
-            <p>Python 3.11; PyTorch + Ultralytics YOLO (8.3.3); OpenCV; SQLite-backed dataset versioning; Conda environment spec; Jupyter / Google Colab notebook for transfer-learning training.</p>
-          
-        </section>
-
-        <section class="project-section">
-          <h2>Engineering Highlights</h2>
-          <ul>
-            
-              <li>Custom IOU + NMS fusion logic combines predictions across the YOLO ensemble; consensus + confidence-weighted voting reduce false positives a single model would emit.</li>
-            
-              <li>Per-version SQLite datasets make dataset evolution reproducible — the team retrains incrementally as new footage is collected.</li>
-            
-              <li>Drop-in image and video processing scripts so field operators can process new footage without touching model code.</li>
-            
-              <li>Class-specialized YOLO ensemble: each defect class (potholes, cracks, patches, signage) has its own training loop tuned for that class&#39;s failure modes.</li>
-            
-          </ul>
-        </section>
-
-        <section class="project-section">
-          <h2>Outcomes</h2>
-          <ul>
-            
-              <li>Deployed as the standard inspection system used by the Court of Accounts of Ceará (TCE-CE).</li>
-            
-              <li>Replaces the visual-inspection bottleneck for kilometers of recorded highway footage with an automated first-pass defect screen.</li>
-            
-          </ul>
-        </section>
-
-        
-          <section class="project-section">
-            <h2>Demo</h2>
-            
-              <p><a href="https://www.instagram.com/reel/C6wSjDZo3jv/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" rel="noopener noreferrer">Watch demo →</a></p>
-            
-          </section>
-        
-
-      </div>
-    </main>
-
-    <footer class="page-footer">
-      <div class="container">
-        <p>© 2026 Klayver Paz. All rights reserved.</p>
-      </div>
-    </footer>
-  </body>
+<!-- portfolio: hand-made page (not generated; edit by hand) -->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Road inspection from video · Klayver Paz</title>
+<meta name="description" content="An ensemble of YOLO models that watches road footage and marks potholes, cracks and patches on its own.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preload" href="../fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/portfolio.css">
+</head>
+<body>
+<div class="page">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="wordmark" href="../index.html">Klayver Paz</a>
+    <nav class="nav" aria-label="Sections"><a href="../index.html#work">Work</a><a href="../index.html#experience">Experience</a><a href="../index.html#toolbox">Toolbox</a></nav>
+    <div class="header-end"><a class="btn btn-ghost btn-sm" href="../Klayver_Paz_Resume.pdf" data-resume>Résumé <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a></div>
+  </div>
+</header>
+<main class="container">
+<section class="cs-hero">
+  <a class="back" href="../index.html#case-midr"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg> All work</a>
+  <div class="cs-head">
+    <div><p class="tag">Computer vision · Public sector</p><h1>Road inspection from video</h1><p class="lead">An ensemble of YOLO models that watches road footage and marks potholes, cracks and patches on its own.</p></div>
+    <div class="cs-nums"><div class="cs-num"><b>Government standard</b><span>the inspection system used by Ceará's Court of Accounts (TCE-CE)</span></div><div class="cs-num"><b>Patented</b><span>the detection system is patented</span></div><div class="cs-num"><b>Kilometers at a time</b><span>drive-by smartphone or vehicle footage in, defect report out</span></div></div>
+  </div>
+  <div class="cs-scene"><div class="scene mo-road" data-scene data-steps="700,1600,1600,1550,1450,1100" data-hold="3800" aria-hidden="true"><div class="stage">
+  <div class="rd-area">
+    <div class="rd-strip"><div class="rd-layer">
+      <div class="def d1"><i class="shape"></i><span class="box"><b>Pothole</b></span></div>
+      <div class="def d2"><svg class="shape" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M2 12 L14 7 L22 13 L35 6 L47 12 L58 5 L70 11 L83 6 L98 10"/><path d="M47 12 L52 18"/></svg><span class="box"><b>Crack</b></span></div>
+      <div class="def d3"><i class="shape"></i><span class="box"><b>Patch</b></span></div>
+      <div class="def d4"><svg class="shape" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M3 8 L18 13 L30 7 L44 14 L58 8 L72 13 L86 7 L97 11"/></svg><span class="box"><b>Crack</b></span></div>
+    </div></div>
+    <span class="rd-scan"><b>Camera</b></span>
+  </div>
+  <div class="rd-report">
+    <header><b>Road section report</b><span class="rd-state"><span class="w">Analyzing video</span><span class="d">Report ready</span></span></header>
+    <div class="rd-stat">
+      <p class="km">Distance analyzed <b><span data-to="12.4" data-dec="1" data-at="1" data-dur="7000">12.4</span> km</b></p>
+      <p>Potholes <b data-set="2:1">0</b></p><p>Cracks <b data-set="3:1,5:2">0</b></p><p>Patches <b data-set="4:1">0</b></p>
+    </div>
+  </div>
+</div></div></div>
+</section>
+<section class="cs-block" data-reveal><h2>The problem</h2><p>Highway concessionaires and audit bodies need objective evidence of pavement condition. Manual inspection is slow, subjective and inconsistent across reviewers, and footage piles up kilometers at a time.</p></section>
+<section class="cs-block" data-reveal><h2>How it works</h2><ol class="flow" style="--n:4"><li class=""><b>Capture</b><span>Smartphone or vehicle-mounted video of the road.</span></li><li class="ai"><b>Detect</b><span>Class-specialized YOLO models (potholes, cracks, patches, signage) run in parallel.</span></li><li class=""><b>Fuse</b><span>Custom IoU + NMS fusion with consensus and confidence voting cuts false positives.</span></li><li class=""><b>Report</b><span>Annotated video and defect counts per road section.</span></li></ol><p class="flow-key"><span><i></i>Deterministic code</span><span><i class="ai"></i>AI model</span></p></section>
+<section class="cs-block" data-reveal><h2>Key decisions</h2><ul class="decisions"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>One model per defect class, each tuned for that class's failure modes, then fused.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Per-version SQLite datasets make retraining on new footage reproducible.</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Drop-in image and video scripts, so field teams process footage without touching model code.</span></li></ul></section>
+<section class="cs-block" data-reveal><h2>In the field</h2><div class="gallery"><figure><img src="../portfolio_media/patch.png" alt="" loading="lazy"><figcaption>Real detections: patches and a crack, marked on highway footage.</figcaption></figure><figure><img src="../portfolio_media/stopsign.png" alt="" loading="lazy"><figcaption>The same pipeline also flags road signage.</figcaption></figure></div><a class="demo-link" href="https://www.instagram.com/reel/C6wSjDZo3jv/" rel="noopener">Watch the demo video <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></section>
+<section class="cs-block" data-reveal><div class="role"><div><h2>Stack</h2><ul class="chips"><li>Python</li><li>PyTorch</li><li>Ultralytics YOLO</li><li>OpenCV</li><li>SQLite dataset versioning</li><li>Google Colab</li></ul></div><div><h2>My role</h2><p><b>Researcher (Computer Vision), Federal University of Ceará</b>, within Ceará's Chief Scientist Program (FUNCAP).</p></div></div></section>
+<nav class="pager" aria-label="More cases">
+  <a href="construction-forecast.html"><small>Previous case</small><b>Forecasting construction delays and waste</b></a>
+  <a class="next" href="nutrir.html"><small>Next case</small><b>Checking public meals from a photo</b></a>
+</nav>
+</main>
+<footer class="site-footer">
+  <div class="container footer-row"><p>Klayver Paz · AI Engineer</p><p>Fortaleza, Brazil · Remote</p></div>
+</footer>
+</div>
+<script src="../js/portfolio.js" defer></script>
+</body>
 </html>
