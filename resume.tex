@@ -19,6 +19,7 @@
 \usepackage{xcolor}
 \usepackage{tabularx}
 \usepackage{array}
+\usepackage{tikz}
 
 % Hyperlinks & icons
 \usepackage{hyperref}
@@ -30,6 +31,8 @@
 \definecolor{accent}{HTML}{5B21B6}   % deep violet — matches site
 \definecolor{muted}{HTML}{4B5563}
 \definecolor{rule}{HTML}{9CA3AF}
+\definecolor{flagred}{HTML}{B22234}
+\definecolor{flagblue}{HTML}{3C3B6E}
 
 \hypersetup{
   colorlinks=true,
@@ -69,9 +72,23 @@
 \newcommand{\job}[3]{%
   \par\vspace{4pt}%
   \noindent\begin{tabularx}{\linewidth}{@{}X r@{}}%
-    \textbf{#1} \, {\color{muted}\textit{#2}} & {\small\color{muted}#3} \\
+    \textbf{#1} \, {\color{accent}\textbf{#2}} & {\small\color{muted}#3} \\
   \end{tabularx}%
   \vspace{1pt}%
+}
+
+% Small US flag drawn with TikZ (no image file needed): \usflag
+\newcommand{\usflag}{%
+  \begin{tikzpicture}[baseline=-0.1ex, x=1em, y=1em]
+    \foreach \i in {0,...,6} {%
+      \fill[flagred] (0,{\i*0.1}) rectangle (1.5,{\i*0.1+0.05});
+      \fill[white] (0,{\i*0.1+0.05}) rectangle (1.5,{\i*0.1+0.1});
+    }
+    \fill[flagblue] (0,0.35) rectangle (0.62,0.7);
+    \foreach \x in {0.1,0.26,0.42} \foreach \y in {0.44,0.6}
+      \fill[white] (\x+0.05,\y) circle (0.025);
+    \draw[rule, line width=0.2pt] (0,0) rectangle (1.5,0.7);
+  \end{tikzpicture}%
 }
 
 % Project header: \project{title}{status}
@@ -111,7 +128,7 @@
 
 \vspace{2pt}
 \noindent
-AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.
+AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at New York University (NYU). Based in Fortaleza, Brazil; remote with US time-zone overlap.
 
 % -------------------------------------------------------------
 % Experience
@@ -129,7 +146,7 @@ AI Engineer building production LLM agents and RAG systems: LangGraph multi-agen
 \end{itemize}
 \textit{\small Stack: LangGraph, LangChain, LangSmith, Anthropic Claude, OpenAI, RAG, pgvector, PostgreSQL, Redis, FastAPI, React 19, TypeScript, AWS (ECR, S3), Kubernetes, Argo CD.}
 
-\job{Research Scientist (Data Science)}{Vida Center --- NYU Tandon School of Engineering}{Sep 2025 -- Dec 2025}
+\job{Research Scientist (Data Science)}{Vida Center --- NYU, New York \usflag}{Sep 2025 -- Dec 2025}
 \textit{\small Contributed to the UrbanMapper project --- analytics framework for large-scale urban Big Data processing and spatial-temporal modeling.}
 \begin{itemize}
   \item \textbf{CRIF library.} Built CRIF (Calibrated Raster Interpolation), a Python library for unified geospatial rasterization and dasymetric mapping --- formal mathematical derivation, custom Jupyter widgets, Docker packaging.

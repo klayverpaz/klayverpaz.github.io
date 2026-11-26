@@ -8,7 +8,7 @@
     "phone": "+55 85 99692-9159",
     "location": "Fortaleza, Brazil 🇧🇷 · Remote"
   },
-  "summary": "AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at NYU. Based in Fortaleza, Brazil; remote with US time-zone overlap.",
+  "summary": "AI Engineer building production LLM agents and RAG systems: LangGraph multi-agent orchestration, retrieval over PostgreSQL + pgvector, evaluation harnesses, and the FastAPI / React / AWS services around them. Research roots in computer vision and geospatial ML at New York University (NYU). Based in Fortaleza, Brazil; remote with US time-zone overlap.",
   "base_url": "https://klayverpaz.github.io/",
   "social_links": [
     {
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "company": "Vida Center — NYU Tandon School of Engineering",
+      "company": "Vida Center — NYU, New York",
       "position": "Research Scientist (Data Science)",
       "url": "https://vida.engineering.nyu.edu/",
       "start_date": "September 2025",
