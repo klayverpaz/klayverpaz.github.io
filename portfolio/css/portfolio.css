@@ -198,7 +198,8 @@ h3 { font-size: clamp(1.25rem, 1.9cqi, 1.6rem); line-height: 1.22; letter-spacin
 .xp { border-top: 1px solid var(--rule-strong); }
 .xp li { display: grid; grid-template-columns: 1fr; gap: 2px 24px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
 .xp b { font-weight: 500; font-size: 1.05rem; letter-spacing: -.01em; }
-.xp .org { color: var(--ink-2); }
+.xp .org { color: var(--violet); font-weight: 600; }
+.xp .org .flag { display: inline-block; margin-left: .3em; vertical-align: baseline; }
 .xp .when { font-size: .88rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .xp .what { font-size: .9rem; color: var(--ink-2); }
 .edu { margin-top: 18px; font-size: .92rem; color: var(--ink-2); }
